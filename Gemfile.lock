@@ -204,6 +204,7 @@ DEPENDENCIES
   omniauth
   pry-rails
   rails (= 4.2.5.1)
+  rake
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
