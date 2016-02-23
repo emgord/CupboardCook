@@ -41,6 +41,26 @@ seed_ingredients = [
   { name: "Green Bell Pepper"},
   { name: "Russet Potato"},
   { name: "Egg"},
+  { name: "Beets"},
+  { name: "Pine Nuts"},
+  { name: "Lemon Juice"},
+  { name: "Red Cabbage"},
+  { name: "Green Cabbage"},
+  { name: "Bacon"},
+  { name: "Caraway Seeds"},
+  { name: "Sugar"},
+  { name: "Balsamic Vinegar"},
+  { name: "White Vinegar"},
+  { name: "Frozen Peas"},
+  { name: "Tomato"},
+  { name: "White Pepper"},
+  { name: "Parsley"},
+  { name: "Root Vegetables"},
+  { name: "Cucumber"},
+  { name: "Red Wine Vinegar"},
+  { name: "Feta"},
+  { name: "Mint"}
+  { name: "Milk"}
 
 ]
 
@@ -76,49 +96,43 @@ seed_recipes = [
     time: "20 minutes",
     original_url: "http://cooking.nytimes.com/recipes/8357-spaghetti-with-fried-eggs",
     description: "Here's a quick and delicious pasta dish to make when you have little time, and even less food in the house. All you need is a box of spaghetti, four eggs, olive oil and garlic (Parmesan is a delicious, but optional, addition)."
+  },
+  { title: "Roasted Beets With Pine Nuts and Parmesan",
+    time: "2 hours",
+    original_url: "http://cooking.nytimes.com/recipes/1015269-roasted-beets-with-pine-nuts-and-parmesan"
+  },
+  { title: "Warm Red and Green Cabbage Slaw",
+    yield: "Six side-dish servings",
+    time: "45 minutes",
+    original_url: "http://cooking.nytimes.com/recipes/4490-warm-red-and-green-cabbage-slaw"
+  },
+  { title: "Peas With Poached Eggs",
+    image: "http://graphics8.nytimes.com/images/2014/04/09/dining/peaspoachedeggs/peaspoachedeggs-articleLarge.jpg",
+    yield: "4 to 6 servings",
+    time: "20 minutes",
+    original_url: "http://cooking.nytimes.com/recipes/1012480-peas-with-poached-eggs"
+  },
+  { title: "Roasted Vegetables",
+    image: "http://graphics8.nytimes.com/images/2015/09/23/dining/23ROASTEDVEGETABLES/23ROASTEDVEGETABLES-articleLarge.jpg",
+    yield: "4 to 6 servings",
+    time: "30 minutes to 1 hour",
+    original_url: "http://cooking.nytimes.com/recipes/1017703-roasted-vegetables",
+    description: "The key to roasting all kinds of vegetables is to know the right temperature for cooking them. Dense, low-moisture vegetables (like the roots and squashes in this recipe) need lower heat and more time in the oven than vegetables with more moisture, like eggplant or zucchini. Then simply toss your vegetables with oil and season with salt and pepper before roasting. Top your roasted vegetable with a couple of fried eggs or a dollop of yogurt, or both, and you have a meal."
+  },
+  { title: "Summer Salad with Feta",
+    image: "http://graphics8.nytimes.com/images/2008/07/21/health/nutrition/21tomato.recipe.ready/21tomato.recipe.ready-articleLarge-v3.jpg",
+    yield: "4 to 6 servings",
+    time: "2 minutes",
+    original_url: "http://cooking.nytimes.com/recipes/1016414-summer-salad-with-feta",
+    description: "This is a modified Greek salad, one I tend to make pretty much nightly during the summer, when I always have these ingredients on hand."
+  },
+  { title: "Beet Greens Frittata",
+    image: "http://graphics8.nytimes.com/images/2012/09/24/health/nutrition/24recipehealth-frittata/24recipehealth-frittata-articleLarge-v2.jpg",
+    yield: "6 servings",
+    time: "50 minutes",
+    original_url: "http://cooking.nytimes.com/recipes/12778-beet-greens-frittata",
+    description: "The New York City Greenmarket Web site has a handy table that shows what’s available during each month of the year. It tells me, for example, that fresh beets are available from June through November, but that you can count on the greens only through September. Use whatever color beet you choose for this recipes. The red ones will be higher in anthocyanins, the pigment-based phytonutrients that are believed to have strong antioxidant properties. But yellow and pink beets have a lot going for them nutritionally as well. All beets are rich in folates, potassium and the B-complex vitamins niacin, pantothenic acid and pyridoxine. This is one of the most versatile dishes you can make with beet greens. Cut the frittata into wedges and serve as a main dish or into smaller diamonds and serve as an hors d’oeuvre. It packs well in a lunchbox, too."
   }
-  # { title: "",
-  #   image: "",
-  #   yield: "",
-  #   time: "",
-  #   original_url: "",
-  #   description: ""
-  # },
-  # { title: "",
-  #   image: "",
-  #   yield: "",
-  #   time: "",
-  #   original_url: "",
-  #   description: ""
-  # },
-  # { title: "",
-  #   image: "",
-  #   yield: "",
-  #   time: "",
-  #   original_url: "",
-  #   description: ""
-  # },
-  # { title: "",
-  #   image: "",
-  #   yield: "",
-  #   time: "",
-  #   original_url: "",
-  #   description: ""
-  # },
-  # { title: "",
-  #   image: "",
-  #   yield: "",
-  #   time: "",
-  #   original_url: "",
-  #   description: ""
-  # },
-  # { title: "",
-  #   image: "",
-  #   yield: "",
-  #   time: "",
-  #   original_url: "",
-  #   description: ""
-  # },
   # { title: "",
   #   image: "",
   #   yield: "",
@@ -273,7 +287,198 @@ seed_recipe_ingredients = [
   { recipe_id:4,
     ingredient_id:9,
     original_string:"Freshly grated Parmesan or pecorino cheese, optional"
-  }
+  },
+  { recipe_id:5,
+    ingredient_id:22,
+    original_string:"2 pounds beets"
+  },
+  { recipe_id:5,
+    ingredient_id:23,
+    original_string:"pine nuts"
+  },
+  { recipe_id:5,
+    ingredient_id:9,
+    original_string:"shaved Parmesan
+"
+  },
+  { recipe_id:5,
+    ingredient_id:24,
+    original_string:"lemon juice"
+  },
+  { recipe_id:5,
+    ingredient_id:2,
+    original_string:"olive oil"
+  },
+  { recipe_id:6,
+    ingredient_id:25,
+    original_string:"½ head red cabbage"
+  },
+  { recipe_id:6,
+    ingredient_id:26,
+    original_string:"½ head green cabbage"
+  },
+  { recipe_id:6,
+    ingredient_id:1,
+    original_string:"Salt"
+  },
+  { recipe_id:6,
+    ingredient_id:27,
+    original_string:"3 slices bacon, diced"
+  },
+  { recipe_id:6,
+    ingredient_id:28,
+    original_string:"2 teaspoons caraway seeds
+"
+  },
+  { recipe_id:6,
+    ingredient_id:29,
+    original_string:"2 teaspoons sugar
+"
+  },
+  { recipe_id:6,
+    ingredient_id:30,
+    original_string:"2 tablespoons balsamic vinegar
+"
+  },
+  { recipe_id:7,
+    ingredient_id:27,
+    original_string:"6 ounces thick-cut slab bacon, sliced crosswise into 1/4-inch pieces (see note)
+"
+  },
+  { recipe_id:7,
+    ingredient_id:18,
+    original_string:"1 yellow onion, diced
+"
+  },
+  { recipe_id:7,
+    ingredient_id:18,
+    original_string:"1 yellow onion, diced
+"
+  },
+  { recipe_id:7,
+    ingredient_id:31,
+    original_string:"1 tablespoon white vinegar
+"
+  },
+  { recipe_id:7,
+    ingredient_id:21,
+    original_string:"4 to 6 large eggs
+"
+  },
+  { recipe_id:7,
+    ingredient_id:32,
+    original_string:"3 cups (about 1 pound) frozen baby peas, thawed
+"
+  },
+  { recipe_id:7,
+    ingredient_id:33,
+    original_string:"1 medium tomato, seeded and diced
+"
+  },
+  { recipe_id:7,
+    ingredient_id:1,
+    original_string:"Salt
+"
+  },
+  { recipe_id:7,
+    ingredient_id:35,
+    original_string:"Ground white pepper
+"
+  },
+  { recipe_id:7,
+    ingredient_id:36,
+    original_string:"1 tablespoon minced parsley, for garnish
+"
+  },
+  { recipe_id:8,
+    ingredient_id:37,
+    original_string:"2 to 3 pounds root or dense vegetable, peeled if you like and cut into 1-inch chunks or wedges (carrots, beets, potatoes, sweet potatoes, turnips, radishes, rutabaga, winter squashes)
+"
+  },
+  { recipe_id:8,
+    ingredient_id:2,
+    original_string:"Oil (olive, coconut or grapeseed)
+"
+  },
+  { recipe_id:8,
+    ingredient_id:1,
+    original_string:"Oil (olive, coconut or grapeseed)
+"
+  },
+  { recipe_id:8,
+    ingredient_id:21,
+    original_string:"Fried eggs and/or plain yogurt
+"
+  },
+  { recipe_id:8,
+    ingredient_id:36,
+    original_string:"Fresh herbs, torn or chopped
+"
+  },
+  { recipe_id:9,
+    ingredient_id:33,
+    original_string:"5 medium or large ripe tomatoes, cut into wedges, and if large, the wedges cut in half crosswise, or 1 pint cherry tomatoes, cut in half
+"
+  },
+  { recipe_id:9,
+    ingredient_id:37,
+    original_string:"½ European cucumber, or 1 Persian or Japanese cucumber, cut in half lengthwise, seeded if desired, then sliced into half circles about 1/3 inch thick.
+  "
+    },
+    { recipe_id:9,
+      ingredient_id:1,
+      original_string:"Sea salt or fleur de sel and freshly ground pepper
+    "
+      },
+      { recipe_id:9,
+        ingredient_id:38,
+        original_string:"2 tablespoons red wine vinegar or sherry vinegar
+      "
+      },
+      { recipe_id:9,
+        ingredient_id:2,
+        original_string:"¼ cup extra virgin olive oil
+        "
+        },
+        { recipe_id:9,
+          ingredient_id:2,
+          original_string:"¼ cup extra virgin olive oil
+          "
+        },
+        { recipe_id:9,
+          ingredient_id:39,
+          original_string:"½ cup crumbled feta
+          "
+        },
+        { recipe_id:9,
+          ingredient_id:40,
+          original_string:"1 to 2 tablespoons chopped fresh mint, or 3/4 teaspoon dried oregano
+          "
+        },
+        { recipe_id:10,
+          ingredient_id:2,
+          original_string:"2 tablespoons extra virgin olive oil"
+        },
+        { recipe_id:10,
+          ingredient_id:22,
+          original_string:"1 pound beet greens, stemmed and washed thoroughly"
+        },
+        { recipe_id:10,
+          ingredient_id:3,
+          original_string:"2 garlic cloves, minced"
+        },
+        { recipe_id:10,
+          ingredient_id:21,
+          original_string:"8 eggs"
+        },
+        { recipe_id:10,
+          ingredient_id:1,
+          original_string:"Salt and freshly ground pepper to taste"
+        },
+        { recipe_id:10,
+          ingredient_id:41,
+          original_string:"2 tablespoons milk"
+        }
 ]
 seed_recipe_ingredients.each do |seed|
   RecipeIngredient.create(seed)
