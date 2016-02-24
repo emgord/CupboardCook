@@ -38,7 +38,12 @@ RSpec.configure do |config|
 
   OmniAuth.config.test_mode = true
 
-  OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new({:provider => 'google', :uid => '123545', info: {email: "a@b.com",first_name:"Ada",last_name:"Lovelace" name: "Ada Lovelace", image: "https://lh5.googleusercontent.com/-UFZ48ULhGhE/AAAAAAAAAAI/AAAAAAAAAAA/szBsj-p1MB0/photo.jpg"}})
+  OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new({:provider => 'google', :uid => '123545',
+     info: {email: "a@b.com",
+            first_name:"Ada",
+            last_name:"Lovelace",
+            name: "Ada Lovelace",
+            image: "https://lh5.googleusercontent.com/-UFZ48ULhGhE/AAAAAAAAAAI/AAAAAAAAAAA/szBsj-p1MB0/photo.jpg"}})
 end
 
   # rspec-mocks config goes here. You can use an alternate test double
