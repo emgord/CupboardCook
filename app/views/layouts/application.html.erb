@@ -7,6 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= render partial:'application/nav' %>
+  <div class="container alert" >
+  <% if !flash.empty? %>
+    <div class="alert alert-warning">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <% flash.each do |key, value| %><%= value %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
   <div class="container">
     <%= yield %>
   </div>
