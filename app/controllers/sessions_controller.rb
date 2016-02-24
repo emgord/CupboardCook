@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
-  before_action :require_user, except: [:create]
+  before_action :require_user, except: [:new, :create]
+
+  def new
+  end
 
   def create
     auth_hash = request.env['omniauth.auth']
