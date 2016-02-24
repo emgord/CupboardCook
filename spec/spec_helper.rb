@@ -34,6 +34,12 @@ RSpec.configure do |config|
     #     # => "be bigger than 2"
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
+  config.before(:suite) do
+
+  OmniAuth.config.test_mode = true
+
+  OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new({:provider => 'google', :uid => '123545', info: {email: "a@b.com",first_name:"Ada",last_name:"Lovelace" name: "Ada Lovelace", image: "https://lh5.googleusercontent.com/-UFZ48ULhGhE/AAAAAAAAAAI/AAAAAAAAAAA/szBsj-p1MB0/photo.jpg"}})
+end
 
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
