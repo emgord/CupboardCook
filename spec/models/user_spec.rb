@@ -41,4 +41,16 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe ".find_recipes" do
+    let(:empty_pantry_user) {create(:google_user)}
+    let(:full_pantry_user) {create(:google_user, :full_pantry)}
+    let(:recipe) {create(:recipe)}
+    it "returns recipes you can make using ingredients in your pantry" do
+      expect(full_pantry_user.find_recipes).to_include(recipe)
+    end
+    it "returns nothing if you can't make any recipes" do
+      expect(empty_pantry_user.find_recipes.length).to eq(0)
+    end
+  end
 end
