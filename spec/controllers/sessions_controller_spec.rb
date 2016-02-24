@@ -47,7 +47,7 @@ RSpec.describe SessionsController, type: :controller do
           it "redirect to home with flash error" do
             get :create, provider: :google
             expect(response).to redirect_to root_path
-            expect(flash[:notice]).to include "Failed to authenticate"
+            expect(flash[:notice]).to include "Incorrect email or password"
           end
         end
 
@@ -59,7 +59,7 @@ RSpec.describe SessionsController, type: :controller do
           it "redirect to home with flash error" do
             get :create, provider: :google
             expect(response).to redirect_to root_path
-            expect(flash[:notice]).to include "Failed to save the user"
+            expect(flash[:notice]).to include "Incorrect email or password"
           end
         end
       end
