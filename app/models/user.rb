@@ -22,4 +22,17 @@ class User < ActiveRecord::Base
     end
   end
 
+  def find_recipes
+    pantry_names = self.ingredients.map do |i|
+      i = i.name
+    end
+    recipe_hash  = Recipe.select("recipes.id").joins(:ingredients).where(ingredients: {name: pantry_names}).group("recipes.id").having('COUNT(*) == recipes.ingredient_count').count
+
+    recipe_id_array = recipe_hash.keys
+    user_recipes = recipe_id_array.map do |recipe|
+      recipe = Recipe.find(recipe)
+    end
+    return user_recipes
+  end
+
 end

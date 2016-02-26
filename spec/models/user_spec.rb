@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'pry'
 
 RSpec.describe User, type: :model do
   let(:user) { build(:google_user) }
@@ -47,7 +48,7 @@ RSpec.describe User, type: :model do
     let(:full_pantry_user) {create(:google_user, :full_pantry)}
     let(:recipe) {create(:recipe)}
     it "returns recipes you can make using ingredients in your pantry" do
-      expect(full_pantry_user.find_recipes).to_include(recipe)
+      expect(full_pantry_user.find_recipes).to include(recipe)
     end
     it "returns nothing if you can't make any recipes" do
       expect(empty_pantry_user.find_recipes.length).to eq(0)

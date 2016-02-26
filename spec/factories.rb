@@ -47,6 +47,7 @@ FactoryGirl.define do
     time "30 minutes"
     original_url "www.taco.com"
     description "A delicious easy meal"
+    ingredient_count 6
     after(:create) {|recipe| recipe.ingredients << (Ingredient.find_by(name: "Salt") || create(:ingredient_1))}
     after(:create) {|recipe| recipe.ingredients << (Ingredient.find_by(name: "Egg") || create(:ingredient_2))}
     after(:create) {|recipe| recipe.ingredients << (Ingredient.find_by(name: "Tomato") || create(:ingredient_3))}
