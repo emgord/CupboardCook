@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   def require_user
     if !current_user
       flash[:error] = "Please log in to view this section"
- 	    redirect_to root_path
+ 	    redirect_to login_path
     end
   end
 

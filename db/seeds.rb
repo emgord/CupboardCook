@@ -1,9 +1,9 @@
 seed_users = [
   { email: "emgord@gmail.com",
-    username: "emgord",
-    uid: "1223232",
-    provider: "developer",
-    image: "https://www.facebook.com/emily.gordon.35325"
+    username: "Emily Gordon",
+    uid: "118189904247005396156",
+    provider: "google",
+    image: "https://lh5.googleusercontent.com/-UFZ48ULhGhE/AAAAAAAAAAI/AAAAAAAAAAA/szBsj-p1MB0/photo.jpg"
   }
 ]
 

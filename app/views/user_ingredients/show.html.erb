@@ -1,0 +1,8 @@
+<h1>Your Pantry</h1>
+<ul>
+  <% @pantry_items.each do |ingredient| %>
+    <li>
+      <%= ingredient.name %>
+    </li>
+    <% end %>
+</ul>
