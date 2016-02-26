@@ -513,3 +513,5 @@ seed_user_ingredients = [
 seed_user_ingredients.each do |seed|
   UserIngredient.create(seed)
 end
+
+Recipe.update_ingredient_counts

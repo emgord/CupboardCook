@@ -1,7 +1,7 @@
 class UserIngredientsController < ApplicationController
   before_action :require_user
 
-  def show
+  def index
     @pantry_items = current_user.ingredients.all
   end
 
