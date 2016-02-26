@@ -18,7 +18,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
           <li><%= link_to "Pantry", root_path %></li>
-          <li><%= link_to "Recipes", root_path %></li>
+          <li><%= link_to "Recipes", recipes_path %></li>
           <li><%= link_to "Log out", logout_path %></li>
         <% else %>
           <li><a href= "/auth/google/"><i class="fa fa-google-plus-square"></i>
