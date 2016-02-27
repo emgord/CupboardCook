@@ -6,9 +6,9 @@ class UserIngredientsController < ApplicationController
     @item.ingredient_id = item_params
     @item.user_id = current_user.id
     if @item.save
-      redirect_to root_path
+      render json: @item
     else
-      render index
+      render json: @item.errors, status: :unprocessable_entity
     end
   end
 
