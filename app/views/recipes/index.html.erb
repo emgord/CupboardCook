@@ -1,9 +1,12 @@
 <h1>Recipes</h1>
-
-<% @recipes.each do |recipe| %>
-  <%= link_to recipe.title, recipe.original_url %>
-  <%= image_tag(recipe.image) %>
-  yield: <%= recipe.yield %>
-  time: <%= recipe.time %>
-  description: <%= recipe.description %>
-<% end %>
+<div class = "row">
+  <% @recipes.each do |recipe| %>
+    <h2><%= link_to recipe.title, recipe.original_url %></h2>
+    <%= image_tag(recipe.image) %>
+    <br />
+    <strong>yield: </strong><%= recipe.yield %>
+    <strong>time: </strong><%= recipe.time %>
+    <br />
+    <%= recipe.description %>
+  <% end %>
+</div>
