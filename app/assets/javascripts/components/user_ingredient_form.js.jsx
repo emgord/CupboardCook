@@ -1,7 +1,33 @@
 var UserIngredientForm = React.createClass({
 
   getInitialState: function(){
-  return { amount: '', unit: '', ingredient_id:'' };
+  return { amount: '',
+           unit: '',
+           ingredient_id:'',
+           ingredients: this.props.ingredients};
+  },
+
+  handleChange: function(e) {
+    var name = e.target.name;
+    var obj = {};
+    obj[name] = e.target.value;
+    this.setState(obj);
+  },
+
+  valid: function() {
+    return (this.state.unit);
+  },
+
+  handleSubmit: function(e) {
+    e.preventDefault();
+    $.post('',
+      { user_ingredients: [this.state] },
+      function(data) {
+        this.props.handleNewRecord(data[0]);
+        this.setState(this.getInitialState());
+      }.bind(this),
+      'JSON'
+    );
   },
 
   render: function(){
@@ -15,34 +41,16 @@ var UserIngredientForm = React.createClass({
           <input type="text" className="form-control" placeholder="Unit" name="unit" value={this.state.unit} onChange={this.handleChange}>
           </input>
         </div>
+        <select className="form-group" name="ingredient" id="ingredient">
+          {this.props.ingredients.map(function(ingredient){
+            return <option value={this.ingredient.id} onChange={this.handleChange}>this.ingredient.name</option>
+          })}
+        </select>
         <div className="form-group">
-          <input type="number" className="form-control" placeholder="Amount" name="amount" value={this.state.amount} onChange={this.handleChange}>
+          <input type="submit" value="Add Ingredient" className="btn btn-primary" disabled={!this.valid()}>
           </input>
         </div>
       </form>
-
-        <div class="col-lg-12">
-          <fieldset>
-            <%= form_for item, url:{action: action}, :html => {:class => "form" } do |f| %>
-              <h2 class="text-center"><%= title %></h2>
-              <div class="form-group">
-                <%= f.label :amount %>
-                <%= f.number_field :amount, class: "form-control" %>
-              </div>
-              <div class="form-group">
-                <%= f.label :unit %>
-                <%= f.text_field :unit, class: "form-control" %>
-              </div>
-              <label for=:ingredient>Ingredient</label>
-                <%= select_tag "ingredient", options_for_select(ingredients.collect{|x| [x.name,x.id]})%>
-              </div>
-              <div class="col-md-12 text-center">
-                <%= f.submit "Add Ingredient", class: "btn btn-default" %>
-              </div>
-            <% end %>
-          </fieldset>
-        </div>
-
     );
   }
 });
