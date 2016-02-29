@@ -28,6 +28,7 @@ gem "omniauth-google-oauth2"
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem "font-awesome-rails"
 gem 'react-rails', '~> 1.6.0'
+gem 'searchkick'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

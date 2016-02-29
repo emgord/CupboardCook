@@ -41,11 +41,6 @@ var UserIngredientForm = React.createClass({
           <input type="text" className="form-control" placeholder="Unit" name="unit" value={this.state.unit} onChange={this.handleChange}>
           </input>
         </div>
-        <select className="form-group" name="ingredient" id="ingredient">
-          {this.props.ingredients.map(function(ingredient){
-            return <option value={this.ingredient.id} onChange={this.handleChange}>this.ingredient.name</option>
-          })}
-        </select>
         <div className="form-group">
           <input type="submit" value="Add Ingredient" className="btn btn-primary" disabled={!this.valid()}>
           </input>
