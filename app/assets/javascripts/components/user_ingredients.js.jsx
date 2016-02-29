@@ -20,7 +20,7 @@ var UserIngredients = React.createClass({
     return(
       <div className ='pantry-list'>
         <h1>Pantry</h1>
-        <IngredientSearch searchPath={this.props.searchPath} />
+        <IngredientSearch searchPath={this.props.searchPath} addUserIngredient={this.addUserIngredient} />
           <ul>
              {this.state.user_ingredients.map(function(user_ingredient){
                return <UserIngredient key={user_ingredient.id} user_ingredient={user_ingredient}/>

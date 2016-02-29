@@ -5,7 +5,8 @@ class UserIngredientsController < ApplicationController
     @item = UserIngredient.new(user_ingredient_params)
     @item.user_id = current_user.id
     if @item.save
-      render json: @item
+      @new_ingredient = Ingredient.find(@item.ingredient_id)
+      render json: @new_ingredient
     else
       render json: @item.errors, status: :unprocessable_entity
     end

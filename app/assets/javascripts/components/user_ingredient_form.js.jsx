@@ -22,7 +22,7 @@ var UserIngredientForm = React.createClass({
     $.post('http://localhost:3000/user_ingredients',
       { user_ingredients: [this.state][0] },
       function(data) {
-        this.props.handleNewRecord(data[0]);
+        this.props.handleNewUserIngredient(data);
         this.setState(this.getInitialState());
       }.bind(this),
       'JSON'
