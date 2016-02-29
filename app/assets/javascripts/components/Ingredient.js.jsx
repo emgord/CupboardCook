@@ -1,9 +1,9 @@
 var Ingredient = React.createClass({
 	render () {
 		return (
-			<div>
-		      <p>{ this.props.name }</p>
-		  </div>
+			<div className='btn btn-default ingredient-add'>
+			  { this.props.name } <i className="fa fa-plus-square-o fa-lg"></i>
+			</div>
 			)
 	}
 });
