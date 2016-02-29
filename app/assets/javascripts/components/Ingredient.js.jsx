@@ -11,7 +11,7 @@ var Ingredient = React.createClass({
 		var addForm;
 		if (add) {
 			addForm =
-			<UserIngredientForm handleNewRecord={this.addUserIngredient} ingredients={this.props.ingredients} />
+			<UserIngredientForm ingredient_id={this.props.id} />
 		}
 		return (
 			<div className='btn-group ingredient-add'>

@@ -3,8 +3,7 @@ var UserIngredientForm = React.createClass({
   getInitialState: function(){
   return { amount: '',
            unit: '',
-           ingredient_id:'',
-           ingredients: this.props.ingredients};
+           ingredient_id: this.props.ingredient_id};
   },
 
   handleChange: function(e) {
@@ -15,13 +14,13 @@ var UserIngredientForm = React.createClass({
   },
 
   valid: function() {
-    return (this.state.unit);
+    return (this.state.ingredient_id);
   },
 
   handleSubmit: function(e) {
     e.preventDefault();
-    $.post('',
-      { user_ingredients: [this.state] },
+    $.post('http://localhost:3000/user_ingredients',
+      { user_ingredients: [this.state][0] },
       function(data) {
         this.props.handleNewRecord(data[0]);
         this.setState(this.getInitialState());
@@ -33,6 +32,7 @@ var UserIngredientForm = React.createClass({
   render: function(){
     return(
       <form className="form-inline" onSubmit={this.handleSubmit}>
+      <input type="hidden" name="ingredient_id" value={this.state.ingredient_id} />
         <div className="form-group">
           <input type="number" className="form-control" placeholder="Amount" name="amount" value={this.state.amount} onChange={this.handleChange}>
           </input>
