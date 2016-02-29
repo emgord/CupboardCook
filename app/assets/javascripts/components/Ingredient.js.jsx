@@ -10,7 +10,8 @@ var Ingredient = React.createClass({
 		var add = this.state.add;
 		var addForm;
 		if (add) {
-			addForm = <p>Form</p>;
+			addForm =
+			<UserIngredientForm handleNewRecord={this.addUserIngredient} ingredients={this.props.ingredients} />
 		}
 		return (
 			<div className='btn-group ingredient-add'>
@@ -18,7 +19,6 @@ var Ingredient = React.createClass({
 	      <button className="btn btn-default" type="button" onClick={this.showAddForm}><i className="fa fa-plus"></i></button>
 				{addForm}
 			</div>
-
 			)
 	},
 

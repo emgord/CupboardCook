@@ -1,6 +1,7 @@
 var IngredientSearch = React.createClass({
   getInitialState() {
-		return { ingredients: [] };
+		return { ingredients: [],
+             searchPath: this.props.searchPath};
 	},
 
 	searchIngredients(event) {

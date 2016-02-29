@@ -2,7 +2,8 @@ var UserIngredients = React.createClass({
 
   getInitialState: function(){
   return { user_ingredients: this.props.data,
-           ingredients: this.props.ingredients };
+           ingredients: this.props.ingredients,
+           searchPath: this.props.searchPath};
   },
 
   getDefaultProps: function(){
@@ -19,7 +20,7 @@ var UserIngredients = React.createClass({
     return(
       <div className ='pantry-list'>
         <h1>Pantry</h1>
-        <UserIngredientForm handleNewRecord={this.addUserIngredient} ingredients={this.props.ingredients} />
+        <IngredientSearch searchPath={this.props.searchPath} />
           <ul>
              {this.state.user_ingredients.map(function(user_ingredient){
                return <UserIngredient key={user_ingredient.id} user_ingredient={user_ingredient}/>
