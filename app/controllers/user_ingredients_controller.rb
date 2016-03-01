@@ -6,7 +6,7 @@ class UserIngredientsController < ApplicationController
     @item.user_id = current_user.id
     if @item.save
       render json: @item.as_json(:except => [:create_at, :updated_at],
-                                                            :include => {:ingredient => {:only => :name}} )
+                                 :include => {:ingredient => {:only => :name}} )
     else
       render json: @item.errors, status: :unprocessable_entity
     end
