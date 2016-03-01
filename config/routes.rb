@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   get '/login' => 'sessions#new'
   get '/recipes' => 'recipes#index'
+  get '/ingredients' => 'ingredients#index'
+  get '/ingredients/search' => 'ingredients#search', as: :ingredient_search
   resources :user_ingredients, only: [:index, :create]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

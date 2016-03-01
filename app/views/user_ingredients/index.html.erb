@@ -1,10 +1,2 @@
-<h1>Your Pantry</h1>
-<%= render partial:'form',
-  locals:{ item: @item, action: :create, title: "Add Ingredient", ingredients: @ingredients } %>
-<ul>
-  <% @pantry_items.each do |ingredient| %>
-    <li>
-      <%= ingredient.name %>
-    </li>
-    <% end %>
-</ul>
+
+<%= react_component 'UserIngredients', { data: @pantry_items, ingredients: @ingredients, searchPath: ingredient_search_path} %>
