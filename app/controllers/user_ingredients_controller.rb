@@ -18,6 +18,12 @@ class UserIngredientsController < ApplicationController
                                                           :include => {:ingredient => {:only => :name}} )
   end
 
+  def destroy
+      @user_ingredient = UserIngredient.find(params[:id])
+      @user_ingredient.destroy
+      head :no_content
+  end
+
   private
 
   def user_ingredient_params
