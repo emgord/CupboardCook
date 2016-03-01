@@ -92,12 +92,12 @@ FactoryGirl.define do
   #   original_string "7 medium corn tortillas"
   # end
   #
-  # factory :user_ingredient_1, class: UserIngredient do
-  #   association :user, factory: :google_user
-  #   association :ingredient, factory: :ingredient_1
-  #   amount 1
-  #   unit "cup"
-  # end
+  factory :user_ingredient_1, class: UserIngredient do
+    association :user, factory: :google_user
+    association :ingredient, factory: :ingredient_1
+    amount 1
+    unit "cup"
+  end
   #
   # factory :user_ingredient_2, class: UserIngredient do
   #   association :user, factory: :google_user
