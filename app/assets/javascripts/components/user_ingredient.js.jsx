@@ -1,7 +1,7 @@
 var UserIngredient = React.createClass({
   render: function(){
     return(
-      <li>{this.props.user_ingredient.name}</li>
+      <li>{this.props.user_ingredient.ingredient.name}</li>
     );
   }
 });
