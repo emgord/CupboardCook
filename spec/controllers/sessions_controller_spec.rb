@@ -82,11 +82,11 @@ RSpec.describe SessionsController, type: :controller do
       describe "DELETE #destroy" do
         it "is not successful and redirects" do
           delete :destroy
-          expect(response).to redirect_to root_path
+          expect(response).to have_http_status(302)
         end
-        it "redirects to the root path" do
+        it "redirects to the login page" do
           delete :destroy
-          expect(subject).to redirect_to root_path
+          expect(subject).to redirect_to login_path
         end
       end
 
