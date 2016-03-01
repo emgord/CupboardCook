@@ -23,7 +23,7 @@ var UserIngredientForm = React.createClass({
       { user_ingredients: [this.state][0] },
       function(data) {
         this.props.handleNewUserIngredient(data);
-        this.setState(this.getInitialState());
+        this.props.resetSearch();
       }.bind(this),
       'JSON'
     );
