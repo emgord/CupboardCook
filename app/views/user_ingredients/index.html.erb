@@ -1,2 +1,5 @@
-
-<%= react_component 'UserIngredients', { data: @pantry_items, ingredients: @ingredients, searchPath: ingredient_search_path} %>
+<div class="container">
+  <%= react_component 'UserIngredients', { data: @pantry_items,
+                                           ingredients: @ingredients,
+                                           searchPath: ingredient_search_path} %>
+</div>

@@ -13,9 +13,8 @@ class UserIngredientsController < ApplicationController
   end
 
   def index
-    @item = UserIngredient.new
     @ingredients = Ingredient.all
-    @pantry_items = current_user.ingredients.all
+    @pantry_items = current_user.ingredients.all.as_json
   end
 
   private
