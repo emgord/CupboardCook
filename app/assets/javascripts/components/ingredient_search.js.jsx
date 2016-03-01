@@ -30,8 +30,12 @@ var IngredientSearch = React.createClass({
 	render() {
 		return (
 			<div>
-				<IngredientSearchBox searchPath={this.props.searchPath} submitPath={this.searchIngredients} query={this.state.query}/>
-        <Ingredients ingredients={this.state.ingredients} addUserIngredient={this.props.addUserIngredient} resetSearch={this.resetSearch} />
+				<IngredientSearchBox searchPath={this.props.searchPath}
+                             submitPath={this.searchIngredients}
+                             query={this.state.query}/>
+        <Ingredients ingredients={this.state.ingredients}
+                     addUserIngredient={this.props.addUserIngredient}
+                     resetSearch={this.resetSearch} />
 			</div>
 			);
 

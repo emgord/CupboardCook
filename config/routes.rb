@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/recipes' => 'recipes#index'
   get '/ingredients' => 'ingredients#index'
   get '/ingredients/search' => 'ingredients#search', as: :ingredient_search
-  resources :user_ingredients, only: [:index, :create]
+  resources :user_ingredients, only: [:index, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
