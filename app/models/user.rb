@@ -33,5 +33,4 @@ class User < ActiveRecord::Base
     end
     return user_recipes
   end
-
 end

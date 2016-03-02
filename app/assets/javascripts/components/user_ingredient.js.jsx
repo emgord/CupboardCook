@@ -5,7 +5,7 @@ var UserIngredient = React.createClass({
       method: "DELETE",
       url: "/user_ingredients/" + this.props.user_ingredient.id
     }).success(function(){
-      this.props.removeUserIngredient(this.props.user_ingredient)
+      this.props.removeUserIngredient(this.props.user_ingredient);
     }.bind(this));
   },
 
