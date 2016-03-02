@@ -44,15 +44,15 @@ RSpec.describe User, type: :model do
   end
 
   describe ".find_recipes" do
-    let(:empty_pantry_user) {create(:google_user)}
-    let(:full_pantry_user) {create(:google_user, :full_pantry)}
-    let(:recipe) {create(:recipe)}
     it "returns recipes you can make using ingredients in your pantry" do
-      binding.pry
-      expect(full_pantry_user.find_recipes).to include(recipe)
+      user = create(:user_with_all_ingred)
+      expect(user.find_recipes.count).to eq(1)
+      expect(user.find_recipes[0]).to eq(Recipe.first)
     end
-    xit "returns nothing if you can't make any recipes" do
-      expect(empty_pantry_user.find_recipes.length).to eq(0)
+    it "returns nothing if you can't make any recipes" do
+      user = create(:user_missing_ingreds)
+      binding.pry
+      expect(user.find_recipes.length).to eq(0)
     end
   end
 end
