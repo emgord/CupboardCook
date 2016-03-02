@@ -1,7 +1,7 @@
 var Recipes = React.createClass({
 
   getInitialState: function(){
-  return { recipes: [] };
+  return { recipes: this.props.recipes };
   },
 
   getDefaultProps: function(){
@@ -11,8 +11,8 @@ var Recipes = React.createClass({
   render: function () {
     var Recipes = this.state.recipes.map(function(recipe) {
       return (
-        <Recipe key={recipe.id}
-                recipe={recipe} />
+        <RecipeTile key={recipe.id}
+                    recipe={recipe} />
             );}, this);
 
     return(
