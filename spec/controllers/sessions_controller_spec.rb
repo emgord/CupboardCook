@@ -94,7 +94,7 @@ RSpec.describe SessionsController, type: :controller do
 
     context "user is logged in" do
       before :each do
-        @user = create(:google_user)
+        @user = create(:user, :google)
         session[:user_id] = @user.id
       end
       describe "GET #new" do

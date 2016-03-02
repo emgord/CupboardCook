@@ -15,20 +15,16 @@ FactoryGirl.define do
     end
   end
 
-  factory :google_user, class: User do
-    username "Ada Lovelace"
-    uid '123545'
-    provider "google"
-    email "a@b.com"
-    image "https://lh5.googleusercontent.com/-UFZ48ULhGhE/AAAAAAAAAAI/AAAAAAAAAAA/szBsj-p1MB0/photo.jpg"
-  end
-
   factory :user do
     username "Ada Lovelace"
     uid '123545'
-    provider "google"
+    provider "test"
     email "a@b.com"
     image "https://lh5.googleusercontent.com/-UFZ48ULhGhE/AAAAAAAAAAI/AAAAAAAAAAA/szBsj-p1MB0/photo.jpg"
+
+    trait :google do
+      provider "google"
+    end
 
     factory :user_with_all_ingred do
       transient do
@@ -75,8 +71,8 @@ FactoryGirl.define do
   end
 
   factory :user_ingredient, class: UserIngredient do
-    association :user, factory: :google_user
-    association :ingredient, factory: :ingredient
+    association :user
+    association :ingredient
     amount 1
     unit "cup"
   end

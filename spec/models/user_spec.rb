@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'pry'
 
 RSpec.describe User, type: :model do
-  let(:user) { build(:google_user) }
+  let(:user) { build(:user, :google) }
   describe "validations" do
     it "is valid" do
       expect(user).to be_valid
