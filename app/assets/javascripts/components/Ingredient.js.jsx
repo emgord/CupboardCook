@@ -12,7 +12,9 @@ var Ingredient = React.createClass({
         this.props.resetSearch();
       }.bind(this),
       'JSON'
-    );
+    ).fail(function(){
+			this.props.resetSearch();
+		}.bind(this));
   },
 
 	render () {

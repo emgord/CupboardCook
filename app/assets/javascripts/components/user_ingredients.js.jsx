@@ -18,8 +18,8 @@ var UserIngredients = React.createClass({
 
   removeUserIngredient: function(user_ingredient){
     var user_ingredients = this.state.user_ingredients.slice();
-    var index = user_ingredients.indexOf(user_ingredient)
-    user_ingredients.splice(index,1)
+    var index = user_ingredients.indexOf(user_ingredient);
+    user_ingredients.splice(index,1);
     this.setState({ user_ingredients: user_ingredients });
   },
 
@@ -29,8 +29,7 @@ var UserIngredients = React.createClass({
         <UserIngredient key={user_ingredient.id}
                         removeUserIngredient={this.removeUserIngredient}
                         user_ingredient={user_ingredient} />
-            );
-    }, this);
+            );}, this);
 
     return(
       <div className ='pantry-list'>
