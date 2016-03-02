@@ -4,7 +4,7 @@ FactoryGirl.define do
     transient do
       owners []
     end
-    sequence (:name) { |n| %w(salt canola oil tomato crab oatmeal egg milk granola bacon steak avocado cucumber)[n]}
+    sequence (:name) { |n| "Ingredient#{n}"}
 
     after(:create) do |ingredient, evaluator|
       if evaluator.owners.count > 0
