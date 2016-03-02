@@ -5,14 +5,16 @@ var Ingredient = React.createClass({
 
 	addIngredient: function(e) {
     e.preventDefault();
-    $.post('http://localhost:3000/user_ingredients',
+    $.post('/user_ingredients',
       { user_ingredients: [this.state][0] },
       function(data) {
         this.props.addUserIngredient(data);
         this.props.resetSearch();
       }.bind(this),
       'JSON'
-    );
+    ).fail(function(){
+			this.props.resetSearch();
+		}.bind(this));
   },
 
 	render () {

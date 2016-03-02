@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'pry'
 
 RSpec.describe User, type: :model do
-  let(:user) { build(:google_user) }
+  let(:user) { build(:user, :google) }
   describe "validations" do
     it "is valid" do
       expect(user).to be_valid
@@ -44,14 +44,14 @@ RSpec.describe User, type: :model do
   end
 
   describe ".find_recipes" do
-    let(:empty_pantry_user) {create(:google_user)}
-    let(:full_pantry_user) {create(:google_user, :full_pantry)}
-    let(:recipe) {create(:recipe)}
-    xit "returns recipes you can make using ingredients in your pantry" do
-      expect(full_pantry_user.find_recipes).to include(recipe)
+    let(:user_with_all_ingred) {create(:user_with_all_ingred)}
+    let(:user_missing_ingreds) {create(:user_missing_ingreds)}
+    it "returns recipes you can make using ingredients in your pantry" do
+      expect(user_with_all_ingred.find_recipes.count).to eq(1)
+      expect(user_with_all_ingred.find_recipes[0]).to eq(Recipe.first)
     end
-    xit "returns nothing if you can't make any recipes" do
-      expect(empty_pantry_user.find_recipes.length).to eq(0)
+    it "returns nothing if you can't make any recipes" do
+      expect(user_missing_ingreds.find_recipes.length).to eq(0)
     end
   end
 end

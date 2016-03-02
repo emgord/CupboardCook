@@ -5,8 +5,8 @@ class UserIngredientsController < ApplicationController
     @item = UserIngredient.new(user_ingredient_params)
     @item.user_id = current_user.id
     if @item.save
-      @new_ingredient = Ingredient.find(@item.ingredient_id)
-      render json: @new_ingredient
+      render json: @item.as_json(:except => [:create_at, :updated_at],
+                                 :include => {:ingredient => {:only => :name}} )
     else
       render json: @item.errors, status: :unprocessable_entity
     end
@@ -14,7 +14,14 @@ class UserIngredientsController < ApplicationController
 
   def index
     @ingredients = Ingredient.all
-    @pantry_items = current_user.ingredients.all.as_json
+    @pantry_items = current_user.user_ingredients.as_json(:except => [:create_at, :updated_at],
+                                                          :include => {:ingredient => {:only => :name}} )
+  end
+
+  def destroy
+      @user_ingredient = UserIngredient.find(params[:id])
+      @user_ingredient.destroy
+      head :no_content
   end
 
   private
