@@ -17,6 +17,10 @@
 //= require react
 //= require react_ujs
 //= require components
-//=require salvatoore.min.js
+//= require salvattore.min
 
 //= require_tree .
+
+$(function() {
+  window.salvattore.init();
+});

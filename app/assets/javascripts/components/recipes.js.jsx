@@ -16,10 +16,12 @@ var Recipes = React.createClass({
             );}, this);
 
     return(
-      <div className ='recipe-list'>
-        <h1>Recipes</h1>
+      <div id="grid" data-columns>
+      <div>
         {Recipes}
       </div>
+      </div>
+
     );
   }
 
