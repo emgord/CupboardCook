@@ -6,16 +6,13 @@ var RecipeTile = React.createClass({
       image = "http://thecrites.com/sites/all/modules/cookbook/theme/images/default-recipe-big.png"
     }
     return(
-      <div className='recipe-tile'>
-        <h2>{this.props.recipe.title}</h2>
-        <img src={image} />
-          <p>
-            <strong>yield: </strong> {this.props.recipe.yield} 
-            <strong>time: </strong> {this.props.recipe.time}
-          </p>
-          <p>
-            {this.props.recipe.description}
-          </p>
+      <div className='recipe-tile col-sm-6 col-md-4'>
+        <div className="thumbnail">
+          <img src={image} />
+          <div className="caption">
+          <h3>{this.props.recipe.title}</h3>
+          </div>
+        </div>
       </div>
     );
   }
