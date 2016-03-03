@@ -17,5 +17,6 @@
 //= require react
 //= require react_ujs
 //= require components
+//=require salvatoore.min.js
 
 //= require_tree .
