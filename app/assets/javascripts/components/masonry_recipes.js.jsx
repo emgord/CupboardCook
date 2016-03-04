@@ -3,6 +3,10 @@ Masonry = React.createClass({
   return { recipes: this.props.recipes };
   },
 
+  getDefaultProps: function(){
+    return { recipes: []};
+  },
+
 	componentDidMount: function() {
 
   	var scrollspy = 'uk-animation-fade';
@@ -27,22 +31,19 @@ Masonry = React.createClass({
     var Recipes = this.state.recipes.map(function(recipe) {
       return (
         <RecipeTile key={recipe.id}
-                      recipe={recipe} />
+                    recipe={recipe} />
             );}, this);
 
     return (
-    	<div>
-    	<div className={"uk-masonry uk-grid-width-small-1-"
-				+ 1
-				+ " uk-grid-width-medium-1-"
-				+ 2
-				+ " uk-grid-width-large-1-"
-				+ 3}>
+    	<div className ='recipe-list'>
+        <h1>Recipes</h1>
+        <RecipeDetail key={this.props.recipes[0].id}
+                      recipe={this.props.recipes[0]} />
 
-          {Recipes}
-
-    	</div>
-    </div>
+        <div className={"uk-masonry uk-grid-width-small-1-1 uk-grid-width-medium-1-2 uk-grid-width-large-1-3"}>
+            {Recipes}
+        </div>
+      </div>
     );
   }
 });

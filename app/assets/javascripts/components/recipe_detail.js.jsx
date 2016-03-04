@@ -7,7 +7,7 @@ var RecipeDetail = React.createClass({
     }
 
     return(
-      <div onClick={this.props.handleClick}>
+      <div className = "recipe-detail" onClick={this.props.handleClick}>
         <div className="thumbnail">
           <img src={image} />
           <div className="caption">

@@ -5,6 +5,7 @@ var RecipeTile = React.createClass({
   },
   handleClick: function(event) {
     this.setState({detail: !this.state.detail});
+    this.props.resetTiles();
   },
 
   render: function(){
