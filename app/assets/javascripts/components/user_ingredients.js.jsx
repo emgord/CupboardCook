@@ -1,30 +1,17 @@
-var UserIngredients = React.createClass({
+var IngredientTile = React.createClass({
 
   getInitialState: function(){
-  return { user_ingredients: this.props.pantry_items,
-           ingredients: this.props.ingredients,
-           searchPath: this.props.searchPath};
+  return { userIngredients: this.props.pantry_items,
+           allIngredients: this.props.ingredients};
   },
 
   getDefaultProps: function(){
     return { user_ingredients: []};
   },
 
-  addUserIngredient: function(user_ingredient){
-    var user_ingredients = this.state.user_ingredients.slice();
-    user_ingredients.push(user_ingredient);
-    this.setState({ user_ingredients: user_ingredients });
-  },
-
-  removeUserIngredient: function(user_ingredient){
-    var user_ingredients = this.state.user_ingredients.slice();
-    var index = user_ingredients.indexOf(user_ingredient);
-    user_ingredients.splice(index,1);
-    this.setState({ user_ingredients: user_ingredients });
-  },
 
   render: function () {
-    var UserIngredients = this.state.user_ingredients.map(function(user_ingredient) {
+    var UserIngredients = this.state.userIngredients.map(function(user_ingredient) {
       return (
         <UserIngredient key={user_ingredient.id}
                         removeUserIngredient={this.removeUserIngredient}
@@ -32,12 +19,7 @@ var UserIngredients = React.createClass({
             );}, this);
 
     return(
-      <div className ='pantry-list'>
-        <h1>Pantry</h1>
-        <IngredientSearch searchPath={this.props.searchPath}
-                          addUserIngredient={this.addUserIngredient} />
         {UserIngredients}
-      </div>
     );
   }
 
