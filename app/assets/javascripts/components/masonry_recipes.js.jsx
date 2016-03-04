@@ -1,7 +1,15 @@
 Masonry = React.createClass({
   getInitialState: function(){
   return { recipes: this.props.recipes,
-           recipeDetail: this.props.recipes[0] };
+           recipeDetail: this.props.recipes[0],
+           showRecipe: false };
+  },
+
+  showRecipeDetail: function() {
+    this.setState({showRecipe: true});
+  },
+  hideRecipeDetail: function() {
+    this.setState({showRecipe: false});
   },
 
   getDefaultProps: function(){
@@ -10,6 +18,7 @@ Masonry = React.createClass({
 
   changeRecipeDetail: function(recipe){
     this.setState({ recipeDetail: recipe });
+    this.showRecipeDetail();
   },
 
 	componentDidMount: function() {
@@ -36,15 +45,16 @@ Masonry = React.createClass({
     var Recipes = this.state.recipes.map(function(recipe) {
       return (
         <RecipeTile changeRecipeDetail={this.changeRecipeDetail}
-                         key={recipe.id}
-                         recipe={recipe} />
+                    key={recipe.id}
+                    recipe={recipe} />
             );}, this);
 
     return (
     	<div className ='recipe-list'>
-        <h1>Recipes</h1>
         <RecipeDetail key={this.state.recipeDetail.id}
-                      recipe={this.state.recipeDetail} />
+                      recipe={this.state.recipeDetail}
+                      show={this.state.showRecipe}
+                      hide={this.hideRecipeDetail} />
 
         <div className={"uk-masonry uk-grid-width-small-1-1 uk-grid-width-medium-1-2 uk-grid-width-large-1-3"}>
             {Recipes}
