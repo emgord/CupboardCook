@@ -35,7 +35,8 @@ var IngredientSearch = React.createClass({
                              query={this.state.query}/>
         <Ingredients ingredients={this.state.ingredients}
                      addUserIngredient={this.props.addUserIngredient}
-                     resetSearch={this.resetSearch} />
+                     resetSearch={this.resetSearch}
+                     userIngredients={this.props.userIngredients} />
 			</div>
 			);
 
