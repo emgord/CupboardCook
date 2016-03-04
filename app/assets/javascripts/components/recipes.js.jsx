@@ -11,8 +11,8 @@ var Recipes = React.createClass({
   render: function () {
     var Recipes = this.state.recipes.map(function(recipe) {
       return (
-        <RecipeDetail key={recipe.id}
-                    recipe={recipe} />
+        <RecipeTile key={recipe.id}
+                      recipe={recipe} />
             );}, this);
 
     return(
