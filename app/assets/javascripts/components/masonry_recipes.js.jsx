@@ -20,16 +20,18 @@ Masonry = React.createClass({
     this.setState({ user_ingredients: user_ingredients });
   },
 
-  removeRecipe: function(recipe){
-    var recipes = this.state.recipes.slice();
-    var index = recipes.indexOf(recipe);
-    recipes.splice(index,1);
-    this.setState({ recipes: recipes });
-  },
+  resetRecipes: function(){
+      $.get('/users/recipes/',
+        function(data) {
+          this.setState({recipes:data});
+        }.bind(this),
+        'JSON'
+      );
+    },
 
   resetOnChange: function(user_ingredient){
-    removeUserIngredient(user_ingredient);
-    removeRecipe(recipe);
+    this.removeUserIngredient(user_ingredient);
+    this.resetRecipes();
   },
 
 
