@@ -7,7 +7,7 @@ var RecipeThumbnail = React.createClass({
     }
 
     return(
-      <div className='recipe-tile col-sm-6 col-md-4' onClick={this.props.handleClick}>
+      <div className='recipe-tile' onClick={this.props.handleClick}>
         <div className="thumbnail">
           <img src={image} />
           <div className="caption">
