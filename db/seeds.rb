@@ -510,8 +510,12 @@ seed_user_ingredients = [
   }
 ]
 
-seed_user_ingredients.each do |seed|
-  UserIngredient.create(seed)
+# seed_user_ingredients.each do |seed|
+#   UserIngredient.create(seed)
+# end
+
+(1..41).each do |seed|
+  UserIngredient.create(user_id:1, ingredient_id:seed)
 end
 
 Recipe.update_ingredient_counts

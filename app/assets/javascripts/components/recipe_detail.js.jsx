@@ -16,7 +16,9 @@ var RecipeDetail = React.createClass({
           <div className="caption">
           <h2>{this.props.recipe.title}</h2>
           <h3>Ingredients:</h3>
-          <Ingredients ingredients={this.props.recipe.ingredients} />
+          <Ingredients ingredients={this.props.recipe.ingredients}
+                       userIngredients={this.props.user_ingredients}
+                       removeUserIngredient={this.props.removeUserIngredient}/>
           <p>Time: {this.props.recipe.time}</p>
           <p>Yield: {this.props.recipe.yield}</p>
           <p>{this.props.recipe.description}</p>

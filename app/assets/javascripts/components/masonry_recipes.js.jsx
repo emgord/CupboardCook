@@ -2,6 +2,7 @@ Masonry = React.createClass({
   getInitialState: function(){
   return { recipes: this.props.recipes,
            recipeDetail: this.props.recipes[0],
+           user_ingredients: this.props.user_ingredients,
            showRecipe: false };
   },
 
@@ -11,6 +12,26 @@ Masonry = React.createClass({
   hideRecipeDetail: function() {
     this.setState({showRecipe: false});
   },
+
+  removeUserIngredient: function(user_ingredient){
+    var user_ingredients = this.state.user_ingredients.slice();
+    var index = user_ingredients.indexOf(user_ingredient);
+    user_ingredients.splice(index,1);
+    this.setState({ user_ingredients: user_ingredients });
+  },
+
+  removeRecipe: function(recipe){
+    var recipes = this.state.recipes.slice();
+    var index = recipes.indexOf(recipe);
+    recipes.splice(index,1);
+    this.setState({ recipes: recipes });
+  },
+
+  resetOnChange: function(user_ingredient){
+    removeUserIngredient(user_ingredient);
+    removeRecipe(recipe);
+  },
+
 
   getDefaultProps: function(){
     return { recipes: []};
@@ -54,7 +75,9 @@ Masonry = React.createClass({
         <RecipeDetail key={this.state.recipeDetail.id}
                       recipe={this.state.recipeDetail}
                       show={this.state.showRecipe}
-                      hide={this.hideRecipeDetail} />
+                      hide={this.hideRecipeDetail}
+                      user_ingredients={this.props.user_ingredients}
+                      removeUserIngredient={this.resetOnChange} />
 
         <div className={"uk-masonry uk-grid-width-small-1-1 uk-grid-width-medium-1-2 uk-grid-width-large-1-3"}>
             {Recipes}

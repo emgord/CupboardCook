@@ -33,11 +33,11 @@ var Pantry = React.createClass({
 
     return(
       <div className ='pantry-list'>
-        <h1>Pantry</h1>
         <IngredientSearch searchPath={this.props.searchPath}
                           addUserIngredient={this.addUserIngredient}
                           removeUserIngredient={this.removeUserIngredient}
                           userIngredients={this.state.user_ingredients} />
+        <h1>Pantry</h1>
         {UserIngredients}
       </div>
     );

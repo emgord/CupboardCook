@@ -14,8 +14,7 @@ class UserIngredientsController < ApplicationController
 
   def index
     @ingredients = Ingredient.all
-    @pantry_items = current_user.user_ingredients.as_json(:except => [:create_at, :updated_at],
-                                                          :include => {:ingredient => {:only => :name}} )
+    @pantry_items = current_user.pantry_items_as_json
   end
 
   def destroy
