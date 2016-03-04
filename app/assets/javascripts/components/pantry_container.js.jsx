@@ -36,6 +36,7 @@ var Pantry = React.createClass({
         <h1>Pantry</h1>
         <IngredientSearch searchPath={this.props.searchPath}
                           addUserIngredient={this.addUserIngredient}
+                          removeUserIngredient={this.removeUserIngredient}
                           userIngredients={this.state.user_ingredients} />
         {UserIngredients}
       </div>
