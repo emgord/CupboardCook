@@ -17,5 +17,7 @@
 //= require react
 //= require react_ujs
 //= require components
+//= require uikit
+//= require uikit-components
 
 //= require_tree .
