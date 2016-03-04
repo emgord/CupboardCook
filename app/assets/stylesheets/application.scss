@@ -24,3 +24,14 @@
   text-align: center;
   margin: 5px;
 }
+
+.recipe-detail {
+  z-index: 1;
+  &.hide {
+    display: hidden;
+  }
+}
+
+.recipe-list {
+  position:relative;
+}

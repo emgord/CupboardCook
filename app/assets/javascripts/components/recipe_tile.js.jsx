@@ -1,29 +1,24 @@
 var RecipeTile = React.createClass({
 
-  getInitialState: function() {
-    return {detail: false};
-  },
   handleClick: function(event) {
-    this.setState({detail: !this.state.detail});
+    this.props.changeRecipeDetail(this.props.recipe);
   },
 
   render: function(){
-    var recipe;
-    if (this.state.detail){
-      recipe = <RecipeDetail handleClick={this.handleClick}
-                             key={this.props.recipe.id}
-                             recipe={this.props.recipe} />;
-    } else {
-      recipe = <RecipeThumbnail handleClick={this.handleClick}
-                                key={this.props.recipe.id}
-                                recipe={this.props.recipe} />;
+    var image = this.props.recipe.image;
+    if (image == null) {
+      image = "http://thecrites.com/sites/all/modules/cookbook/theme/images/default-recipe-big.png"
     }
+
     return(
-      <div>
-        {recipe}
+      <div className='recipe-tile' onClick={this.handleClick}>
+        <div className="thumbnail">
+          <img src={image} />
+          <div className="caption">
+          <h3>{this.props.recipe.title}</h3>
+          </div>
+        </div>
       </div>
-
-    );
+      );
   }
-
 });
