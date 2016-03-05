@@ -33,4 +33,15 @@ class User < ActiveRecord::Base
     end
     return user_recipes
   end
+
+  def pantry_items_as_json
+    self.user_ingredients.as_json(:except => [:create_at, :updated_at],
+                                  :include => {:ingredient => {:only => :name}} )
+  end
+
+  def find_recipes_as_json
+    self.find_recipes.as_json(:except => [:create_at, :updated_at],
+                              :include => {:ingredients => {:only => [:name, :id]}} )
+  end
+
 end

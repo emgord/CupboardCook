@@ -1,4 +1,13 @@
 <div class="container">
   <h1>Recipes</h1>
-  <%= react_component 'Masonry', { recipes: @recipes} %>
+  <% if @recipes.length == 0 %>
+    <p>
+      You don't have any recipes yet.
+      <%= link_to "Add ingredients to your pantry", user_ingredients_path %>
+      to find recipes.
+    </p>
+    <% else %>
+      <%= react_component 'Masonry', { recipes: @recipes,
+                                       user_ingredients: @user_ingredients} %>
+    <% end %>
 </div>
