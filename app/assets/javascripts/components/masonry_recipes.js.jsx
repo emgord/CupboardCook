@@ -74,7 +74,7 @@ Masonry = React.createClass({
 
     return (
     	<div className ='recipe-list'>
-        <ul id="my-id" class="uk-subnav">
+        <ul id="my-id">
           <li className="hide" data-uk-filter="shift"><a id="shift" href=""></a></li>
         </ul>
         <RecipeDetail key={this.state.recipeDetail.id}
