@@ -34,7 +34,6 @@ Masonry = React.createClass({
     this.resetRecipes();
   },
 
-
   getDefaultProps: function(){
     return { recipes: []};
   },
