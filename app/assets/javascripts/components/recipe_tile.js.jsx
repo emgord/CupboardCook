@@ -11,7 +11,7 @@ var RecipeTile = React.createClass({
     }
 
     return(
-      <div className='recipe-tile' onClick={this.handleClick}>
+      <div className='recipe-tile' data-uk-filter="shift" onClick={this.handleClick}>
         <div className="thumbnail">
           <img src={image} />
           <div className="caption">

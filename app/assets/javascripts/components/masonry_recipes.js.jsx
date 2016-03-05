@@ -24,6 +24,7 @@ Masonry = React.createClass({
       $.get('/users/recipes/',
         function(data) {
           this.setState({recipes:data});
+          document.getElementById("shift").click()
         }.bind(this),
         'JSON'
       );
@@ -73,6 +74,9 @@ Masonry = React.createClass({
 
     return (
     	<div className ='recipe-list'>
+        <ul id="my-id">
+          <li className="hide" data-uk-filter="shift"><a id="shift" href=""></a></li>
+        </ul>
         <RecipeDetail key={this.state.recipeDetail.id}
                       recipe={this.state.recipeDetail}
                       show={this.state.showRecipe}

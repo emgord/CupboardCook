@@ -5,11 +5,11 @@ var RecipeDetail = React.createClass({
     if (image == null) {
       image = "http://thecrites.com/sites/all/modules/cookbook/theme/images/default-recipe-big.png"
     }
-    var show = this.props.show ? 'recipe-detail' : 'recipe-detail hide';
+    var show = this.props.show ? 'recipe-detail shift' : 'recipe-detail hide';
 
     return(
 
-      <div className = {show} onClick={this.props.handleClick}>
+      <div className = {show} >
         <div className="thumbnail">
         <a onClick={this.props.hide}><i className="fa fa-times-circle fa-pull-right fa-2x"></i></a>
           <img src={image} />
