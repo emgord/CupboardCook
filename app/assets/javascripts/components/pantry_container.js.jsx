@@ -11,7 +11,7 @@ var Pantry = React.createClass({
     return { user_ingredients: []};
   },
 
-  toggleIngredientEdit: function(){
+  toggleAllIngredientsEdit: function(){
     this.setState({ userIngredientEdit: !this.state.userIngredientEdit });
   },
 
@@ -37,7 +37,7 @@ var Pantry = React.createClass({
                           removeUserIngredient={this.removeUserIngredient}
                           userIngredients={this.state.user_ingredients} />
         <h1>Pantry</h1>
-        <a onClick={this.toggleIngredientEdit}>Edit Pantry</a>
+        <a onClick={this.toggleAllIngredientsEdit}>Edit Pantry</a>
         <UserIngredients user_ingredients={this.state.user_ingredients}
                          edit={this.state.userIngredientEdit}
                          removeUserIngredient={this.removeUserIngredient}/>

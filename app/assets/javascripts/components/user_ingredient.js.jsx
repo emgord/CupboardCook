@@ -1,5 +1,13 @@
 var UserIngredient = React.createClass({
 
+  getInitialState: function(){
+  return { edit: this.props.edit};
+  },
+
+  toggleEdit: function(){
+    this.setState({ edit: !this.state.edit });
+  },
+
   deleteUserIngredient: function(e) {
     $.ajax({
       method: "DELETE",
@@ -11,7 +19,7 @@ var UserIngredient = React.createClass({
 
   render: function(){
     var ingredientDisplay = <button className= "btn btn-default" onClick={this.toggleEdit}>{this.props.user_ingredient.ingredient.name}</button>;
-    if (this.props.edit) {
+    if (this.props.edit || this.state.edit) {
       var ingredientDisplay = <div className='btn-group ingredient-add'>
         {ingredientDisplay}
         <button className="btn btn-danger" type="button" onClick={this.deleteUserIngredient}><i className="fa fa-times"></i></button>
