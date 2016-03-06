@@ -3,11 +3,16 @@ var Pantry = React.createClass({
   getInitialState: function(){
   return { user_ingredients: this.props.pantry_items,
            ingredients: this.props.ingredients,
-           searchPath: this.props.searchPath};
+           searchPath: this.props.searchPath,
+           userIngredientEdit: false};
   },
 
   getDefaultProps: function(){
     return { user_ingredients: []};
+  },
+
+  toggleAllIngredientsEdit: function(){
+    this.setState({ userIngredientEdit: !this.state.userIngredientEdit });
   },
 
   addUserIngredient: function(user_ingredient){
@@ -24,12 +29,6 @@ var Pantry = React.createClass({
   },
 
   render: function () {
-    var UserIngredients = this.state.user_ingredients.map(function(user_ingredient) {
-      return (
-        <UserIngredient key={user_ingredient.id}
-                        removeUserIngredient={this.removeUserIngredient}
-                        user_ingredient={user_ingredient} />
-            );}, this);
 
     return(
       <div className ='pantry-list'>
@@ -38,7 +37,10 @@ var Pantry = React.createClass({
                           removeUserIngredient={this.removeUserIngredient}
                           userIngredients={this.state.user_ingredients} />
         <h1>Pantry</h1>
-        {UserIngredients}
+        <a onClick={this.toggleAllIngredientsEdit}>Edit Pantry</a>
+        <UserIngredients user_ingredients={this.state.user_ingredients}
+                         edit={this.state.userIngredientEdit}
+                         removeUserIngredient={this.removeUserIngredient}/>
       </div>
     );
   }
