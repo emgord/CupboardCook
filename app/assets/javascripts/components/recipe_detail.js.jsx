@@ -1,5 +1,13 @@
 var RecipeDetail = React.createClass({
 
+  getInitialState: function(){
+  return { completeRecipe: false};
+  },
+
+  markRecipeComplete: function(){
+    this.setState({ completeRecipe: !this.state.completeRecipe });
+  },
+
   render: function(){
     var image = this.props.recipe.image;
     if (image == null) {
@@ -18,11 +26,13 @@ var RecipeDetail = React.createClass({
           <h3>Ingredients:</h3>
           <Ingredients ingredients={this.props.recipe.ingredients}
                        userIngredients={this.props.user_ingredients}
-                       removeUserIngredient={this.props.removeUserIngredient}/>
+                       removeUserIngredient={this.props.removeUserIngredient}
+                       editUserIngredient={this.state.completeRecipe}/>
           <p>Time: {this.props.recipe.time}</p>
           <p>Yield: {this.props.recipe.yield}</p>
           <p>{this.props.recipe.description}</p>
-          <a href={this.props.recipe.original_url} target="_blank">Cook This Now</a>
+          <a className="btn btn-primary" href={this.props.recipe.original_url} target="_blank">Cook This Now</a>
+          <a className="btn btn-info" onClick={this.markRecipeComplete}>Cooked!</a>
           </div>
         </div>
       </div>
