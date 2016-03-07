@@ -24,7 +24,7 @@ Masonry = React.createClass({
       $.get('/users/recipes/',
         function(data) {
           this.setState({recipes:data});
-          document.getElementById("shift").click()
+          // document.getElementById("shift").click()
         }.bind(this),
         'JSON'
       );
