@@ -1,16 +1,9 @@
 class IngredientsController < ApplicationController
-
-  def index
-    @ingredients = Ingredient.all
-  end
+  before_action :require_user
 
   def search
     @ingredients = Ingredient.search(params[:query])
-    if request.xhr?
-      render :json => @ingredients.to_json
-    else
-      redirect_to root_path
-    end
+    render :json => @ingredients.to_json
   end
 
 end

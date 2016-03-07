@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   get '/login' => 'sessions#new'
   get '/recipes' => 'recipes#index'
-  get '/ingredients' => 'ingredients#index'
   get '/ingredients/search' => 'ingredients#search', as: :ingredient_search
   get '/users/recipes' => 'users#find_recipes'
   resources :user_ingredients, only: [:index, :create, :destroy]
