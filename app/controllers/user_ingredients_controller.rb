@@ -18,8 +18,10 @@ class UserIngredientsController < ApplicationController
   end
 
   def destroy
-      @user_ingredient = UserIngredient.find(params[:id])
-      @user_ingredient.destroy
+      user_ingredient = UserIngredient.find(params[:id])
+      if user_ingredient.user_id == current_user.id
+        user_ingredient.destroy
+      end
       head :no_content
   end
 
