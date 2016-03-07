@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  def show
-  end
+  before_action :require_user
 
   def find_recipes
     render json: current_user.find_recipes_as_json
