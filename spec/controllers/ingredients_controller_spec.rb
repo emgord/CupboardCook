@@ -1,37 +1,41 @@
 require 'rails_helper'
+require 'pry'
 
 RSpec.describe IngredientsController, type: :controller do
+  before :each do
+    10.times {create(:ingredient, name: "apple")}
+    Ingredient.reindex
+  end
 
   context "user is logged out" do
-    describe "GET #index" do
+    describe "GET #search" do
       it "is not successful and redirects" do
-        get :index
+        get :search
         expect(response).to have_http_status(302)
       end
       it "redirects to the login page" do
-        get :index
+        get :search
         expect(subject).to redirect_to login_path
       end
     end
   end
 
   context "user is logged in" do
-    before :each do
-      @user = create(:user, :google)
-      session[:user_id] = @user.id
-    end
 
-    describe "GET #index" do
+    describe "GET #search" do
+
+      before :each do
+        @user = create(:user, :google)
+        session[:user_id] = @user.id
+        xhr :get, :search, {params: {:query => "apple"}, format: :json }
+      end
       it "responds successfully with an HTTP 200 status code" do
-        get :index
         expect(response).to be_success
         expect(response).to have_http_status(200)
       end
-      it "renders the index template" do
-        get :index
-        expect(response).to render_template :index
+      it "returns json objects" do
+        expect(response.header['Content-Type']).to include 'application/json'
       end
     end
   end
-  
 end
