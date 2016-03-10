@@ -29,6 +29,8 @@ class Recipe < ActiveRecord::Base
             recipe.ingredients << new_ingredient
           end
         end
+      else
+        return nil
       end
     else
       return nil

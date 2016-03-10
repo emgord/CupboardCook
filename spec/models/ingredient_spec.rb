@@ -22,26 +22,30 @@ RSpec.describe Ingredient, type: :model do
       Ingredient.all.count
     end
     it "creates an ingredient if it does not already exist" do
+      count = original_count
       new_ingredient = Ingredient.find_or_create("tomato")
       expect(new_ingredient).to be_valid
-      expect(Ingredient.all.count).to eq original_count
+      expect(Ingredient.all.count).to eq count + 1
     end
     it "downcases the ingredient name" do
+      count = original_count
       new_ingredient = Ingredient.find_or_create("Tomato")
       expect(new_ingredient).to be_valid
-      expect(Ingredient.all.length).to eq original_count
+      expect(Ingredient.all.length).to eq count + 1
       expect(new_ingredient.name).to eq "tomato"
     end
-    it "finds and returns the ingredient if it already exists" do
+    it "does not create a new ingredient if it already exists" do
       Ingredient.find_or_create('tomato')
+      count = original_count
       ingredient = Ingredient.find_or_create('Tomato')
       expect(ingredient).to be_valid
-      expect(Ingredient.all.length).to eq original_count
+      expect(Ingredient.all.length).to eq count
     end
-    it "returns nil if the ingredient is not valid" do
+    it "returns nil if the ingredient is not valid and does not create an ingredient" do
+      count = original_count
       ingredient = Ingredient.find_or_create("a" * 55)
       expect(ingredient).to eq nil
-      expect(Ingredient.all.length).to eq original_count
+      expect(Ingredient.all.length).to eq count
     end
   end
 
