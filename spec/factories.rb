@@ -50,6 +50,7 @@ FactoryGirl.define do
     original_url "www.taco.com"
     description "A delicious easy meal"
     uid "12344"
+    ingredient_count 6
     transient do
       ingredient_list []
     end
