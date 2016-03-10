@@ -34,6 +34,22 @@ RSpec.describe Ingredient, type: :model do
       expect(Ingredient.all.length).to eq count + 1
       expect(new_ingredient.name).to eq "tomato"
     end
+    it "matches if a singular version of the ingredient already exists" do
+      create(:ingredient, name: "tomato")
+      count = original_count
+      new_ingredient = Ingredient.find_or_create('tomatoes')
+      expect(new_ingredient).to be_valid
+      expect(new_ingredient.name).to eq "tomato"
+      expect(Ingredient.all.length).to eq count
+    end
+    it "matches if a plural version of the ingredient already exists" do
+      create(:ingredient, name: "tomatoes")
+      count = original_count
+      new_ingredient = Ingredient.find_or_create('tomato')
+      expect(new_ingredient).to be_valid
+      expect(new_ingredient.name).to eq "tomatoes"
+      expect(Ingredient.all.length).to eq count
+    end
     it "does not create a new ingredient if it already exists" do
       Ingredient.find_or_create('tomato')
       count = original_count
