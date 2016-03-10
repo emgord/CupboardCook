@@ -3,8 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
@@ -30,6 +29,7 @@ gem "font-awesome-rails"
 gem 'react-rails', '~> 1.6.0'
 gem 'searchkick'
 gem 'uikit-rails'
+gem 'pg', '~> 0.18.4', group: :production
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -46,6 +46,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'simplecov', require: false
   gem 'dotenv-rails'
+  gem 'sqlite3'
 end
 
 group :test do
