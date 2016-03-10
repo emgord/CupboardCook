@@ -13,43 +13,13 @@ seed_users.each do |seed|
   User.create(seed)
 end
 
-recipe_path= "#{Rails.root}/db/test.json"
+recipe_path= "#{Rails.root}/db/recipes10.json"
 recipes = JSON.parse(File.read(recipe_path))
 
 recipes.each do |recipe|
-  if recipe["ingredients"].length > 0
-    r = Recipe.new
-    r.title = recipe["title"]
-    # r.uid = recipe["uid"]
-    r.original_url = "http://cooking.nytimes.com" + recipe["original_url"]
-    r.time = recipe["time"]
-    r.yield = recipe["recipe_yield"]
-    r.image = recipe["image"]
-    r.description = recipe["description"]
-    if r.save
-      recipe["ingredients"].each do |i|
-        new_ingredient = Ingredient.create(name: i)
-        r.ingredients << new_ingredient
-      end
-    end
-  end
+  Recipe.create_from_scrapy_seed(recipe)
 end
 
-# seed_ingredients.each do |seed|
-#   Ingredient.create(seed)
-# end
-
-#
-# seed_recipes.each do |seed|
-#   Recipe.create(seed)
-# end
-
-
-# seed_recipe_ingredients.each do |seed|
-#   RecipeIngredient.create(seed)
-# end
-
-
-(1..41).each do |seed|
+(1..200).each do |seed|
   UserIngredient.create(user_id:1, ingredient_id:seed)
 end
