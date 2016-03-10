@@ -7,17 +7,16 @@ class Recipe < ActiveRecord::Base
   validates :original_url, presence: true, uniqueness:true, length: {maximum: 250}
   validates :image, length: {maximum: 300}
   validates :description, length: {maximum: 2000}
-
-
-
+  validates :uid, uniqueness:true, presence: true
   # after_save do
   #   update_column(:ingredient_count, self.ingredients.length)
   # end
+
   def self.create_from_scrapy_seed(recipe_hash)
     if recipe_hash["ingredients"].length > 0
       recipe = Recipe.new
       recipe.title = recipe_hash["title"]
-      # r.uid = recipe["uid"]
+      recipe.uid = recipe["uid"]
       recipe.original_url = "http://cooking.nytimes.com" + recipe_hash["original_url"]
       recipe.time = recipe_hash["time"]
       recipe.yield = recipe_hash["recipe_yield"]
