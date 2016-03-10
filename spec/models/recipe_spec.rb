@@ -102,42 +102,56 @@ RSpec.describe Recipe, type: :model do
         "time": "20 minutes",
         "recipe_yield": "4 servings",
         "image": "www.image.com",
-        "description": "tasty"}
+        "description": "tasty"}.stringify_keys
     end
     let (:original_count) do
       Recipe.all.count
     end
     it "creates a new recipe with ingredients" do
+      count = original_count
       recipe = Recipe.create_from_scrapy_seed(recipe_seed)
       expect(recipe).to be_valid
-
+      expect(recipe.ingredient_count).to eq 4
+      expect(Recipe.all.length).to eq count + 1
     end
-
+    it "does not create a recipe if the ingredients list is nil" do
+      recipe_seed['ingredients'] = nil
+      count = original_count
+      recipe = Recipe.create_from_scrapy_seed(recipe_seed)
+      expect(recipe).to be_nil
+      expect(Recipe.all.length).to eq count
+    end
+    it "does not create a recipe if the ingredients list is empty" do
+      recipe_seed['ingredients'] = []
+      count = original_count
+      recipe = Recipe.create_from_scrapy_seed(recipe_seed)
+      expect(recipe).to be_nil
+      expect(Recipe.all.length).to eq count
+    end
+    it "only adds ingredient once if they are duplicates" do
+      recipe_seed['ingredients'] = ["turkey", "pecans","pecans","Pecans", "celery salt", "mayonnaise"]
+      count = original_count
+      recipe = Recipe.create_from_scrapy_seed(recipe_seed)
+      expect(recipe).to be_valid
+      expect(recipe.ingredient_count).to eq 4
+      expect(Recipe.all.length).to eq count + 1
+    end
+    it "does not include salt or pepper" do
+      recipe_seed['ingredients'] = ["turkey", "pecans","salt","Pepper","Salt and pepper","celery salt", "mayonnaise"]
+      count = original_count
+      recipe = Recipe.create_from_scrapy_seed(recipe_seed)
+      expect(recipe).to be_valid
+      expect(recipe.ingredient_count).to eq 4
+      expect(Recipe.all.length).to eq count + 1
+    end
+    it "returns nil if the recipe fails validation" do
+      recipe_seed['original_url'] = nil
+      count = original_count
+      recipe = Recipe.create_from_scrapy_seed(recipe_seed)
+      expect(recipe).to be_nil
+      expect(Recipe.all.length).to eq count
+    end
 
   end
 
-  def self.create_from_scrapy_seed(recipe_hash)
-    if recipe_hash["ingredients"].length > 0
-      recipe = Recipe.new
-      recipe.title = recipe_hash["title"]
-      recipe.uid = recipe["uid"]
-      recipe.original_url = "http://cooking.nytimes.com" + recipe_hash["original_url"]
-      recipe.time = recipe_hash["time"]
-      recipe.yield = recipe_hash["recipe_yield"]
-      recipe.image = recipe_hash["image"]
-      recipe.description = recipe_hash["description"]
-      if recipe.save
-        recipe_hash["ingredients"].each do |ingredient|
-          new_ingredient = Ingredient.find_or_create(ingredient)
-          if !new_ingredient.nil? && !new_ingredient.salt_or_pepper?
-            recipe.ingredients << new_ingredient
-          end
-        end
-      else
-        return nil
-      end
-    else
-      return nil
-    end
-  end
 end

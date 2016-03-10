@@ -1,8 +1,8 @@
 class RecipeIngredient < ActiveRecord::Base
   belongs_to :ingredient
   belongs_to :recipe
-  validates :recipe_id, presence: true, uniqueness: { scope: :ingredient_id }
-  validates :ingredient_id, presence: true, uniqueness: { scope: :recipe_id }
+  # validates :recipe_id, presence: true
+  # validates :ingredient_id, presence: true
 
   after_save do
     recipe = self.recipe

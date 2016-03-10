@@ -1,3 +1,4 @@
+require "pry"
 class Recipe < ActiveRecord::Base
   has_many :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients
@@ -13,11 +14,11 @@ class Recipe < ActiveRecord::Base
   # end
 
   def self.create_from_scrapy_seed(recipe_hash)
-    if recipe_hash["ingredients"].length > 0
+    if !recipe_hash["ingredients"].nil? && recipe_hash["ingredients"].length > 0
       recipe = Recipe.new
       recipe.title = recipe_hash["title"]
-      recipe.uid = recipe["uid"]
-      recipe.original_url = "http://cooking.nytimes.com" + recipe_hash["original_url"]
+      recipe.uid = recipe_hash["uid"]
+      recipe.original_url = "http://cooking.nytimes.com" + recipe_hash["original_url"] if !recipe_hash["original_url"].nil?
       recipe.time = recipe_hash["time"]
       recipe.yield = recipe_hash["recipe_yield"]
       recipe.image = recipe_hash["image"]
@@ -25,10 +26,11 @@ class Recipe < ActiveRecord::Base
       if recipe.save
         recipe_hash["ingredients"].each do |ingredient|
           new_ingredient = Ingredient.find_or_create(ingredient)
-          if !new_ingredient.nil? && !new_ingredient.salt_or_pepper?
+          if !new_ingredient.nil? && !new_ingredient.salt_or_pepper? && !recipe.ingredients.include?(new_ingredient)
             recipe.ingredients << new_ingredient
           end
         end
+        return recipe
       else
         return nil
       end
