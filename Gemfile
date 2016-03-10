@@ -28,6 +28,7 @@ gem 'omniauth-oauth2', '~> 1.3.1'
 gem "font-awesome-rails"
 gem 'react-rails', '~> 1.6.0'
 gem 'searchkick'
+gem "elasticsearch", ">= 1.0.15"
 gem 'uikit-rails'
 gem 'pg', '~> 0.18.4', group: :production
 # Use ActiveModel has_secure_password
