@@ -2,3 +2,6 @@ language: ruby
 
 services:
   - elasticsearch
+
+notifications:
+  email: false
