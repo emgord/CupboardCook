@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/recipes' => 'recipes#index'
   get '/ingredients/search' => 'ingredients#search', as: :ingredient_search
   get '/users/recipes' => 'users#find_recipes'
+  get '/health', to: 'welcome#health'
   resources :user_ingredients, only: [:index, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
