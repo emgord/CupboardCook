@@ -28,7 +28,7 @@ recipes.each do |recipe|
     r.description = recipe["description"]
     if r.save
       recipe["ingredients"].each do |i|
-        new_ingredient = Ingredient.create(name: i)
+        new_ingredient = Ingredient.find_or_create(i)
         r.ingredients << new_ingredient
       end
     end

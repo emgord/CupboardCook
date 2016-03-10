@@ -20,4 +20,12 @@ class Ingredient < ActiveRecord::Base
       end
     end
   end
+
+  def salt_or_pepper?
+    if self.name == "salt" || self.name == "pepper" || self.name == "salt and pepper" || self.name == "white pepper"
+      return true
+    else
+      return false
+    end
+  end
 end
