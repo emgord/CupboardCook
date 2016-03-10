@@ -13,13 +13,19 @@ seed_users.each do |seed|
   User.create(seed)
 end
 
-recipe_path= "#{Rails.root}/db/recipes10.json"
-recipes = JSON.parse(File.read(recipe_path))
-
-recipes.each do |recipe|
-  Recipe.create_from_scrapy_seed(recipe)
+recipe_path= "#{Rails.root}/db/seeds/"
+files = ["recipes10.json", "recipes442.json", "recipes1101.json", "recipes1217.json"]
+files.each do |file|
+  recipes = JSON.parse(File.read(recipe_path + file))
+  recipes.each do |recipe|
+    Recipe.create_from_scrapy_seed(recipe)
+  end
 end
 
-(1..200).each do |seed|
+(1..100).each do |seed|
+  UserIngredient.create(user_id:1, ingredient_id:seed)
+end
+
+(300..400).each do |seed|
   UserIngredient.create(user_id:1, ingredient_id:seed)
 end

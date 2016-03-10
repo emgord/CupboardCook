@@ -8,7 +8,9 @@ class Ingredient < ActiveRecord::Base
 
   def self.find_or_create(ingredient_name_string)
     ingredient_name_string.downcase!
-    ingredient = self.find_by(name: ingredient_name_string)
+    ingredient = self.find_by(name: ingredient_name_string.singularize)
+    ingredient ||= self.find_by(name: ingredient_name_string.pluralize)
+    ingredient ||= self.find_by(name: ingredient_name_string)
     if !ingredient.nil?
       return ingredient
     else
@@ -22,7 +24,7 @@ class Ingredient < ActiveRecord::Base
   end
 
   def salt_or_pepper?
-    if self.name == "salt" || self.name == "pepper" || self.name == "salt and pepper" || self.name == "white pepper"
+    if self.name == "salt" || self.name == "pepper" || self.name == "salt and pepper" || self.name == "white pepper" || self.name == "black pepper"
       return true
     else
       return false
