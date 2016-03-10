@@ -27,7 +27,6 @@ RSpec.describe Ingredient, type: :model do
       expect(Ingredient.all.count).to eq original_count
     end
     it "downcases the ingredient name" do
-      original_count = Ingredient.all.count
       new_ingredient = Ingredient.find_or_create("Tomato")
       expect(new_ingredient).to be_valid
       expect(Ingredient.all.length).to eq original_count

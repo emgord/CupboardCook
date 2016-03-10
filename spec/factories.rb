@@ -4,7 +4,7 @@ FactoryGirl.define do
     transient do
       owners []
     end
-    sequence (:name) { |n| "Ingredient#{n}"}
+    sequence (:name) { |n| "ingredient#{n}"}
 
     after(:create) do |ingredient, evaluator|
       if evaluator.owners.count > 0
@@ -49,7 +49,7 @@ FactoryGirl.define do
     time "30 minutes"
     original_url "www.taco.com"
     description "A delicious easy meal"
-    ingredient_count 6
+    uid "12344"
     transient do
       ingredient_list []
     end

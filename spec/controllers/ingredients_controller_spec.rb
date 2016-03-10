@@ -3,7 +3,7 @@ require 'pry'
 
 RSpec.describe IngredientsController, type: :controller do
   before :each do
-    10.times {create(:ingredient, name: "apple")}
+    create(:ingredient, name: "apple")
     Ingredient.reindex
   end
 
