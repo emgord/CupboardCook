@@ -3,6 +3,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     :name => "google",
     :access_type => "online",
     :skip_jwt => true,
-    :client_options => { :ssl => { :verify => false } }
+    :client_options => { :ssl => { :verify => Rails.env.production? } }
   }
 end
