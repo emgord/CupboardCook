@@ -31,6 +31,7 @@ gem 'searchkick'
 gem "elasticsearch", ">= 1.0.15"
 gem 'uikit-rails'
 gem 'pg', '~> 0.18.4', group: :production
+gem 'faraday_middleware-aws-signers-v4'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
