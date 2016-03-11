@@ -23,8 +23,8 @@ class Ingredient < ActiveRecord::Base
     end
   end
 
-  def salt_or_pepper?
-    if self.name == "salt" || self.name == "pepper" || self.name == "salt and pepper" || self.name == "white pepper" || self.name == "black pepper"
+  def exclude_ingredient?
+    if self.name.include?("salt") || self.name == "pepper" || self.name == "white pepper" || self.name == "black pepper" || self.name == "water"
       return true
     else
       return false

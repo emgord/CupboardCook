@@ -65,7 +65,7 @@ RSpec.describe Ingredient, type: :model do
     end
   end
 
-  describe ".salt_or_pepper?" do
+  describe ".exclude_ingredient?" do
     let (:salt) do
       Ingredient.find_or_create("salt")
     end
@@ -84,21 +84,27 @@ RSpec.describe Ingredient, type: :model do
     let (:greenpepper) do
       Ingredient.find_or_create("Green Bell Pepper")
     end
+    let (:water) do
+      Ingredient.find_or_create("water")
+    end
     it "returns true if the ingredient is salt" do
-      expect(salt.salt_or_pepper?).to be_truthy
+      expect(salt.exclude_ingredient?).to be_truthy
     end
     it "returns true if the ingredient is pepper" do
-      expect(pepper.salt_or_pepper?).to be_truthy
+      expect(pepper.exclude_ingredient?).to be_truthy
     end
     it "returns true if the ingredient is salt and pepper" do
-      expect(saltnpepper.salt_or_pepper?).to be_truthy
+      expect(saltnpepper.exclude_ingredient?).to be_truthy
     end
     it "returns true if the ingredient is white pepper" do
-      expect(whitepepper.salt_or_pepper?).to be_truthy
+      expect(whitepepper.exclude_ingredient?).to be_truthy
     end
     it "returns false if the ingredient is not pepper" do
-      expect(tomato.salt_or_pepper?).to be_falsey
-      expect(greenpepper.salt_or_pepper?).to be_falsey
+      expect(tomato.exclude_ingredient?).to be_falsey
+      expect(greenpepper.exclude_ingredient?).to be_falsey
+    end
+    it "returns true if the ingredient is water" do
+      expect(water.exclude_ingredient?).to be_truthy
     end
   end
 end

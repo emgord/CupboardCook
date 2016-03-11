@@ -98,7 +98,7 @@ RSpec.describe Recipe, type: :model do
       { "uid": "10",
         "title": "Georgia Pecan Turkey Salad",
         "original_url": "/recipes/10-georgia-pecan-turkey-salad",
-        "ingredients": ["turkey", "pecans", "celery salt", "mayonnaise"],
+        "ingredients": ["turkey", "pecans", "celery", "mayonnaise"],
         "time": "20 minutes",
         "recipe_yield": "4 servings",
         "image": "www.image.com",
@@ -129,7 +129,7 @@ RSpec.describe Recipe, type: :model do
       expect(Recipe.all.length).to eq count
     end
     it "only adds ingredient once if they are duplicates" do
-      recipe_seed['ingredients'] = ["turkey", "pecans","pecans","Pecans", "celery salt", "mayonnaise"]
+      recipe_seed['ingredients'] = ["turkey", "pecans","pecans","Pecans", "celery", "mayonnaise"]
       count = original_count
       recipe = Recipe.create_from_scrapy_seed(recipe_seed)
       expect(recipe).to be_valid
@@ -137,7 +137,7 @@ RSpec.describe Recipe, type: :model do
       expect(Recipe.all.length).to eq count + 1
     end
     it "does not include salt or pepper" do
-      recipe_seed['ingredients'] = ["turkey", "pecans","salt","Pepper","Salt and pepper","celery salt", "mayonnaise"]
+      recipe_seed['ingredients'] = ["turkey", "pecans","salt","Pepper","Salt and pepper","celery", "mayonnaise"]
       count = original_count
       recipe = Recipe.create_from_scrapy_seed(recipe_seed)
       expect(recipe).to be_valid

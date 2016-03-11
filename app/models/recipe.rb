@@ -25,7 +25,7 @@ class Recipe < ActiveRecord::Base
       if recipe.save
         recipe_hash["ingredients"].each do |ingredient|
           new_ingredient = Ingredient.find_or_create(ingredient)
-          if !new_ingredient.nil? && !new_ingredient.salt_or_pepper? && !recipe.ingredients.include?(new_ingredient)
+          if !new_ingredient.nil? && !new_ingredient.exclude_ingredient? && !recipe.ingredients.include?(new_ingredient)
             recipe.ingredients << new_ingredient
           end
         end
