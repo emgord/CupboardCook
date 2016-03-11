@@ -9,7 +9,7 @@ if Rails.env.production?
       f.request :aws_signers_v4, {
         credentials: Aws::Credentials.new(ENV["AWS_ACCESS_KEY_ID"], ENV["AWS_SECRET_ACCESS_KEY"]),
         service_name: "es",
-        region: "us-east-1"
+        region: "us-west-2"
       }
     end
 end
