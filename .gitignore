@@ -40,6 +40,8 @@ bower.json
 coverage
 .env
 
+/ssl
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
