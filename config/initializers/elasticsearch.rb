@@ -1,1 +1,1 @@
-# ENV["ELASTICSEARCH_URL"] = "https://es-domain-1234.us-east-1.es.amazonaws.com"
+Searchkick.client = Elasticsearch::Client.new(hosts: [ENV["ELASTICSEARCH_URL"]], retry_on_failure: true, transport_options: {request: {timeout: 250}})
