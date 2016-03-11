@@ -9,4 +9,8 @@ class UsersController < ApplicationController
     render nothing: true
   end
 
+  def letsencrypt
+    render plain: ENV['LE_AUTH_RESPONSE']
+  end
+
 end
