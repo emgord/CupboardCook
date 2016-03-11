@@ -28,12 +28,9 @@ class User < ActiveRecord::Base
     end
     recipe_hash  = Recipe.select("recipes.id").joins(:ingredients).where(ingredients: {name: pantry_names}).group("recipes.id").having('COUNT(*) = recipes.ingredient_count').count
     recipe_id_array = recipe_hash.keys
-    user_recipes = recipe_id_array.map do |recipe|
-      recipe = Recipe.find(recipe)
-    end
+    user_recipes = Recipe.where(id: recipe_id_array)
     return user_recipes
   end
-  #recipe where id:recipe_id_array
 
   def pantry_items_as_json
     self.user_ingredients.as_json(:except => [:create_at, :updated_at],
