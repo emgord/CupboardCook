@@ -25,6 +25,7 @@ Masonry = React.createClass({
         function(data) {
           this.setState({recipes:data});
           // document.getElementById("shift").click()
+          $(window).trigger('resize');
         }.bind(this),
         'JSON'
       );

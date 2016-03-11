@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
     end
     return user_recipes
   end
+  #recipe where id:recipe_id_array
 
   def pantry_items_as_json
     self.user_ingredients.as_json(:except => [:create_at, :updated_at],
