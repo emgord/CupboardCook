@@ -2,21 +2,11 @@ Masonry = React.createClass({
 
 	componentDidMount: function() {
 
-  	var scrollspy = 'uk-animation-scale-up';
-    var filterControl = $('.uk-masonry').prev();
-
   	UIkit.grid(
     	$('.uk-masonry'),
       /*{gutter: this.props.values.options.gutterWidth, controls: '.uk-mansonry-filter'}*/
-      {gutter: '20px', controls: filterControl}
+      {gutter: '20px'}
     );
-
-    UIkit.domObserve('#container', function(element) {
-    /* apply on dom change within element */
-    $('[data-uk-scrollspy]').on('inview.uk.scrollspy', function(){
-    this.className = scrollspy;
-		});
-    })
 
   },
 

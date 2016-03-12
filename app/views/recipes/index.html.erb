@@ -7,7 +7,10 @@
       to find recipes.
     </p>
     <% else %>
-      <%= react_component 'Recipes', { recipes: @recipes,
-                                       user_ingredients: @user_ingredients} %>
+    <div data-uk-scrollspy="{cls:'uk-animation-scale-up', target:'.recipe-tile', repeat: true}">
+       <%= react_component 'Recipes', { recipes: @recipes,
+                                        user_ingredients: @user_ingredients} %>
+     </div>
+
     <% end %>
 </div>
