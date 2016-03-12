@@ -2,7 +2,7 @@ Masonry = React.createClass({
 
 	componentDidMount: function() {
 
-  	var scrollspy = 'uk-animation-fade';
+  	var scrollspy = 'uk-animation-scale-up';
     var filterControl = $('.uk-masonry').prev();
 
   	UIkit.grid(

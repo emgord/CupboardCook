@@ -4,7 +4,7 @@ Recipes = React.createClass({
            user_ingredients: this.props.user_ingredients,
            firstRecipeChunk: this.props.recipes,
            secondRecipeChunk: [],
-           recipeDetail: this.props.recipes[7]  };
+           recipeDetail: this.props.recipes[9]  };
   },
 
   getDefaultProps: function(){
@@ -26,7 +26,7 @@ Recipes = React.createClass({
       $.get('/users/recipes/',
         function(data) {
           this.setState({recipes:data});
-          this.triggerTileShift()
+          $(window).trigger('resize');
         }.bind(this),
         'JSON'
       );
@@ -49,7 +49,7 @@ Recipes = React.createClass({
   changeRecipeDetail: function(recipe){
     this.setState({ recipeDetail: recipe });
     this.setRecipeChunks(recipe);
-    this.triggerTileShift();
+    $(window).trigger('resize');
   },
 
   render: function() {
