@@ -2,8 +2,13 @@ Recipes = React.createClass({
   getInitialState: function(){
   return { recipes: this.props.recipes,
            user_ingredients: this.props.user_ingredients,
-           recipeDetailIndexes: [],
-           recipeTileChunks: [this.props.recipes]};
+           firstRecipeChunk: this.props.recipes,
+           secondRecipeChunk: [],
+           recipeDetail: this.props.recipes[7]  };
+  },
+
+  getDefaultProps: function(){
+    return { recipes: []};
   },
 
   removeUserIngredient: function(user_ingredient){
@@ -32,30 +37,35 @@ Recipes = React.createClass({
     this.resetRecipes();
   },
 
-  getDefaultProps: function(){
-    return { recipes: []};
+  setRecipeChunks: function(){
+    var recipes = this.state.recipes.slice();
+    var index = recipes.indexOf(this.state.recipeDetail);
+    var firstChunk = recipes.slice(0, index);
+    var secondChunk = recipes.slice(index);
+    this.setState({ firstRecipeChunk: firstChunk,
+                    secondRecipeChunk: secondChunk });
   },
 
-  toggleRecipeDetail: function(recipe){
-    var recipes = this.state.recipes.slice();
-    var recipeDetailIndexes = this.state.recipeDetailIndexes
-    var index = recipes.indexOf(recipe);
+  changeRecipeDetail: function(recipe){
     this.setState({ recipeDetail: recipe });
+    this.setRecipeChunks(recipe);
+    this.triggerTileShift();
   },
 
   render: function() {
-    var Recipes = this.state.recipes.map(function(recipe) {
-      return (
-            );}, this);
 
     return (
-    	<div className ='recipe-list'>
+    	<div className ='recipes'>
+        <Masonry recipes={this.state.firstRecipeChunk}
+                 user_ingredients={this.state.user_ingredients}
+                 changeRecipeDetail={this.changeRecipeDetail}/>
         <RecipeDetail key={this.state.recipeDetail.id}
                       recipe={this.state.recipeDetail}
-                      show={this.state.showRecipe}
-                      hide={this.hideRecipeDetail}
-                      user_ingredients={this.props.user_ingredients}
+                      user_ingredients={this.state.user_ingredients}
                       removeUserIngredient={this.resetOnChange} />
+        <Masonry recipes={this.state.secondRecipeChunk}
+                 user_ingredients={this.state.user_ingredients}
+                 changeRecipeDetail={this.changeRecipeDetail}/>
       </div>
     );
   }
