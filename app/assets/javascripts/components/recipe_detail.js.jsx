@@ -17,7 +17,7 @@ var RecipeDetail = React.createClass({
     return(
 
         <div className="thumbnail recipe-detail">
-        <a><i className="fa fa-times-circle fa-pull-right fa-2x"></i></a>
+        <a onClick={this.props.hide}><i className="fa fa-times-circle fa-pull-right fa-2x"></i></a>
           <img src={image} />
           <div className="caption">
           <h2>{this.props.recipe.title}</h2>

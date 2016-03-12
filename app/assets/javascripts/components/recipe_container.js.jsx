@@ -2,11 +2,22 @@ Recipes = React.createClass({
   getInitialState: function(){
   return { recipes: this.props.recipes,
            user_ingredients: this.props.user_ingredients,
-           recipeDetail: this.props.recipes[9]  };
+           recipeDetail: this.props.recipes[0],
+           showRecipe: false};
   },
 
   getDefaultProps: function(){
     return { recipes: []};
+  },
+
+  showRecipeDetail: function() {
+    this.setState({showRecipe: true});
+    document.body.classList.add('no-scroll');
+  },
+
+  hideRecipeDetail: function() {
+    this.setState({showRecipe: false});
+    document.body.classList.remove('no-scroll');
   },
 
   removeUserIngredient: function(user_ingredient){
@@ -37,17 +48,19 @@ Recipes = React.createClass({
 
   changeRecipeDetail: function(recipe){
     this.setState({ recipeDetail: recipe });
+    this.showRecipeDetail();
   },
 
   render: function() {
-
+    var show = this.state.showRecipe ? 'false' : 'true';
     return (
     	<div className ='recipes'>
-      <div className ='recipe-box' aria-hidden="false">
+      <div className ='recipe-box' aria-hidden={show}>
         <RecipeDetail key={this.state.recipeDetail.id}
                       recipe={this.state.recipeDetail}
                       user_ingredients={this.state.user_ingredients}
-                      removeUserIngredient={this.resetOnChange} />
+                      removeUserIngredient={this.resetOnChange}
+                      hide={this.hideRecipeDetail} />
       </div>
       <div className="masonry-container">
         <Masonry recipes={this.state.recipes}
