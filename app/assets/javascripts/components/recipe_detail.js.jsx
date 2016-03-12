@@ -16,7 +16,7 @@ var RecipeDetail = React.createClass({
 
     return(
 
-        <div className="thumbnail">
+        <div className="thumbnail recipe-detail">
         <a><i className="fa fa-times-circle fa-pull-right fa-2x"></i></a>
           <img src={image} />
           <div className="caption">

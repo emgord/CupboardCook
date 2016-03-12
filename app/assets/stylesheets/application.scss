@@ -25,16 +25,28 @@
   margin: 5px;
 }
 
-.recipe-detail {
-  z-index: 1;
-  &.hide {
-    display: hidden;
-  }
+body {
+   overflow: hidden;
 }
 
-.recipe-list {
-  position:relative;
+.recipe-box {
+   z-index: 1;
+   position: fixed;
+   overflow-y: scroll;
+   top: 0; right: 0; bottom: 0; left: 0;
+   background:  rgba(40,40,40, .75);
 }
+
+.recipe-detail{
+   margin: 15vh auto;
+   width: 80%;
+   max-width: 700px;
+   padding: 30px;
+   background: rgba(255,255,255, .95);
+}
+
+[aria-hidden="true"] { display: none; }
+[aria-hidden="false"] { display: block; }
 
 .hide {
   display: hidden;

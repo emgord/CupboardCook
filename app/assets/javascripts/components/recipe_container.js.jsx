@@ -43,13 +43,17 @@ Recipes = React.createClass({
 
     return (
     	<div className ='recipes'>
+      <div className ='recipe-box' aria-hidden="false">
         <RecipeDetail key={this.state.recipeDetail.id}
                       recipe={this.state.recipeDetail}
                       user_ingredients={this.state.user_ingredients}
                       removeUserIngredient={this.resetOnChange} />
+      </div>
+      <div className="masonry-container">
         <Masonry recipes={this.state.recipes}
                  user_ingredients={this.state.user_ingredients}
                  changeRecipeDetail={this.changeRecipeDetail}/>
+      </div>
       </div>
     );
   }
