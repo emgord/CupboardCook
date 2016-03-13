@@ -31,6 +31,7 @@ $light-salmon:#fc9996;
 $light-blue: #dce4ec;
 $navy: #233140;
 $green: #18bc9c;
+$dark-green: #0e715e;
 $title-font:'Bitter', serif;
 $body-font:'Raleway', sans-serif;
 
@@ -106,6 +107,25 @@ body {
   text-align: center;
   margin: 5px;
   display: inline-block;
+}
+
+.ingredient{
+  &.need{
+    background-color: $yellow;
+
+  }
+  &.have{
+    background-color: $dark-green;
+    color: $yellow;
+  }
+}
+.add{
+  background-color: $dark-green;
+  color: #FFF;
+}
+.delete{
+  background-color: $salmon;
+  color: #FFF;
 }
 
 .no-scroll {

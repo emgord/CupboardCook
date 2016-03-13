@@ -10,7 +10,6 @@ var Ingredients = React.createClass({
 			var finalIngredient = null;
 			userIngredients.map(function(user_ingredient){
 				if (user_ingredient.ingredient_id == ingredient.id) {
-						console.log("user_ingredient", user_ingredient);
 						finalIngredient = (<UserIngredient key={ingredient.id}
 		                                           removeUserIngredient={removeUserIngredient}
 		                                           user_ingredient={user_ingredient} /> );
