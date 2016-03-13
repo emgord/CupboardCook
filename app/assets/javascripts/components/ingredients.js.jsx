@@ -6,17 +6,19 @@ var Ingredients = React.createClass({
 		var resetSearch = this.props.resetSearch;
 		var removeUserIngredient = this.props.removeUserIngredient;
 		var editUserIngredient = this.props.editUserIngredient;
-		var finalIngredient = null;
 		var showIngredients = this.props.ingredients.map(function(ingredient){
+			var finalIngredient = null;
 			userIngredients.map(function(user_ingredient){
 				if (user_ingredient.ingredient_id == ingredient.id) {
-						finalIngredient = (<UserIngredient key={user_ingredient.id}
+						console.log("user_ingredient", user_ingredient);
+						finalIngredient = (<UserIngredient key={ingredient.id}
 		                                           removeUserIngredient={removeUserIngredient}
 		                                           user_ingredient={user_ingredient}
 																							 edit={true} /> );
 				}
 			});
 			if (finalIngredient == null) {
+				console.log("ingredient",ingredient);
 				finalIngredient = ( <Ingredient name={ingredient.name}
 										id={ingredient.id}
 										key={ingredient.id}
