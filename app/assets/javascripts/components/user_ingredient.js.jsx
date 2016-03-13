@@ -18,9 +18,9 @@ var UserIngredient = React.createClass({
   },
 
   render: function(){
-    var ingredientDisplay = <button className= "btn btn-default" onClick={this.toggleEdit}>{this.props.user_ingredient.ingredient.name}</button>;
+    var ingredientDisplay = <button className= "btn btn-default" onClick={this.toggleEdit}><i className="fa fa-check-square-o">  </i>{"  "+this.props.user_ingredient.ingredient.name}</button>;
     if (this.props.edit || this.state.edit) {
-      var ingredientDisplay = <div className='btn-group ingredient-tile'>
+      var ingredientDisplay = <div className='btn-group'>
         {ingredientDisplay}
         <button className="btn btn-danger" type="button" onClick={this.deleteUserIngredient}><i className="fa fa-times"></i></button>
       </div>;
