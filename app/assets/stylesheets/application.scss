@@ -12,12 +12,21 @@
  *
  */
 
+// $base-heading-color: #fff;
+@import "uikit";
+@import "uikit-components";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
 @import 'landing-page';
-@import "uikit";
-@import "uikit-components";
+
+
+$light-grey: #F0F1EE;
+$dark-purple: #333332;
+$deep-blue: #1352A2;
+$yellow: #FFD464;
+$salmon: #FB6964;
+
 
 .ingredient-add {
   padding: 10px;
@@ -34,7 +43,7 @@
    position: fixed;
    overflow-y: scroll;
    top: 0; right: 0; bottom: 0; left: 0;
-   background:  rgba(40,40,40, .75);
+   background:  rgba(8,34,68, .75);
 }
 
 .recipe-detail{
@@ -42,7 +51,6 @@
    width: 80%;
    max-width: 700px;
    padding: 30px;
-   background: rgba(255,255,255, .95);
 }
 
 [aria-hidden="true"] { display: none; }
