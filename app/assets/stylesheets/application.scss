@@ -23,7 +23,7 @@ $search-placeholder-color: #233140 !default;
 @import url(https://fonts.googleapis.com/css?family=Raleway|Bitter);
 
 $light-grey: #F0F1EE;
-$deep-blue: #0f4384;
+$deep-blue: #0c3465;
 $yellow: #ffe7a8;
 $deep-yellow: #fdb700;
 $salmon: #FB6964;
@@ -37,20 +37,20 @@ $body-font:'Raleway', sans-serif;
 h1 {
   font-family: $title-font;
   text-align: center;
-  color:$light-grey;
   padding:20px;
   font-size: 3em;
 }
 
 h2 {
-  color: $light-grey;
   padding: 10px;
-
 }
 
-.ingredient-search {
+.top-section {
   padding: 50px;
   background-color: $deep-blue;
+  h2, h1 {
+    color: $deep-yellow;
+  }
 }
 
 .uk-search {
@@ -59,9 +59,12 @@ h2 {
   opacity:70%;
 }
 
-.my-ingredients {
+.bottom-section {
   padding: 50px;
-  background-color: $deep-yellow;
+  background-color: $yellow;
+  h2 {
+    color:$deep-blue;
+  }
 
 }
 
@@ -103,6 +106,7 @@ a, a:hover, a:focus, a:active, a.active {
   padding: 10px;
   text-align: center;
   margin: 5px;
+  display: inline-block;
 }
 
 .no-scroll {

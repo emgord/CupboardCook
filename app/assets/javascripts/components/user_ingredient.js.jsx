@@ -26,7 +26,7 @@ var UserIngredient = React.createClass({
       </div>;
     }
     return(
-      <div>
+      <div className="ingredient-tile">
         {ingredientDisplay}
       </div>
 

@@ -32,12 +32,12 @@ var Pantry = React.createClass({
 
     return(
       <div className ='pantry-list'>
-      <IngredientSearch searchPath={this.props.searchPath}
+        <IngredientSearch searchPath={this.props.searchPath}
                         addUserIngredient={this.addUserIngredient}
                         removeUserIngredient={this.removeUserIngredient}
                         userIngredients={this.state.user_ingredients} />
 
-        <div className="my-ingredients">
+        <div className="bottom-section">
           <h2>My Ingredients:</h2>
           <a onClick={this.toggleAllIngredientsEdit}>Edit Pantry</a>
           <UserIngredients user_ingredients={this.state.user_ingredients}

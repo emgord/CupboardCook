@@ -29,7 +29,7 @@ var IngredientSearch = React.createClass({
 
 	render() {
 		return (
-			<div className="ingredient-search">
+			<div className="top-section">
         <h1>Pantry</h1>
         <h2>Add Ingredients:</h2>
 				<IngredientSearchBox searchPath={this.props.searchPath}
