@@ -12,12 +12,60 @@
  *
  */
 
+@import "uikit";
+@import "uikit-components";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
 @import 'landing-page';
-@import "uikit";
-@import "uikit-components";
+
+// Google Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway|Bitter);
+
+
+
+$light-grey: #F0F1EE;
+$dark-purple: #333332;
+$deep-blue: #1352A2;
+$yellow: #ffe7a8;
+$salmon: #FB6964;
+$title-font:'Bitter', serif;
+$body-font:'Raleway', sans-serif;
+
+.heading {
+  font-family: $title-font;
+  font-size: 4em;
+}
+
+.heading-box {
+  background-color: rgba(35,49,64,.60);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+body {
+  font-family: $body-font
+}
+
+.navbar, footer {
+  background-color: #233140;
+  border: none;
+  color: #FFF;
+  font-family: $title-font;
+  font-size: 1.5em;
+  a, .nav-link{
+    color: $yellow !important;
+  }
+  p {
+    color: $salmon;
+  }
+}
+
+a, a:hover, a:focus, a:active, a.active {
+    color: #18bc9c !important;
+    text-decoration: none;
+    outline: none;
+}
 
 .ingredient-add {
   padding: 10px;
@@ -34,7 +82,7 @@
    position: fixed;
    overflow-y: scroll;
    top: 0; right: 0; bottom: 0; left: 0;
-   background:  rgba(40,40,40, .75);
+   background:  rgba(8,34,68, .75);
 }
 
 .recipe-detail{
@@ -42,7 +90,6 @@
    width: 80%;
    max-width: 700px;
    padding: 30px;
-   background: rgba(255,255,255, .95);
 }
 
 [aria-hidden="true"] { display: none; }
