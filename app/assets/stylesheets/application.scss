@@ -12,7 +12,6 @@
  *
  */
 
-// $base-heading-color: #fff;
 @import "uikit";
 @import "uikit-components";
 @import "bootstrap-sprockets";
@@ -20,13 +19,37 @@
 @import "font-awesome";
 @import 'landing-page';
 
+// Google Fonts
+@import url(https://fonts.googleapis.com/css?family=Special+Elite|Raleway|Bitter);
+
+
 
 $light-grey: #F0F1EE;
 $dark-purple: #333332;
 $deep-blue: #1352A2;
 $yellow: #FFD464;
 $salmon: #FB6964;
+$title-font:'Bitter', sans-serif;
+$body-font:'Raleway', sans-serif;
 
+.heading {
+  font-family: $title-font;
+  font-size: 4em;
+}
+
+.heading-box {
+  background-color: rgba(45,49,57,.60);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+body {
+  font-family: $body-font
+}
+
+.navbar {
+  background-color: #f6f7f8;
+}
 
 .ingredient-add {
   padding: 10px;
