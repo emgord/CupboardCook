@@ -13,12 +13,10 @@ var Ingredients = React.createClass({
 						console.log("user_ingredient", user_ingredient);
 						finalIngredient = (<UserIngredient key={ingredient.id}
 		                                           removeUserIngredient={removeUserIngredient}
-		                                           user_ingredient={user_ingredient}
-																							 edit={true} /> );
+		                                           user_ingredient={user_ingredient} /> );
 				}
 			});
 			if (finalIngredient == null) {
-				console.log("ingredient",ingredient);
 				finalIngredient = ( <Ingredient name={ingredient.name}
 										id={ingredient.id}
 										key={ingredient.id}
