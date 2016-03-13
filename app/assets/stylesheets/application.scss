@@ -20,7 +20,7 @@ $search-placeholder-color: #233140 !default;
 @import 'landing-page';
 
 // Google Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway|Bitter);
+@import url(https://fonts.googleapis.com/css?family=Raleway|Bitter|Flamenco);
 
 $light-grey: #F0F1EE;
 $deep-blue: #0c3465;
@@ -30,6 +30,7 @@ $salmon: #FB6964;
 $light-salmon:#fc9996;
 $light-blue: #dce4ec;
 $navy: #233140;
+$dark-purple: #331D64;
 $green: #18bc9c;
 $dark-green: #0e715e;
 $title-font:'Bitter', serif;
@@ -145,6 +146,27 @@ body {
    width: 80%;
    max-width: 700px;
    padding: 30px;
+}
+
+.recipe-tile{
+  .thumbnail{
+    border: none;
+  }
+  &.no-image {
+    .thumbnail {
+      background-color: $light-blue;
+    }
+
+    h3 {
+      font-family: "Flamenco";
+      font-weight: bolder;
+      font-size: 3em;
+      padding: 20px;
+      text-align: center;
+      color: $dark-purple;
+    }
+
+  }
 }
 
 [aria-hidden="true"] { display: none; }

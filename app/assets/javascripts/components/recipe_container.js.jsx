@@ -62,7 +62,10 @@ Recipes = React.createClass({
                       removeUserIngredient={this.resetOnChange}
                       hide={this.hideRecipeDetail} />
       </div>
-      <div className="masonry-container">
+      <div className="top-section">
+        <h1>Recipes</h1>
+      </div>
+      <div className="masonry-container bottom-section">
         <Masonry recipes={this.state.recipes}
                  user_ingredients={this.state.user_ingredients}
                  changeRecipeDetail={this.changeRecipeDetail}/>
