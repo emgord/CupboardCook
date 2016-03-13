@@ -29,7 +29,9 @@ var IngredientSearch = React.createClass({
 
 	render() {
 		return (
-			<div className="ingredient-search-box">
+			<div className="ingredient-search">
+        <h1>Pantry</h1>
+        <h2>Add Ingredients:</h2>
 				<IngredientSearchBox searchPath={this.props.searchPath}
                              submitPath={this.searchIngredients}
                              query={this.state.query}/>

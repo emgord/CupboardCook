@@ -28,7 +28,7 @@ var Ingredients = React.createClass({
 			}, this);
 
 		return(
-			<div>{showIngredients}</div>
+			<div className="ingredient-list">{showIngredients}</div>
 		);
 	}
 });

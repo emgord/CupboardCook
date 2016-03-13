@@ -11,7 +11,7 @@
  * file per style scope.
  *
  */
-
+$search-placeholder-color: #233140 !default;
 @import "uikit";
 @import "uikit-components";
 @import "bootstrap-sprockets";
@@ -22,19 +22,47 @@
 // Google Fonts
 @import url(https://fonts.googleapis.com/css?family=Raleway|Bitter);
 
-
-
 $light-grey: #F0F1EE;
-$dark-purple: #333332;
-$deep-blue: #1352A2;
+$deep-blue: #0f4384;
 $yellow: #ffe7a8;
+$deep-yellow: #fdb700;
 $salmon: #FB6964;
+$light-salmon:#fc9996;
 $light-blue: #dce4ec;
+$navy: #233140;
+$green: #18bc9c;
 $title-font:'Bitter', serif;
 $body-font:'Raleway', sans-serif;
 
-body {
-  padding-top: 55px;
+h1 {
+  font-family: $title-font;
+  text-align: center;
+  color:$light-grey;
+  padding:20px;
+  font-size: 3em;
+}
+
+h2 {
+  color: $light-grey;
+  padding: 10px;
+
+}
+
+.ingredient-search {
+  padding: 50px;
+  background-color: $deep-blue;
+}
+
+.uk-search {
+  background-color: $yellow;
+  border-radius: 5px;
+  opacity:70%;
+}
+
+.my-ingredients {
+  padding: 50px;
+  background-color: $deep-yellow;
+
 }
 
 .heading {
@@ -53,9 +81,8 @@ body {
 }
 
 .navbar, footer {
-  background-color: #233140;
+  background-color: $navy;
   border: none;
-  color: #FFF;
   font-family: $title-font;
   font-size: 1.5em;
   a, .nav-link{
@@ -67,7 +94,7 @@ body {
 }
 
 a, a:hover, a:focus, a:active, a.active {
-    color: #18bc9c !important;
+    color: $green !important;
     text-decoration: none;
     outline: none;
 }
