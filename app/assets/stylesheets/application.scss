@@ -32,6 +32,10 @@ $salmon: #FB6964;
 $title-font:'Bitter', serif;
 $body-font:'Raleway', sans-serif;
 
+body {
+  padding-top: 55px;
+}
+
 .heading {
   font-family: $title-font;
   font-size: 4em;
@@ -67,7 +71,7 @@ a, a:hover, a:focus, a:active, a.active {
     outline: none;
 }
 
-.ingredient-add {
+.ingredient-tile {
   padding: 10px;
   text-align: center;
   margin: 5px;

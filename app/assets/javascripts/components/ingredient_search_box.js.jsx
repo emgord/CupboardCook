@@ -3,8 +3,9 @@ var IngredientSearchBox = React.createClass({
 	render () {
 		return (
 			<div>
-				<form ref="form" action={ this.props.searchPath } acceptCharset="UTF-8" method="get">
+				<form className="uk-search" ref="form" action={ this.props.searchPath } acceptCharset="UTF-8" method="get">
 				<p><input ref="query"
+									className="uk-search-field"
 					 				autoFocus="true"
 									value={ this.props.query }
 									name="query"

@@ -19,7 +19,7 @@ var Ingredient = React.createClass({
 
 	render () {
 		return (
-			<div className='btn-group ingredient-add'>
+			<div className='btn-group ingredient-tile'>
 				<p className= "btn btn-default">{ this.props.name }</p>
 	      <button className="btn btn-default" type="button" onClick={this.addIngredient}><i className="fa fa-plus"></i></button>
 			</div>
