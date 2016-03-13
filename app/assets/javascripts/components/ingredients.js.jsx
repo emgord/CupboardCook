@@ -13,7 +13,7 @@ var Ingredients = React.createClass({
 						finalIngredient = (<UserIngredient key={user_ingredient.id}
 		                                           removeUserIngredient={removeUserIngredient}
 		                                           user_ingredient={user_ingredient}
-																							 edit={editUserIngredient} /> );
+																							 edit={true} /> );
 				}
 			});
 			if (finalIngredient == null) {
@@ -28,7 +28,7 @@ var Ingredients = React.createClass({
 			}, this);
 
 		return(
-			<div>{showIngredients}</div>
+			<div className="ingredient-list">{showIngredients}</div>
 		);
 	}
 });
