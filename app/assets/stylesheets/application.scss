@@ -20,16 +20,16 @@
 @import 'landing-page';
 
 // Google Fonts
-@import url(https://fonts.googleapis.com/css?family=Special+Elite|Raleway|Bitter);
+@import url(https://fonts.googleapis.com/css?family=Raleway|Bitter);
 
 
 
 $light-grey: #F0F1EE;
 $dark-purple: #333332;
 $deep-blue: #1352A2;
-$yellow: #FFD464;
+$yellow: #ffe7a8;
 $salmon: #FB6964;
-$title-font:'Bitter', sans-serif;
+$title-font:'Bitter', serif;
 $body-font:'Raleway', sans-serif;
 
 .heading {
@@ -38,7 +38,7 @@ $body-font:'Raleway', sans-serif;
 }
 
 .heading-box {
-  background-color: rgba(45,49,57,.60);
+  background-color: rgba(35,49,64,.60);
   padding: 20px;
   border-radius: 20px;
 }
@@ -47,8 +47,24 @@ body {
   font-family: $body-font
 }
 
-.navbar {
-  background-color: #f6f7f8;
+.navbar, footer {
+  background-color: #233140;
+  border: none;
+  color: #FFF;
+  font-family: $title-font;
+  font-size: 1.5em;
+  a, .nav-link{
+    color: $yellow !important;
+  }
+  p {
+    color: $salmon;
+  }
+}
+
+a, a:hover, a:focus, a:active, a.active {
+    color: #18bc9c !important;
+    text-decoration: none;
+    outline: none;
 }
 
 .ingredient-add {
