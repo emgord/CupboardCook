@@ -56,7 +56,7 @@ RSpec.describe User, type: :model do
     end
     it "can specify to include recipes missing 1 ingredient" do
       expect(user_missing_1_ingred.find_recipes(1).count).to eq(1)
-      expect(user_with_all_ingred.find_recipes(1)[0]).to eq(Recipe.first)
+      expect(user_missing_1_ingred.find_recipes(1)[0]).to eq(Recipe.first)
     end
     it "can specify to include recipes missing 2 ingredients" do
       expect(user_missing_2_ingred.find_recipes(2).count).to eq(1)
