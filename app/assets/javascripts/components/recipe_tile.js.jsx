@@ -5,15 +5,17 @@ var RecipeTile = React.createClass({
   },
 
   render: function(){
-    var image = this.props.recipe.image;
-    if (image == null) {
-      image = "http://thecrites.com/sites/all/modules/cookbook/theme/images/default-recipe-big.png"
+    var image = <img src={this.props.recipe.image} />
+    var pictureClass = "recipe-tile";
+    if (this.props.recipe.image == null) {
+      pictureClass = "recipe-tile no-image";
+      image = "";
     }
 
     return(
-      <div className='recipe-tile' onClick={this.handleClick}>
+      <div className={pictureClass} onClick={this.handleClick}>
         <div className="thumbnail">
-          <img src={image} />
+            {image}
           <div className="caption">
           <h3>{this.props.recipe.title}</h3>
           </div>
