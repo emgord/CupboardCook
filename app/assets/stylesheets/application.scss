@@ -27,7 +27,7 @@ $dark-grey: #aeb4a3;
 $darker-grey: #252720;
 $deep-blue: #0c3465;
 $yellow: #ffe7a8;
-$trans-yellow: rgba(255, 231, 168,.7);
+$trans-grey: rgba(199, 203, 191,.7);
 $deep-yellow: #ffcf53;
 $salmon: #FB6964;
 $light-salmon:#fc9996;
@@ -35,8 +35,10 @@ $light-blue: #dce4ec;
 $navy: #233140;
 $trans-navy: rgba(35,49,64,.60);
 $purple: #36436c;
-$green: #18bc9c;
-$dark-green: #0e715e;
+$green: #587C72;
+$dark-green: #004B36;
+$orange: #ff6d33;
+$light-orange: #ff8555;
 $title-font:'Bitter', serif;
 $body-font:'Raleway', sans-serif;
 
@@ -67,14 +69,10 @@ h2 {
 
 .bottom-section {
   padding: 50px;
-  background-color: $yellow;
+  background-color: $light-grey;
   h2 {
     color:$deep-blue;
   }
-  &.masonry-container{
-  background-color: $light-grey;
-  }
-
 }
 
 .heading {
@@ -119,21 +117,34 @@ body {
 
 .ingredient{
   &.need{
-    background-color: $yellow;
+    background-color: $green;
+    border: 1px solid $green;
+    color: $yellow;
 
   }
   &.have{
-    background-color: $dark-green;
-    color: $yellow;
+    background-color: $dark-grey;
+    color: $darker-grey;
+    border: 1px solid $darker-grey;
   }
 }
 .add{
-  background-color: $dark-green;
-  color: #FFF;
+  background-color: $yellow;
+  border: 1px solid $green;
+  color: $green;
 }
 .delete{
-  background-color: $purple;
-  color: #FFF;
+  background-color: $light-grey;
+  border: 1px solid $darker-grey;
+}
+
+button.delete:hover{
+  background-color:$light-orange;
+}
+
+button.add:hover{
+  background-color:$deep-yellow;
+  color:$green;
 }
 
 .no-scroll {
@@ -145,7 +156,7 @@ body {
    position: fixed;
    overflow-y: scroll;
    top: 0; right: 0; bottom: 0; left: 0;
-   background:  $trans-yellow;
+   background:  $trans-grey;
 }
 
 .recipe-detail{
@@ -166,6 +177,9 @@ body {
   }
   i{
     color: $light-grey;
+  }
+  .fa-heart {
+    color: $orange;
   }
 }
 
