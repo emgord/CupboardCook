@@ -23,14 +23,18 @@ $search-placeholder-color: #233140 !default;
 @import url(https://fonts.googleapis.com/css?family=Raleway|Bitter|Flamenco);
 
 $light-grey: #F0F1EE;
+$dark-grey: #aeb4a3;
+$darker-grey: #252720;
 $deep-blue: #0c3465;
 $yellow: #ffe7a8;
-$deep-yellow: #fdb700;
+$trans-yellow: rgba(255, 231, 168,.7);
+$deep-yellow: #ffcf53;
 $salmon: #FB6964;
 $light-salmon:#fc9996;
 $light-blue: #dce4ec;
 $navy: #233140;
-$dark-purple: #331D64;
+$trans-navy: rgba(35,49,64,.60);
+$purple: #36436c;
 $green: #18bc9c;
 $dark-green: #0e715e;
 $title-font:'Bitter', serif;
@@ -67,6 +71,9 @@ h2 {
   h2 {
     color:$deep-blue;
   }
+  &.masonry-container{
+  background-color: $light-grey;
+  }
 
 }
 
@@ -76,7 +83,7 @@ h2 {
 }
 
 .heading-box {
-  background-color: rgba(35,49,64,.60);
+  background-color: $trans-navy;
   padding: 20px;
   border-radius: 20px;
 }
@@ -125,7 +132,7 @@ body {
   color: #FFF;
 }
 .delete{
-  background-color: $salmon;
+  background-color: $purple;
   color: #FFF;
 }
 
@@ -138,34 +145,72 @@ body {
    position: fixed;
    overflow-y: scroll;
    top: 0; right: 0; bottom: 0; left: 0;
-   background:  rgba(8,34,68, .75);
+   background:  $trans-yellow;
 }
 
 .recipe-detail{
    margin: 15vh auto;
-   width: 80%;
-   max-width: 700px;
-   padding: 30px;
+}
+
+.panel {
+  border: none;
+}
+
+.panel-heading, .panel-footer {
+  background-color: $navy !important;
+  h2{
+    color: $light-grey;
+    text-align: center;
+    font-size: 3em;
+    font-family: $title-font;
+  }
+  i{
+    color: $light-grey;
+  }
+}
+
+.panel-body {
+  background-color: $light-grey;
+}
+.time-yield-group {
+  text-align: center;
+  font-size: 1.25em;
+  span{
+    padding:3px;
+    i{
+      padding:5px;
+    }
+  }
+}
+
+.recipe-actions {
+  .btn {
+    padding:10px;
+    margin: 10px;
+  }
 }
 
 .recipe-tile{
   .thumbnail{
     border: none;
+    background-color: $dark-grey;
+    padding:10px;
+  }
+  h3 {
+    font-weight: bolder;
+    font-size: 3em;
+    padding: 20px;
+    text-align: center;
   }
   &.no-image {
     .thumbnail {
-      background-color: $light-blue;
+      background-color: $purple;
     }
 
     h3 {
       font-family: "Flamenco";
-      font-weight: bolder;
-      font-size: 3em;
-      padding: 20px;
-      text-align: center;
-      color: $dark-purple;
+      color: $yellow;
     }
-
   }
 }
 
