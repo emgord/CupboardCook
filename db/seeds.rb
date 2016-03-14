@@ -22,14 +22,20 @@ files.each do |file|
   end
 end
 
-(1..100).each do |seed|
-  UserIngredient.create(user_id:1, ingredient_id:seed)
-end
+# (1..100).each do |seed|
+#   UserIngredient.create(user_id:1, ingredient_id:seed)
+# end
+#
+# (300..350).each do |seed|
+#   UserIngredient.create(user_id:1, ingredient_id:seed)
+# end
+#
+# (7300..7350).each do |seed|
+#   UserIngredient.create(user_id:1, ingredient_id:seed)
+# end
 
-(300..350).each do |seed|
-  UserIngredient.create(user_id:1, ingredient_id:seed)
-end
+Ingredient.reindex
 
-(7300..7350).each do |seed|
-  UserIngredient.create(user_id:1, ingredient_id:seed)
+Ingredient.order(:recipes_count).reverse.slice!(0,50).each do |i|
+  User.first.ingredients << i
 end

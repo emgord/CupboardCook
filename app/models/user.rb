@@ -22,11 +22,17 @@ class User < ActiveRecord::Base
     end
   end
 
-  def find_recipes(missing = 0)
+  #returns a hash with the recipe id key mapping to the number of ingredients you have for the recipe
+  def find_recipe_hash(missing)
     pantry_names = self.ingredients.map do |i|
       i = i.name
     end
-    recipe_hash  = Recipe.select("recipes.id").joins(:ingredients).where(ingredients: {name: pantry_names}).group("recipes.id").having('COUNT(*) >= recipes.ingredient_count - ?', missing).count
+    recipe_hash = Recipe.select("recipes.id").joins(:ingredients).where(ingredients: {name: pantry_names}).group("recipes.id").having('COUNT(*) >= recipes.ingredient_count - ?', missing).count
+    return recipe_hash
+  end
+
+  def find_recipes(missing = 0)
+    recipe_hash = self.find_recipe_hash(missing)
     recipe_id_array = recipe_hash.keys
     user_recipes = Recipe.where(id: recipe_id_array)
     return user_recipes
