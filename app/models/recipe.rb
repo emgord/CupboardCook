@@ -38,4 +38,11 @@ class Recipe < ActiveRecord::Base
     end
   end
 
+  def missing(user)
+    pantry_names = user.pantry_names
+    have = self.ingredients.where(name: pantry_names).count
+    missing = self.ingredient_count - have
+    return missing
+  end
+
 end
