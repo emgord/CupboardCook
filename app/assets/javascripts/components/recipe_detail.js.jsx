@@ -9,16 +9,16 @@ var RecipeDetail = React.createClass({
   },
 
   render: function(){
-    var image = this.props.recipe.image;
-    if (image == null) {
-      image = "http://thecrites.com/sites/all/modules/cookbook/theme/images/default-recipe-big.png"
+    var image = <img src={this.props.recipe.image} />
+    if (this.props.recipe.image == null) {
+      image = "";
     }
 
     return(
 
-        <div className="thumbnail recipe-detail">
+        <div className="recipe-detail thumbnail">
         <a onClick={this.props.hide}><i className="fa fa-times-circle fa-pull-right fa-2x"></i></a>
-          <img src={image} />
+          {image}
           <div className="caption">
           <h2>{this.props.recipe.title}</h2>
           <h3>Ingredients:</h3>
