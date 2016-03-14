@@ -39,7 +39,7 @@ var Pantry = React.createClass({
 
         <div className="bottom-section">
           <h2>My Ingredients:</h2>
-          <a onClick={this.toggleAllIngredientsEdit}>Edit Pantry</a>
+          <a className="btn btn-primary" onClick={this.toggleAllIngredientsEdit}>Edit Pantry <i class="fa fa-pencil-square-o"></i></a>
           <UserIngredients user_ingredients={this.state.user_ingredients}
                            edit={this.state.userIngredientEdit}
                            removeUserIngredient={this.removeUserIngredient}/>

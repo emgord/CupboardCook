@@ -14,7 +14,7 @@ seed_users.each do |seed|
 end
 
 recipe_path= "#{Rails.root}/db/seeds/"
-files = ["recipes10.json", "recipes442.json", "recipes1101.json", "recipes1217.json", "recipes6027.json", "recipes10234.json"]
+files = ["recipes10.json", "recipes442.json", "recipes1101.json", "recipes1217.json", "recipes6027.json", "recipes10234.json", "recipes1012300.json", "recipes1013880.json", "recipes1016165.json"]
 files.each do |file|
   recipes = JSON.parse(File.read(recipe_path + file))
   recipes.each do |recipe|
