@@ -30,4 +30,8 @@ class Ingredient < ActiveRecord::Base
       return false
     end
   end
+
+  def self.ingredient_add_search(query)
+    Ingredient.search(query, boost_by: [:recipes_count], boost_where: {name: query}, limit: 15)
+  end
 end

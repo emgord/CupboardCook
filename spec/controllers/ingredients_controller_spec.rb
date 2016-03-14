@@ -3,8 +3,9 @@ require 'pry'
 
 RSpec.describe IngredientsController, type: :controller do
   before :each do
-    create(:ingredient, name: "apple")
+    create(:recipe)
     Ingredient.reindex
+    Ingredient.searchkick_index.refresh
   end
 
   context "user is logged out" do
