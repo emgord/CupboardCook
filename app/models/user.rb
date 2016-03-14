@@ -35,12 +35,7 @@ class User < ActiveRecord::Base
     recipe_hash = self.find_recipe_hash(missing)
     # recipe_id_array = recipe_hash.keys
     user_recipes = Recipe.where(id: recipe_hash.keys)
-    user_recipe_with_missing = []
-    user_recipes.each do |recipe|
-      missing_ingredient_count = recipe.ingredient_count - recipe_hash[recipe.id]
-      user_recipe_with_missing.push([recipe, missing_ingredient_count])
-    end
-    return user_recipe_with_missing
+    return user_recipes
   end
 
   def pantry_items_as_json
