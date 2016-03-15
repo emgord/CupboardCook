@@ -13,6 +13,17 @@ RSpec.describe RecipesController, type: :controller do
         expect(subject).to redirect_to login_path
       end
     end
+
+    describe "GET #find_recipes" do
+      it "is not successful and redirects" do
+        get :find_recipes
+        expect(response).to have_http_status(302)
+      end
+      it "redirects to the login page" do
+        get :find_recipes
+        expect(subject).to redirect_to login_path
+      end
+    end
   end
 
   context "user is logged in" do
@@ -29,6 +40,19 @@ RSpec.describe RecipesController, type: :controller do
       it "renders the index template" do
         get :index
         expect(response).to render_template("index")
+      end
+    end
+
+    describe "POST #find_recipes" do
+      let(:find_params) { {:missing => 0} }
+      it "it successful" do
+        post :find_recipes, find_params
+        expect(response).to be_success
+        expect(response).to have_http_status(200)
+      end
+      it "returns json" do
+        post :find_recipes, find_params
+        expect(response.header['Content-Type']).to include 'application/json'
       end
     end
   end
