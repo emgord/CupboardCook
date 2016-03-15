@@ -43,7 +43,8 @@ FactoryGirl.define do
 
       factory :user_missing_2_ingred do
         after(:create) do |user,evaluator|
-          2.times {evaluator.ingredients.last.destroy}
+          evaluator.ingredients.last.destroy
+          evaluator.ingredients.last.destroy
         end
       end
     end

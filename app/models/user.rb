@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
                                                             :include => {:ingredients => {:only => [:name, :id]}})
     results.each do |recipe|
       missing = recipe["ingredient_count"] - recipe_hash[recipe["id"]]
-      recipe[:missing] = missing
+      recipe["missing"] = missing
     end
   end
 end
