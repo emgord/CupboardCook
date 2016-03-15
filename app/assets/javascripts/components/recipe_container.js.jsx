@@ -35,7 +35,7 @@ Recipes = React.createClass({
       $.post('/recipes/find_recipes', {missing: 0},
         function(data) {
           this.setState({recipes:data});
-          $(window).trigger('resize');
+          this.triggerTileShift();
         }.bind(this),
         'JSON'
       );
