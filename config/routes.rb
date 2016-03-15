@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   get '/recipes' => 'recipes#index'
   get '/ingredients/search' => 'ingredients#search', as: :ingredient_search
-  get '/users/recipes' => 'users#find_recipes'
+  post '/recipes/find_recipes' => 'recipes#find_recipes'
   get '/health', to: 'users#health'
   get "/.well-known/acme-challenge/#{ENV['LE_AUTH_REQUEST']}", to: 'users#letsencrypt'
   resources :user_ingredients, only: [:index, :create, :destroy]

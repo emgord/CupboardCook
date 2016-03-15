@@ -31,8 +31,8 @@ Recipes = React.createClass({
     $(window).trigger('resize');
   },
 
-  resetRecipes: function(){
-      $.get('/users/recipes/',
+  resetRecipes: function(missing){
+      $.post('/recipes/find_recipes', {missing: 0},
         function(data) {
           this.setState({recipes:data});
           $(window).trigger('resize');
