@@ -5,7 +5,7 @@ var IngredientSearch = React.createClass({
 	},
 
   resetSearch(){
-    this.setState({ ingredients:[], query: '', autoFocus:'true' });
+    this.setState({ ingredients:[], query: '' });
   },
 
 	searchIngredients(event) {
