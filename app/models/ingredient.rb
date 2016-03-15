@@ -7,7 +7,7 @@ class Ingredient < ActiveRecord::Base
   searchkick
 
   def self.find_or_create(ingredient_name_string)
-    ingredient_name_string.downcase!
+    ingredient_name_string = ingredient_name_string.downcase.strip
     ingredient = self.find_by(name: ingredient_name_string.singularize)
     ingredient ||= self.find_by(name: ingredient_name_string.pluralize)
     ingredient ||= self.find_by(name: ingredient_name_string)
@@ -32,6 +32,6 @@ class Ingredient < ActiveRecord::Base
   end
 
   def self.ingredient_add_search(query)
-    Ingredient.search(query, boost_by: [:recipes_count], boost_where: {name: query}, limit: 15)
+    Ingredient.search(query, boost_by: [:recipes_count], boost_where: {name: query}, where: {recipes_count: {not: 1}}, limit: 15)
   end
 end

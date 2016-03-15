@@ -14,10 +14,10 @@ class Recipe < ActiveRecord::Base
       recipe = Recipe.new
       recipe.title = recipe_hash["title"]
       recipe.uid = recipe_hash["uid"]
-      recipe.original_url = "http://cooking.nytimes.com" + recipe_hash["original_url"] if !recipe_hash["original_url"].nil?
+      recipe.original_url = "//cooking.nytimes.com" + recipe_hash["original_url"] if !recipe_hash["original_url"].nil?
       recipe.time = recipe_hash["time"]
       recipe.yield = recipe_hash["recipe_yield"]
-      recipe.image = recipe_hash["image"]
+      recipe.image = recipe_hash["image"].slice(5,recipe_hash["image"].length) if !recipe_hash["image"].nil?
       recipe.description = recipe_hash["description"]
       if recipe.save
         recipe_hash["ingredients"].each do |ingredient|
