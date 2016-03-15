@@ -22,24 +22,40 @@ class User < ActiveRecord::Base
     end
   end
 
-  def find_recipes
+  def pantry_names
     pantry_names = self.ingredients.map do |i|
       i = i.name
     end
-    recipe_hash  = Recipe.select("recipes.id").joins(:ingredients).where(ingredients: {name: pantry_names}).group("recipes.id").having('COUNT(*) = recipes.ingredient_count').count
-    recipe_id_array = recipe_hash.keys
-    user_recipes = Recipe.where(id: recipe_id_array)
-    return user_recipes
+    return pantry_names
   end
+
+  #returns a hash with the recipe id key mapping to the number of ingredients you have for the recipe
+  def find_recipe_hash(missing)
+    pantry_names = self.pantry_names
+    recipe_hash = Recipe.select("recipes.id").joins(:ingredients).where(ingredients: {name: pantry_names}).group("recipes.id").having('COUNT(*) >= recipes.ingredient_count - ?', missing).count
+    return recipe_hash
+  end
+
+  # def find_recipes(missing = 0)
+  #   recipe_hash = self.find_recipe_hash(missing)
+  #   # recipe_id_array = recipe_hash.keys
+  #   user_recipes = Recipe.where(id: recipe_hash.keys)
+  #   return user_recipes
+  # end
 
   def pantry_items_as_json
     self.user_ingredients.eager_load(:ingredient).as_json(:except => [:create_at, :updated_at],
                                                           :include => {:ingredient => {:only => :name}} )
   end
 
-  def find_recipes_as_json
-    self.find_recipes.eager_load(:ingredients).as_json(:except => [:create_at, :updated_at],
-                                                       :include => {:ingredients => {:only => [:name, :id]}} )
+  def find_recipes_as_json(missing = 0)
+    recipe_hash = self.find_recipe_hash(missing)
+    user_recipes = Recipe.where(id: recipe_hash.keys)
+    results = user_recipes.eager_load(:ingredients).as_json(:except => [:create_at, :updated_at],
+                                                            :include => {:ingredients => {:only => [:name, :id]}})
+    results.each do |recipe|
+      missing = recipe["ingredient_count"] - recipe_hash[recipe["id"]]
+      recipe["missing"] = missing
+    end
   end
-
 end

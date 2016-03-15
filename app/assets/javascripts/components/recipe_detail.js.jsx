@@ -53,7 +53,7 @@ var RecipeDetail = React.createClass({
                 <div className="recipe-actions panel-footer">
                   <a className="btn btn-primary" href={this.props.recipe.original_url} target="_blank">Cook This Now <i className="fa fa-external-link"></i></a>
                   <a className="btn btn-info" onClick={this.markRecipeComplete}>Cooked <i className="fa fa-check"></i></a>
-                  <a><i className="fa fa-heart fa-4x fa-pull-right"></i></a>
+                  <a><i className="fa fa-heart fa-4x icon-right"></i></a>
                 </div>
               </div>
             </div>

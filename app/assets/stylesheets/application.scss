@@ -42,6 +42,7 @@ $light-orange: #ff8555;
 $dark-orange: #B93E00;
 $title-font:'Bitter', serif;
 $body-font:'Raleway', sans-serif;
+$accent-font:'Flamenco', sans-serif;
 
 h1 {
   font-family: $title-font;
@@ -181,6 +182,9 @@ button.add:hover{
   }
   .fa-heart {
     color: $orange;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
   }
 }
 
@@ -210,6 +214,7 @@ button.add:hover{
     border: none;
     background-color: $dark-grey;
     padding:10px;
+    position:relative;
   }
   h3 {
     font-weight: bolder;
@@ -223,10 +228,47 @@ button.add:hover{
     }
 
     h3 {
-      font-family: "Flamenco";
+      font-family: $accent-font;
       color: $yellow;
     }
   }
+}
+
+.icon-right {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.icon-left {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  i{
+    color: $light-blue;
+  }
+  .missing-number{
+    border-radius: 30%;
+    height:30px;
+    width: 30px;
+    border: 3px solid $navy;
+    font-size: 1.5em;
+    margin: auto;
+    text-align: center;
+    color: $navy;
+    background-color: $light-blue;
+    position:relative;
+    p{
+      text-align: center;
+      position: relative;
+      padding: 5px;
+      font: $title-font;
+      top: 50%;
+      -ms-transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+    }
 }
 
 [aria-hidden="true"] { display: none; }

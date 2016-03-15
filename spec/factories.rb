@@ -35,8 +35,15 @@ FactoryGirl.define do
         create_list(:recipe, 1, ingredient_list: evaluator.ingredients)
       end
 
-      factory :user_missing_ingreds do
+      factory :user_missing_1_ingred do
         after(:create) do |user,evaluator|
+          evaluator.ingredients.last.destroy
+        end
+      end
+
+      factory :user_missing_2_ingred do
+        after(:create) do |user,evaluator|
+          evaluator.ingredients.last.destroy
           evaluator.ingredients.last.destroy
         end
       end

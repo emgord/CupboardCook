@@ -12,7 +12,8 @@ var Ingredients = React.createClass({
 				if (user_ingredient.ingredient_id == ingredient.id) {
 						finalIngredient = (<UserIngredient key={ingredient.id}
 		                                           removeUserIngredient={removeUserIngredient}
-		                                           user_ingredient={user_ingredient} /> );
+		                                           user_ingredient={user_ingredient}
+																							 edit={editUserIngredient} /> );
 				}
 			});
 			if (finalIngredient == null) {
