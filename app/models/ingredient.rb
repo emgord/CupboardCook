@@ -7,7 +7,7 @@ class Ingredient < ActiveRecord::Base
   searchkick
 
   def self.find_or_create(ingredient_name_string)
-    ingredient_name_string = ingredient_name_string.downcase.strip
+    ingredient_name_string = ingredient_name_string.downcase.strip.gsub("-"," ")
     ingredient = self.find_by(name: ingredient_name_string.singularize)
     ingredient ||= self.find_by(name: ingredient_name_string.pluralize)
     ingredient ||= self.find_by(name: ingredient_name_string)
