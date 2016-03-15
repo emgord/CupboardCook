@@ -50,7 +50,8 @@ class User < ActiveRecord::Base
 
   def find_recipes_as_json(missing = 0)
     recipe_hash = self.find_recipe_hash(missing)
-    user_recipes = Recipe.where(id: recipe_hash.keys)
+    recipe_id_array = recipe_hash.keys.slice(0,100)
+    user_recipes = Recipe.where(id: recipe_id_array)
     results = user_recipes.eager_load(:ingredients).as_json(:except => [:create_at, :updated_at],
                                                             :include => {:ingredients => {:only => [:name, :id]}})
     results.each do |recipe|
