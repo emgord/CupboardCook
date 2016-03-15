@@ -36,12 +36,12 @@ class User < ActiveRecord::Base
     return recipe_hash
   end
 
-  def find_recipes(missing = 0)
-    recipe_hash = self.find_recipe_hash(missing)
-    # recipe_id_array = recipe_hash.keys
-    user_recipes = Recipe.where(id: recipe_hash.keys)
-    return user_recipes
-  end
+  # def find_recipes(missing = 0)
+  #   recipe_hash = self.find_recipe_hash(missing)
+  #   # recipe_id_array = recipe_hash.keys
+  #   user_recipes = Recipe.where(id: recipe_hash.keys)
+  #   return user_recipes
+  # end
 
   def pantry_items_as_json
     self.user_ingredients.eager_load(:ingredient).as_json(:except => [:create_at, :updated_at],
@@ -52,11 +52,10 @@ class User < ActiveRecord::Base
     recipe_hash = self.find_recipe_hash(missing)
     user_recipes = Recipe.where(id: recipe_hash.keys)
     results = user_recipes.eager_load(:ingredients).as_json(:except => [:create_at, :updated_at],
-                                                       :include => {:ingredients => {:only => [:name, :id]}})
+                                                            :include => {:ingredients => {:only => [:name, :id]}})
     results.each do |recipe|
       missing = recipe["ingredient_count"] - recipe_hash[recipe["id"]]
       recipe[:missing] = missing
     end
   end
-
 end

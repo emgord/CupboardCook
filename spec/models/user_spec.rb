@@ -48,23 +48,23 @@ RSpec.describe User, type: :model do
     let(:user_missing_1_ingred) {create(:user_missing_1_ingred)}
     let(:user_missing_2_ingred) {create(:user_missing_2_ingred)}
     it "returns recipes you can make using ingredients in your pantry" do
-      expect(user_with_all_ingred.find_recipes.count).to eq(1)
-      expect(user_with_all_ingred.find_recipes[0]).to eq(Recipe.first)
+      expect(user_with_all_ingred.find_recipes_as_json.count).to eq(1)
+      expect(user_with_all_ingred.find_recipes_as_json[0]["id"]).to eq(Recipe.first.id)
     end
     it "returns nothing if you can't make any recipes" do
-      expect(user_missing_1_ingred.find_recipes.count).to eq(0)
+      expect(user_missing_1_ingred.find_recipes_as_json.count).to eq(0)
     end
     it "can specify to include recipes missing 1 ingredient" do
-      expect(user_missing_1_ingred.find_recipes(1).count).to eq(1)
-      expect(user_missing_1_ingred.find_recipes(1)[0]).to eq(Recipe.first)
+      expect(user_missing_1_ingred.find_recipes_as_json(1).count).to eq(1)
+      expect(user_missing_1_ingred.find_recipes_as_json(1)[0]["id"]).to eq(Recipe.first.id)
     end
     it "can specify to include recipes missing 2 ingredients" do
-      expect(user_missing_2_ingred.find_recipes(2).count).to eq(1)
-      expect(user_missing_2_ingred.find_recipes(2)[0]).to eq(Recipe.first)
+      expect(user_missing_2_ingred.find_recipes_as_json(2).count).to eq(1)
+      expect(user_missing_2_ingred.find_recipes_as_json(2)[0]["id"]).to eq(Recipe.first.id)
     end
     it "still returns the recipe even if you have all ingredients" do
-      expect(user_with_all_ingred.find_recipes(1).count).to eq(1)
-      expect(user_with_all_ingred.find_recipes(1)[0]).to eq(Recipe.first)
+      expect(user_with_all_ingred.find_recipes_as_json(1).count).to eq(1)
+      expect(user_with_all_ingred.find_recipes_as_json(1)[0]["id"]).to eq(Recipe.first.id)
     end
   end
 end
