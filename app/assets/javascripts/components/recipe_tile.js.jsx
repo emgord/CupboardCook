@@ -13,9 +13,9 @@ var RecipeTile = React.createClass({
     }
     var missing;
     if (this.props.recipe.missing == 0 ) {
-      missing = <i className="fa fa-thumbs-up"></i>;
+      missing = <i className="fa fa-thumbs-up fa-2x"></i>;
     } else {
-      missing = <h1><i className="fa fa-minus"></i>{this.props.recipe.missing}</h1>;
+      missing = <div className="missing-number"><p>-{this.props.recipe.missing}</p></div>;
     };
     return(
       <div className={pictureClass} onClick={this.handleClick}>
@@ -23,7 +23,10 @@ var RecipeTile = React.createClass({
             {image}
           <div className="caption">
           <h3>{this.props.recipe.title}</h3>
-          {missing}
+            <div className="icon-left">
+              {missing}
+            </div>
+            <a><i className="fa fa-heart fa-2x icon-right"></i></a>
           </div>
         </div>
       </div>
