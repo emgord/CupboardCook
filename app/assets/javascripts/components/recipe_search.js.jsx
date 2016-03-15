@@ -23,7 +23,7 @@ var RecipeSearch = React.createClass({
 	render () {
 		return (
 			<div className="recipe-search">
-        <a onClick={this.decrementMissing} className="btn btn-primary btn-sm">-</a>{this.state.missing}<a onClick={this.incrementMissing} className="btn btn-primary btn-sm">+</a>
+        <a onClick={this.decrementMissing} className="btn btn-primary btn-sm"><i className="fa fa-chevron-left"></i></a>{this.state.missing}<a onClick={this.incrementMissing} className="btn btn-primary btn-sm"><i className="fa fa-chevron-right"></i></a>
 			</div>
 			);
 	}
