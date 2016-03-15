@@ -35,6 +35,10 @@ end
 #   UserIngredient.create(user_id:1, ingredient_id:seed)
 # end
 
+Recipe.where("ingredient_count <= 1").each do |r|
+  r.destroy
+end
+
 Ingredient.reindex
 
 Ingredient.order(:recipes_count).reverse.slice!(0,50).each do |i|
