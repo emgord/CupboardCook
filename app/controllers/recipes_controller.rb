@@ -14,6 +14,6 @@ class RecipesController < ApplicationController
   private
 
   def missing_params
-    params.permit(:missing)
+    params.require(:missing)
   end
 end

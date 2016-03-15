@@ -31,8 +31,9 @@ Recipes = React.createClass({
     $(window).trigger('resize');
   },
 
-  resetRecipes: function(missing){
-      $.post('/recipes/find_recipes', {missing: 0},
+  resetRecipes: function(i){
+    i = i ? i : 0
+      $.post('/recipes/find_recipes', {missing: i},
         function(data) {
           this.setState({recipes:data});
           this.triggerTileShift();
@@ -64,6 +65,7 @@ Recipes = React.createClass({
       </div>
       <div className="top-section">
         <h1>Recipes</h1>
+        <RecipeSearch resetRecipes={this.resetRecipes} />
       </div>
       <div className="masonry-container bottom-section">
         <Masonry recipes={this.state.recipes}
