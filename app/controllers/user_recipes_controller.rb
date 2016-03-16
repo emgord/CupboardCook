@@ -14,10 +14,6 @@ class UserRecipesController < ApplicationController
     end
   end
 
-  def index
-    render json: @user_recipes = current_user.recipes ### as JSON .recipes.where(user_recipes: {heart: true}).
-  end
-
   def destroy
       user_recipe = UserRecipe.find(params[:id])
       if user_recipe.user_id == current_user.id

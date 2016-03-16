@@ -61,4 +61,7 @@ class User < ActiveRecord::Base
       recipe["missing"] = missing
     end
   end
+
+  def heart_recipes_as_json
+  end
 end
