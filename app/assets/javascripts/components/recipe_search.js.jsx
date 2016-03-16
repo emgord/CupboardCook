@@ -41,17 +41,24 @@ var RecipeSearch = React.createClass({
 	render () {
 
     if (this.state.heart) {
-      var sortOptions = <a onClick={this.showAll} className="btn btn-primary">Unheart!</a>;
+      var sortOptions =
+      <div className = "btn-group">
+        <a onClick={this.showHeart} className="btn btn-primary disabled"><i className="fa fa-heart"></i>    Favorite Recipes</a>
+        <a onClick={this.showAll} className="btn btn-default">Browse All</a>
+      </div>;
     } else {
       var sortOptions =
           <div>
-      			<div className="btn-group recipe-search">
-              <a onClick={this.decrementMissing} className="btn btn-primary"><i className="fa fa-chevron-left"></i></a>
-              <p className= "btn btn-default">{this.state.missing}</p>
-              <a onClick={this.incrementMissing} className="btn btn-primary"><i className="fa fa-chevron-right"></i></a>
+          <div className = "btn-group">
+            <a onClick={this.showHeart} className="btn btn-primary"><i className="fa fa-heart"></i>    Favorite Recipes</a>
+            <a className="btn btn-default disabled">Browse All</a>
+          </div>
+      		<div className="btn-group">
+            <a onClick={this.decrementMissing} className="btn btn-primary"><i className="fa fa-chevron-left"></i></a>
+            <p className= "btn btn-default">{this.state.missing}</p>
+            <a onClick={this.incrementMissing} className="btn btn-primary"><i className="fa fa-chevron-right"></i></a>
             </div>
-            <a onClick={this.showHeart} className="btn btn-primary">Heart!</a>
-            </div>;
+          </div>;
     }
 
 
