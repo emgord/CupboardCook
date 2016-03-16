@@ -90,5 +90,4 @@ FactoryGirl.define do
     amount 1
     unit "cup"
   end
-
 end
