@@ -21,6 +21,12 @@ var RecipeSearch = React.createClass({
     }
   },
 
+  showHeart: function(){
+    var heart = true;
+    var missing = 40;
+    this.setState({heart: heart, missing:missing }, this.updateSearch)
+  },
+
   updateSearch: function(){
     var search_options = this.state;
     this.props.resetRecipes(search_options)
@@ -32,6 +38,7 @@ var RecipeSearch = React.createClass({
         <a onClick={this.decrementMissing} className="btn btn-primary"><i className="fa fa-chevron-left"></i></a>
         <p className= "btn btn-default">{this.state.missing}</p>
         <a onClick={this.incrementMissing} className="btn btn-primary"><i className="fa fa-chevron-right"></i></a>
+        <a onClick={this.showHeart} className="btn btn-primary">Heart!</a>
 			</div>
 			);
 	}

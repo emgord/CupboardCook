@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
   def find_recipes
     search_options = {}
     search_options[:missing] = search_option_params["missing"].to_i
-    search_options[:heart] = search_option_params[:heart]
+    search_options[:heart] = search_option_params[:heart] == "true" ? true : false
     render json: current_user.find_recipes_as_json(search_options)
   end
 
