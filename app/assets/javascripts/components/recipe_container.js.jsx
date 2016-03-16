@@ -3,7 +3,10 @@ Recipes = React.createClass({
   return { recipes: this.props.recipes,
            user_ingredients: this.props.user_ingredients,
            recipeDetail: this.props.recipes[0],
-           showRecipe: false};
+           showRecipe: false,
+           missing: 0,
+           heart: false
+         };
   },
 
   getDefaultProps: function(){
@@ -31,7 +34,11 @@ Recipes = React.createClass({
     $(window).trigger('resize');
   },
 
-  resetRecipes: function(search_options){
+  resetRecipes: function(){
+      var search_options = {
+        missing: this.state.missing,
+        heart: this.state.heart
+      };
       $.post('/recipes/find_recipes', {search_options},
         function(data) {
           this.setState({recipes:data});
@@ -51,6 +58,34 @@ Recipes = React.createClass({
     this.showRecipeDetail();
   },
 
+  incrementMissing: function(){
+    var missing = this.state.missing
+    if (missing < 39) {
+      missing++
+      this.setState({missing: missing }, this.resetRecipes)
+    }
+  },
+
+  decrementMissing: function(){
+    var missing = this.state.missing
+    if (missing > 0) {
+      missing--
+      this.setState({missing: missing }, this.resetRecipes)
+    }
+  },
+
+  showHeart: function(){
+    var heart = true;
+    var missing = 40;
+    this.setState({heart: heart, missing:missing }, this.resetRecipes)
+  },
+
+  showAll: function(){
+    var heart = false;
+    var missing = 0;
+    this.setState({heart: heart, missing:missing }, this.resetRecipes)
+  },
+
   render: function() {
     var show = this.state.showRecipe ? 'false' : 'true';
     return (
@@ -64,7 +99,12 @@ Recipes = React.createClass({
       </div>
       <div className="top-section">
         <h1>Recipes</h1>
-        <RecipeSearch resetRecipes={this.resetRecipes} />
+        <RecipeSearch showAll={this.showAll}
+                      showHeart={this.showHeart}
+                      decrementMissing={this.decrementMissing}
+                      incrementMissing={this.incrementMissing}
+                      missing={this.state.missing}
+                      heart={this.state.heart}/>
       </div>
       <div className="masonry-container bottom-section">
         <Masonry recipes={this.state.recipes}
