@@ -50,9 +50,13 @@ class User < ActiveRecord::Base
                                                           :include => {:ingredient => {:only => :name}} )
   end
 
-  def find_recipes_as_json(missing = 0)
-    recipe_hash = self.find_recipe_hash(missing)
-    recipe_id_array = recipe_hash.keys.slice(0,100)
+  def find_recipes_as_json(search_options)
+    recipe_hash = self.find_recipe_hash(search_options[:missing])
+    if search_options[:heart] == true
+      recipe_id_array = self.recipes.pluck(:id)
+    else
+      recipe_id_array = recipe_hash.keys.slice(0,100)
+    end
     user_recipes = Recipe.where(id: recipe_id_array)
     results = user_recipes.eager_load(:ingredients).as_json(:except => [:create_at, :updated_at],
                                                             :include => {:ingredients => {:only => [:name, :id]}})
@@ -60,8 +64,5 @@ class User < ActiveRecord::Base
       missing = recipe["ingredient_count"] - recipe_hash[recipe["id"]]
       recipe["missing"] = missing
     end
-  end
-
-  def heart_recipes_as_json
   end
 end

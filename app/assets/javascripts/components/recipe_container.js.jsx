@@ -31,9 +31,8 @@ Recipes = React.createClass({
     $(window).trigger('resize');
   },
 
-  resetRecipes: function(i){
-    i = i ? i : 0
-      $.post('/recipes/find_recipes', {missing: i},
+  resetRecipes: function(search_options){
+      $.post('/recipes/find_recipes', {search_options},
         function(data) {
           this.setState({recipes:data});
           this.triggerTileShift();
