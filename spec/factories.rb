@@ -1,4 +1,10 @@
 FactoryGirl.define do
+  factory :user_recipe do
+    user_id 1
+    recipe_id 1
+    cooked false
+    heart false
+  end
 
   factory :ingredient do
     transient do
