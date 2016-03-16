@@ -8,6 +8,20 @@ var RecipeDetail = React.createClass({
     this.setState({ completeRecipe: !this.state.completeRecipe });
   },
 
+  addHeart: function(e) {
+    e.preventDefault();
+    var user_recipe = {
+      heart: true,
+      recipe_id: this.props.recipe.id
+    };
+    $.post('/user_recipes',{ user_recipe },
+      function(data) {
+        console.log(data);
+      }.bind(this),
+      'JSON'
+    );
+  },
+
   render: function(){
     if (this.props.recipe.image == null) {
       var image = "";
@@ -53,7 +67,7 @@ var RecipeDetail = React.createClass({
                 <div className="recipe-actions panel-footer">
                   <a className="btn btn-primary" href={this.props.recipe.original_url} target="_blank">Cook This Now <i className="fa fa-external-link"></i></a>
                   <a className="btn btn-info" onClick={this.markRecipeComplete}>Cooked <i className="fa fa-check"></i></a>
-                  <a><i className="fa fa-heart fa-4x icon-right"></i></a>
+                  <a onClick={this.addHeart}><i className="fa fa-heart fa-4x icon-right"></i></a>
                 </div>
               </div>
             </div>

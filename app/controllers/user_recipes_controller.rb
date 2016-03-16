@@ -4,8 +4,6 @@ class UserRecipesController < ApplicationController
   def create
     @item = UserRecipe.new(user_recipe_params)
     @item.user_id = current_user.id
-    @item.heart = false if user_recipe_params[:heart].nil?
-    @item.cooked = false if user_recipe_params[:cooked].nil?
     if @item.save
       render json: @item.as_json(:except => [:create_at, :updated_at],
                                  :include => {:recipe => {:except=> [:create_at, :updated_at]}} )

@@ -86,6 +86,8 @@ Recipes = React.createClass({
     this.setState({heart: heart, missing:missing }, this.resetRecipes)
   },
 
+
+
   render: function() {
     var show = this.state.showRecipe ? 'false' : 'true';
     return (
@@ -95,7 +97,8 @@ Recipes = React.createClass({
                       recipe={this.state.recipeDetail}
                       user_ingredients={this.state.user_ingredients}
                       removeUserIngredient={this.resetOnChange}
-                      hide={this.hideRecipeDetail} />
+                      hide={this.hideRecipeDetail}
+                       />
       </div>
       <div className="top-section">
         <h1>Recipes</h1>
