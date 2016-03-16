@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/health', to: 'users#health'
   get "/.well-known/acme-challenge/#{ENV['LE_AUTH_REQUEST']}", to: 'users#letsencrypt'
   resources :user_ingredients, only: [:index, :create, :destroy]
+  resources :user_recipes, only: [:index, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
