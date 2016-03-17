@@ -63,18 +63,16 @@ h2 {
   }
 }
 
-.uk-search {
-  background-color: $yellow;
-  border-radius: 5px;
-  opacity:70%;
-}
-
 .bottom-section {
   padding: 50px;
   background-color: $light-grey;
   h2 {
     color:$deep-blue;
   }
+}
+
+.uk-form input {
+  border-radius: 5px !important;
 }
 
 .heading {
