@@ -8,6 +8,30 @@ var RecipeDetail = React.createClass({
     this.setState({ completeRecipe: !this.state.completeRecipe });
   },
 
+  addHeart: function(e) {
+    e.preventDefault();
+    var user_recipe = {
+      heart: true,
+      recipe_id: this.props.recipe.id
+    };
+    $.post('/user_recipes',{ user_recipe },
+      function(data) {
+        this.props.toggleHeartRecipe(this.props.recipe);
+      }.bind(this),
+      'JSON'
+    );
+  },
+
+  removeHeart: function(e) {
+    e.preventDefault();
+    $.ajax({
+      method: "DELETE",
+      url: "/user_recipes/" + this.props.recipe.id
+    }).success(function(){
+      this.props.toggleHeartRecipe(this.props.recipe);
+    }.bind(this));
+  },
+
   render: function(){
     if (this.props.recipe.image == null) {
       var image = "";
@@ -25,6 +49,20 @@ var RecipeDetail = React.createClass({
       var recipeYield = "";
     } else {
       var recipeYield = <span><i className="fa fa-cutlery">   </i><strong>Yield:</strong>{this.props.recipe.yield}</span>;
+    }
+
+    if (this.props.recipe.heart == true) {
+      var heart =
+        <a onClick={this.removeHeart}>
+          <i className="fa fa-heart fa-4x icon-right remove-heart"></i>
+          <i className="fa fa-times fa-4x x-heart"></i>
+        </a>;
+    } else {
+      var heart =
+      <a onClick={this.addHeart}>
+        <i className="fa fa-heart fa-4x icon-right add-heart"></i>
+        <i className="fa fa-plus fa-4x plus-heart"></i>
+      </a>;
     }
 
     return(
@@ -53,7 +91,7 @@ var RecipeDetail = React.createClass({
                 <div className="recipe-actions panel-footer">
                   <a className="btn btn-primary" href={this.props.recipe.original_url} target="_blank">Cook This Now <i className="fa fa-external-link"></i></a>
                   <a className="btn btn-info" onClick={this.markRecipeComplete}>Cooked <i className="fa fa-check"></i></a>
-                  <a><i className="fa fa-heart fa-4x icon-right"></i></a>
+                  {heart}
                 </div>
               </div>
             </div>

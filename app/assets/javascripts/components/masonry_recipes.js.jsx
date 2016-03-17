@@ -15,7 +15,8 @@ Masonry = React.createClass({
       return (
         <RecipeTile changeRecipeDetail={this.props.changeRecipeDetail}
                     key={recipe.id}
-                    recipe={recipe} />
+                    recipe={recipe}
+										toggleHeartRecipe={this.props.toggleHeartRecipe} />
             );}, this);
 
     return (

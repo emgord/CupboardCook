@@ -3,7 +3,10 @@ Recipes = React.createClass({
   return { recipes: this.props.recipes,
            user_ingredients: this.props.user_ingredients,
            recipeDetail: this.props.recipes[0],
-           showRecipe: false};
+           showRecipe: false,
+           missing: 0,
+           heart: false
+         };
   },
 
   getDefaultProps: function(){
@@ -27,13 +30,29 @@ Recipes = React.createClass({
     this.setState({ user_ingredients: user_ingredients });
   },
 
+  toggleHeartRecipe: function(recipe){
+    var recipes = this.state.recipes.slice();
+    var recipe_index = recipes.indexOf(recipe);
+    if (this.state.heart) {
+      recipes.splice(recipe_index,1);
+      this.triggerTileShift();
+    } else {
+      recipes[recipe_index].heart = !recipes[recipe_index].heart;
+    }
+
+    this.setState({ recipes: recipes });
+  },
+
   triggerTileShift: function(){
     $(window).trigger('resize');
   },
 
-  resetRecipes: function(i){
-    i = i ? i : 0
-      $.post('/recipes/find_recipes', {missing: i},
+  resetRecipes: function(){
+      var search_options = {
+        missing: this.state.missing,
+        heart: this.state.heart
+      };
+      $.post('/recipes/find_recipes', {search_options},
         function(data) {
           this.setState({recipes:data});
           this.triggerTileShift();
@@ -52,6 +71,34 @@ Recipes = React.createClass({
     this.showRecipeDetail();
   },
 
+  incrementMissing: function(){
+    var missing = this.state.missing
+    if (missing < 39) {
+      missing++
+      this.setState({missing: missing }, this.resetRecipes)
+    }
+  },
+
+  decrementMissing: function(){
+    var missing = this.state.missing
+    if (missing > 0) {
+      missing--
+      this.setState({missing: missing }, this.resetRecipes)
+    }
+  },
+
+  showHeart: function(){
+    var heart = true;
+    var missing = 40;
+    this.setState({heart: heart, missing:missing }, this.resetRecipes)
+  },
+
+  showAll: function(){
+    var heart = false;
+    var missing = 0;
+    this.setState({heart: heart, missing:missing }, this.resetRecipes)
+  },
+
   render: function() {
     var show = this.state.showRecipe ? 'false' : 'true';
     return (
@@ -61,16 +108,24 @@ Recipes = React.createClass({
                       recipe={this.state.recipeDetail}
                       user_ingredients={this.state.user_ingredients}
                       removeUserIngredient={this.resetOnChange}
-                      hide={this.hideRecipeDetail} />
+                      hide={this.hideRecipeDetail}
+                      toggleHeartRecipe={this.toggleHeartRecipe}
+                       />
       </div>
       <div className="top-section">
         <h1>Recipes</h1>
-        <RecipeSearch resetRecipes={this.resetRecipes} />
+        <RecipeSearch showAll={this.showAll}
+                      showHeart={this.showHeart}
+                      decrementMissing={this.decrementMissing}
+                      incrementMissing={this.incrementMissing}
+                      missing={this.state.missing}
+                      heart={this.state.heart}/>
       </div>
       <div className="masonry-container bottom-section">
         <Masonry recipes={this.state.recipes}
                  user_ingredients={this.state.user_ingredients}
-                 changeRecipeDetail={this.changeRecipeDetail}/>
+                 changeRecipeDetail={this.changeRecipeDetail}
+                 toggleHeartRecipe={this.toggleHeartRecipe}/>
       </div>
       </div>
     );

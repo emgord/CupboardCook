@@ -177,14 +177,56 @@ button.add:hover{
     font-size: 3em;
     font-family: $title-font;
   }
-  i{
+  i.fa-times{
     color: $light-grey;
   }
   .fa-heart {
-    color: $orange;
     position: absolute;
     bottom: 30px;
     right: 30px;
+  }
+  i.x-heart {
+    color: transparent;
+    position: absolute;
+    bottom: 37px;
+    right: 36px;
+    &:hover{
+      color: $trans-grey;
+    }
+  }
+  i.plus-heart{
+    color: transparent;
+    position: absolute;
+    bottom: 30px;
+    right: 36px;
+    &:hover{
+      color: $trans-grey;
+    }
+  }
+
+}
+
+.remove-heart{
+  color: $orange;
+}
+
+.plus-heart{
+  color: transparent;
+  position: absolute;
+  bottom: 5px;
+  right: 8px;
+  &:hover{
+    color: $trans-grey;
+  }
+}
+
+.x-heart{
+  color: transparent;
+  position: absolute;
+  bottom: 5px;
+  right: 7px;
+  &:hover{
+    color: $trans-grey;
   }
 }
 

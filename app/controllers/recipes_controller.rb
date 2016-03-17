@@ -7,13 +7,17 @@ class RecipesController < ApplicationController
   end
 
   def find_recipes
-    render json: current_user.find_recipes_as_json(missing_params)
+    search_options = {}
+    search_options[:missing] = search_option_params["missing"].to_i
+    search_options[:heart] = search_option_params[:heart] == "true" ? true : false
+    render json: current_user.find_recipes_as_json(search_options)
   end
 
 
   private
 
-  def missing_params
-    params.require(:missing)
+  def search_option_params
+    params.require(:search_options).permit(:missing, :heart)
   end
+
 end
