@@ -43,6 +43,10 @@ Ingredient.where(recipes_count: nil).each do |i|
   i.destroy
 end
 
+Recipe.where(ingredient_count: nil).each do |r|
+  r.destroy
+end
+
 # Ingredient.where("recipes_count = nil").each do |r|
 #   r.destroy
 # end
