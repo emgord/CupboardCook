@@ -185,6 +185,25 @@ button.add:hover{
     bottom: 30px;
     right: 30px;
   }
+  i.x-heart {
+    color: transparent;
+    position: absolute;
+    bottom: 37px;
+    right: 36px;
+    &:hover{
+      color: $trans-grey;
+    }
+  }
+  i.plus-heart{
+    color: transparent;
+    position: absolute;
+    bottom: 30px;
+    right: 36px;
+    &:hover{
+      color: $trans-grey;
+    }
+  }
+
 }
 
 .remove-heart{

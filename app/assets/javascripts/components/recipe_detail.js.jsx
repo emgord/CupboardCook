@@ -16,10 +16,20 @@ var RecipeDetail = React.createClass({
     };
     $.post('/user_recipes',{ user_recipe },
       function(data) {
-        console.log(data);
+        this.props.toggleHeartRecipe(this.props.recipe);
       }.bind(this),
       'JSON'
     );
+  },
+
+  removeHeart: function(e) {
+    e.preventDefault();
+    $.ajax({
+      method: "DELETE",
+      url: "/user_recipes/" + this.props.recipe.id
+    }).success(function(){
+      this.props.toggleHeartRecipe(this.props.recipe);
+    }.bind(this));
   },
 
   render: function(){
@@ -42,9 +52,17 @@ var RecipeDetail = React.createClass({
     }
 
     if (this.props.recipe.heart == true) {
-      var heart = <a onClick={this.addHeart}><i className="fa fa-heart fa-4x icon-right remove-heart"></i></a>;
+      var heart =
+        <a onClick={this.removeHeart}>
+          <i className="fa fa-heart fa-4x icon-right remove-heart"></i>
+          <i className="fa fa-times fa-4x x-heart"></i>
+        </a>;
     } else {
-      var heart = <a onClick={this.removeHeart}><i className="fa fa-heart fa-4x icon-right add-heart"></i></a>;
+      var heart =
+      <a onClick={this.addHeart}>
+        <i className="fa fa-heart fa-4x icon-right add-heart"></i>
+        <i className="fa fa-plus fa-4x plus-heart"></i>
+      </a>;
     }
 
     return(

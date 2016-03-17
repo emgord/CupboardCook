@@ -103,6 +103,7 @@ Recipes = React.createClass({
                       user_ingredients={this.state.user_ingredients}
                       removeUserIngredient={this.resetOnChange}
                       hide={this.hideRecipeDetail}
+                      toggleHeartRecipe={this.toggleHeartRecipe}
                        />
       </div>
       <div className="top-section">
