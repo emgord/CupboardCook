@@ -17,16 +17,17 @@ class Recipe < ActiveRecord::Base
       description: description,
       has_description: description.present?,
       has_image: image.present?,
-      ingredients: ingredients
+      ingredients: ingredients.name
     }
   end
 
   def self.search_recipes(recipe_id_array)
     Recipe.search("*",
                   where: {id: recipe_id_array},
+                  operator: "or",
                   limit:100,
                   boost_where: {has_image: true},
-                  boost_where: {has_description: true},
+                  boost_where: {has_description: true, factor: 100},
                   include: :ingredients,
                   load: { Recipe =>{ :include => :ingredients}})
   end
