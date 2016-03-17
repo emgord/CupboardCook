@@ -36,13 +36,13 @@ var RecipeTile = React.createClass({
       var heart =
         <a onClick={this.addHeart}>
           <i className="fa fa-heart fa-2x remove-heart icon-right"></i>
-          <i className="fa fa-times fa-2x x-heart icon-right"></i>
+          <i className="fa fa-times fa-3x x-heart"></i>
         </a>;
     } else {
       var heart =
         <a onClick={this.removeHeart} >
           <i className="fa fa-heart fa-2x icon-right add-heart icon-right"></i>
-          <i className="fa fa-plus fa-2x plus-heart icon-right"></i>
+          <i className="fa fa-plus fa-2x plus-heart"></i>
         </a>;
     }
 
