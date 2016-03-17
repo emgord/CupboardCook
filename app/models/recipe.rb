@@ -8,6 +8,25 @@ class Recipe < ActiveRecord::Base
   validates :image, length: {maximum: 300}
   validates :description, length: {maximum: 2000}
   validates :uid, uniqueness:true, presence: true
+  searchkick
+  scope :search_import, -> { includes(:ingredients) }
+
+  def search_data
+    {
+      title: title,
+      description: description,
+      has_description: description.present?,
+      has_image: image.present?,
+      ingredients: ingredients
+    }
+  end
+
+  def self.search_recipes(recipe_id_array)
+    Recipe.search(where: {id: recipe_id_array},
+                  limit:100,
+                  include: :ingredients,
+                  load: { Recipe =>{ :include => :ingredients}})
+  end
 
   def self.create_from_scrapy_seed(recipe_hash)
     if !recipe_hash["ingredients"].nil? && recipe_hash["ingredients"].length > 0

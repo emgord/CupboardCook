@@ -62,9 +62,9 @@ class User < ActiveRecord::Base
     else
       recipe_id_array = recipe_hash.keys.slice(0,100)
     end
-    user_recipes = Recipe.where(id: recipe_id_array)
-    results = user_recipes.eager_load(:ingredients).as_json(:except => [:create_at, :updated_at],
-                                                            :include => {:ingredients => {:only => [:name, :id]}})
+    user_recipes = Recipe.search_recipes(recipe_id_array)
+    results = user_recipes.as_json(:except => [:create_at, :updated_at],
+                                              :include => {:ingredients => {:only => [:name, :id]}})
     results.each do |recipe|
       if recipe_hash[recipe["id"]]
         missing = recipe["ingredient_count"] - recipe_hash[recipe["id"]]
