@@ -13,7 +13,7 @@ class UserRecipesController < ApplicationController
   end
 
   def destroy
-      user_recipe = UserRecipe.find(params[:id])
+      user_recipe = UserRecipe.find_by(recipe_id: params[:id], user_id: current_user.id)
       if user_recipe.user_id == current_user.id
         user_recipe.destroy
       end

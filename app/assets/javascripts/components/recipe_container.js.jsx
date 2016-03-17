@@ -30,6 +30,13 @@ Recipes = React.createClass({
     this.setState({ user_ingredients: user_ingredients });
   },
 
+  toggleHeartRecipe: function(recipe){
+    var recipes = this.state.recipes.slice();
+    var recipe_index = recipes.indexOf(recipe);
+    recipes[recipe_index].heart = !recipes[recipe_index].heart;
+    this.setState({ recipes: recipes });
+  },
+
   triggerTileShift: function(){
     $(window).trigger('resize');
   },
@@ -86,8 +93,6 @@ Recipes = React.createClass({
     this.setState({heart: heart, missing:missing }, this.resetRecipes)
   },
 
-
-
   render: function() {
     var show = this.state.showRecipe ? 'false' : 'true';
     return (
@@ -112,7 +117,8 @@ Recipes = React.createClass({
       <div className="masonry-container bottom-section">
         <Masonry recipes={this.state.recipes}
                  user_ingredients={this.state.user_ingredients}
-                 changeRecipeDetail={this.changeRecipeDetail}/>
+                 changeRecipeDetail={this.changeRecipeDetail}
+                 toggleHeartRecipe={this.toggleHeartRecipe}/>
       </div>
       </div>
     );
