@@ -4,7 +4,7 @@ class Ingredient < ActiveRecord::Base
   has_many :recipe_ingredients
   has_many :recipes, through: :recipe_ingredients
   validates :name, presence: true, uniqueness: true, length: { maximum: 40 }
-  searchkick
+  searchkick word_start: [:name]
 
   def self.find_or_create(ingredient_name_string)
     ingredient_name_string = ingredient_name_string.downcase.strip.gsub("-"," ")
@@ -32,6 +32,12 @@ class Ingredient < ActiveRecord::Base
   end
 
   def self.ingredient_add_search(query)
-    Ingredient.search(query, boost_by: [:recipes_count], boost_where: {name: query}, where: {recipes_count: {not: 1}}, limit: 15)
+    Ingredient.search(query,
+                      boost_by: [:recipes_count],
+                      boost_where: {name: query},
+                      where: {recipes_count: {not: 1}},
+                      limit: 10,
+                      fields: [:name],
+                      match: :word_start)
   end
 end
