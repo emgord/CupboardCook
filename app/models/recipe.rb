@@ -22,8 +22,11 @@ class Recipe < ActiveRecord::Base
   end
 
   def self.search_recipes(recipe_id_array)
-    Recipe.search(where: {id: recipe_id_array},
+    Recipe.search("*",
+                  where: {id: recipe_id_array},
                   limit:100,
+                  boost_where: {has_image: true},
+                  boost_where: {has_description: true},
                   include: :ingredients,
                   load: { Recipe =>{ :include => :ingredients}})
   end

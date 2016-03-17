@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
     end
     user_recipes = Recipe.search_recipes(recipe_id_array)
     results = user_recipes.as_json(:except => [:create_at, :updated_at],
-                                              :include => {:ingredients => {:only => [:name, :id]}})
+                                               :include => {:ingredients => {:only => [:name, :id]}})
     results.each do |recipe|
       if recipe_hash[recipe["id"]]
         missing = recipe["ingredient_count"] - recipe_hash[recipe["id"]]
