@@ -43,8 +43,10 @@ RSpec.describe RecipesController, type: :controller do
       end
     end
 
+
+
     describe "POST #find_recipes" do
-      let(:find_params) { {:missing => 0} }
+      let(:find_params) { {search_options: {:missing => 0, :heart => false}} }
       it "it successful" do
         post :find_recipes, find_params
         expect(response).to be_success

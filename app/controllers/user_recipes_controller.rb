@@ -2,14 +2,10 @@ class UserRecipesController < ApplicationController
   before_action :require_user
 
   def create
-    @item = UserRecipe.new(user_recipe_params)
-    @item.user_id = current_user.id
-    if @item.save
-      render json: @item.as_json(:except => [:create_at, :updated_at],
-                                 :include => {:recipe => {:except=> [:create_at, :updated_at]}} )
-    else
-      render json: @item.errors, status: :unprocessable_entity
-    end
+    item = UserRecipe.new(user_recipe_params)
+    item.user_id = current_user.id
+    item.save
+    head :no_content
   end
 
   def destroy

@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
                                                           :include => {:ingredient => {:only => :name}} )
   end
 
-  def find_recipes_as_json(search_options)
+  def find_recipes_as_json(search_options = {missing: 0, heart: false})
     recipe_hash = self.find_recipe_hash(search_options[:missing])
     heart_array = self.recipes.pluck(:id)
     heart_hash = {}

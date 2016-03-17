@@ -55,26 +55,26 @@ RSpec.describe User, type: :model do
       expect(user_missing_1_ingred.find_recipes_as_json.count).to eq(0)
     end
     it "can specify to include recipes missing 1 ingredient" do
-      expect(user_missing_1_ingred.find_recipes_as_json(1).count).to eq(1)
-      expect(user_missing_1_ingred.find_recipes_as_json(1)[0]["id"]).to eq(Recipe.first.id)
+      expect(user_missing_1_ingred.find_recipes_as_json({:missing => 1, :heart => false}).count).to eq(1)
+      expect(user_missing_1_ingred.find_recipes_as_json({:missing => 1, :heart => false})[0]["id"]).to eq(Recipe.first.id)
     end
     xit "can specify to include recipes missing 2 ingredients" do
-      expect(user_missing_2_ingred.find_recipes_as_json(2).count).to eq(2)
-      expect(user_missing_2_ingred.find_recipes_as_json(2)[0]["id"]).to eq(Recipe.first.id)
+      expect(user_missing_2_ingred.find_recipes_as_json({:missing => 2, :heart => false}).count).to eq(2)
+      expect(user_missing_2_ingred.find_recipes_as_json({:missing => 2, :heart => false})[0]["id"]).to eq(Recipe.first.id)
     end
     it "still returns the recipe even if you have all ingredients" do
-      expect(user_with_all_ingred.find_recipes_as_json(1).count).to eq(1)
-      expect(user_with_all_ingred.find_recipes_as_json(1)[0]["id"]).to eq(Recipe.first.id)
+      expect(user_with_all_ingred.find_recipes_as_json({:missing => 1, :heart => false}).count).to eq(1)
+      expect(user_with_all_ingred.find_recipes_as_json({:missing => 1, :heart => false})[0]["id"]).to eq(Recipe.first.id)
     end
     it "missing is 0 if you have all ingredients" do
       expect(user_with_all_ingred.find_recipes_as_json[0]["missing"]).to eq(0)
-      expect(user_with_all_ingred.find_recipes_as_json(1)[0]["missing"]).to eq(0)
+      expect(user_with_all_ingred.find_recipes_as_json({:missing => 1, :heart => false})[0]["missing"]).to eq(0)
     end
     it "missing is 1 if you are missing 1 ingredient" do
-      expect(user_missing_1_ingred.find_recipes_as_json(1)[0]["missing"]).to eq(1)
+      expect(user_missing_1_ingred.find_recipes_as_json({:missing => 1, :heart => false})[0]["missing"]).to eq(1)
     end
     xit "missing is 2 if you are missing 2 ingredients" do
-      expect(user_missing_2_ingred.find_recipes_as_json(2)[0]["missing"]).to eq(2)
+      expect(user_missing_2_ingred.find_recipes_as_json({:missing => 2, :heart => false})[0]["missing"]).to eq(2)
     end
   end
 end
