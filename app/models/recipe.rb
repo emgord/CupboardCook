@@ -21,8 +21,8 @@ class Recipe < ActiveRecord::Base
     }
   end
 
-  def self.search_recipes(recipe_id_array)
-    Recipe.search("*",
+  def self.search_recipes(recipe_id_array, query)
+    Recipe.search(query,
                   where: {id: recipe_id_array},
                   operator: "or",
                   limit:100,
