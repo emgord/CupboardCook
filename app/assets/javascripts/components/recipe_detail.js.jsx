@@ -41,6 +41,12 @@ var RecipeDetail = React.createClass({
       var recipeYield = <span><i className="fa fa-cutlery">   </i><strong>Yield:</strong>{this.props.recipe.yield}</span>;
     }
 
+    if (this.props.recipe.heart == true) {
+      var heart = <a onClick={this.addHeart}><i className="fa fa-heart fa-4x icon-right remove-heart"></i></a>;
+    } else {
+      var heart = <a onClick={this.removeHeart}><i className="fa fa-heart fa-4x icon-right add-heart"></i></a>;
+    }
+
     return(
       <div className="container">
         <div className="row">
@@ -67,7 +73,7 @@ var RecipeDetail = React.createClass({
                 <div className="recipe-actions panel-footer">
                   <a className="btn btn-primary" href={this.props.recipe.original_url} target="_blank">Cook This Now <i className="fa fa-external-link"></i></a>
                   <a className="btn btn-info" onClick={this.markRecipeComplete}>Cooked <i className="fa fa-check"></i></a>
-                  <a onClick={this.addHeart}><i className="fa fa-heart fa-4x icon-right"></i></a>
+                  {heart}
                 </div>
               </div>
             </div>

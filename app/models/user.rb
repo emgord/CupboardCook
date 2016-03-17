@@ -52,8 +52,13 @@ class User < ActiveRecord::Base
 
   def find_recipes_as_json(search_options)
     recipe_hash = self.find_recipe_hash(search_options[:missing])
+    heart_array = self.recipes.pluck(:id)
+    heart_hash = {}
+    heart_array.each do |heart|
+      heart_hash[heart] = true
+    end
     if search_options[:heart]
-      recipe_id_array = self.recipes.pluck(:id)
+      recipe_id_array = heart_array
     else
       recipe_id_array = recipe_hash.keys.slice(0,100)
     end
@@ -66,7 +71,13 @@ class User < ActiveRecord::Base
       else
         missing = recipe["ingredient_count"]
       end
+      if heart_hash[recipe["id"]]
+        heart = true
+      else
+        heart = false
+      end
       recipe["missing"] = missing
+      recipe["heart"] = heart
     end
   end
 end

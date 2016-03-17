@@ -31,6 +31,21 @@ var RecipeTile = React.createClass({
     } else {
       missing = <div className="missing-number"><p>-{this.props.recipe.missing}</p></div>;
     };
+
+    if (this.props.recipe.heart == true) {
+      var heart =
+        <a onClick={this.addHeart}>
+          <i className="fa fa-heart fa-2x remove-heart icon-right"></i>
+          <i className="fa fa-times fa-2x x-heart icon-right"></i>
+        </a>;
+    } else {
+      var heart =
+        <a onClick={this.removeHeart} >
+          <i className="fa fa-heart fa-2x icon-right add-heart icon-right"></i>
+          <i className="fa fa-plus fa-2x plus-heart icon-right"></i>
+        </a>;
+    }
+
     return(
       <div className={pictureClass} >
         <div className="thumbnail">
@@ -40,7 +55,7 @@ var RecipeTile = React.createClass({
             <div className="icon-left">
               {missing}
             </div>
-            <a onClick={this.addHeart}><i className="fa fa-heart fa-2x icon-right"></i></a>
+            {heart}
           </div>
         </div>
       </div>
