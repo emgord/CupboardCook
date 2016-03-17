@@ -5,7 +5,8 @@ Recipes = React.createClass({
            recipeDetail: this.props.recipes[0],
            showRecipe: false,
            missing: 0,
-           heart: false
+           heart: false,
+           query: "*"
          };
   },
 
@@ -50,7 +51,8 @@ Recipes = React.createClass({
   resetRecipes: function(){
       var search_options = {
         missing: this.state.missing,
-        heart: this.state.heart
+        heart: this.state.heart,
+        query: this.state.query
       };
       $.post('/recipes/find_recipes', {search_options},
         function(data) {
@@ -99,6 +101,14 @@ Recipes = React.createClass({
     this.setState({heart: heart, missing:missing }, this.resetRecipes)
   },
 
+  updateQuery: function(event){
+    this.setState({query: event.target.value})
+  },
+
+  resetQuery: function(event){
+    this.setState({query: "*"})
+  },
+
   render: function() {
     var show = this.state.showRecipe ? 'false' : 'true';
     return (
@@ -119,7 +129,11 @@ Recipes = React.createClass({
                       decrementMissing={this.decrementMissing}
                       incrementMissing={this.incrementMissing}
                       missing={this.state.missing}
-                      heart={this.state.heart}/>
+                      heart={this.state.heart}
+                      query={this.state.query}
+                      updateQuery={this.updateQuery}
+                      triggerSearch={this.resetRecipes}
+                      resetSearch={this.resetQuery}/>
       </div>
       <div className="masonry-container bottom-section">
         <Masonry recipes={this.state.recipes}

@@ -30,6 +30,8 @@ RSpec.describe RecipesController, type: :controller do
     before :each do
       @user = create(:user, :google)
       session[:user_id] = @user.id
+      Recipe.reindex
+      Recipe.searchkick_index.refresh
     end
     describe "GET #index" do
       it "responds successfully with an HTTP 200 status code" do

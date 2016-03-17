@@ -10,5 +10,4 @@ Rails.application.routes.draw do
   get "/.well-known/acme-challenge/#{ENV['LE_AUTH_REQUEST']}", to: 'users#letsencrypt'
   resources :user_ingredients, only: [:index, :create, :destroy]
   resources :user_recipes, only: [:create, :destroy]
-
 end
