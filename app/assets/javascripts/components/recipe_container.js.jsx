@@ -11,7 +11,8 @@ Recipes = React.createClass({
   },
 
   getDefaultProps: function(){
-    return { recipes: []};
+    return { recipes: [],
+             user_ingredients: []};
   },
 
   showRecipeDetail: function() {
