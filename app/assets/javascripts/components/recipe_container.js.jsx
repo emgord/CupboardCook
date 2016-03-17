@@ -33,7 +33,13 @@ Recipes = React.createClass({
   toggleHeartRecipe: function(recipe){
     var recipes = this.state.recipes.slice();
     var recipe_index = recipes.indexOf(recipe);
-    recipes[recipe_index].heart = !recipes[recipe_index].heart;
+    if (this.state.heart) {
+      recipes.splice(recipe_index,1);
+      this.triggerTileShift();
+    } else {
+      recipes[recipe_index].heart = !recipes[recipe_index].heart;
+    }
+
     this.setState({ recipes: recipes });
   },
 
