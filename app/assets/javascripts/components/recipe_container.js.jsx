@@ -101,8 +101,8 @@ Recipes = React.createClass({
     this.setState({heart: heart, missing:missing }, this.resetRecipes)
   },
 
-  updateQuery: function(query){
-    this.setState({query: query}, this.resetRecipes)
+  updateQuery: function(event){
+    this.setState({query: event.target.value})
   },
 
   render: function() {
@@ -126,7 +126,9 @@ Recipes = React.createClass({
                       incrementMissing={this.incrementMissing}
                       missing={this.state.missing}
                       heart={this.state.heart}
-                      updateQuery={this.updateQuery}/>
+                      query={this.state.query}
+                      updateQuery={this.updateQuery}
+                      triggerSearch={this.resetRecipes}/>
       </div>
       <div className="masonry-container bottom-section">
         <Masonry recipes={this.state.recipes}
