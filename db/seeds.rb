@@ -39,11 +39,16 @@ Recipe.where("ingredient_count <= 1").each do |r|
   r.destroy
 end
 
+Ingredient.where(recipes_count: nil).each do |i|
+  i.destroy
+end
+
 # Ingredient.where("recipes_count = nil").each do |r|
 #   r.destroy
-# end 
+# end
 
 Ingredient.reindex
+Recipe.reindex
 
 Ingredient.order(:recipes_count).reverse.slice!(0,50).each do |i|
   User.first.ingredients << i
