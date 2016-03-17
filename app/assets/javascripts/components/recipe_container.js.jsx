@@ -105,6 +105,10 @@ Recipes = React.createClass({
     this.setState({query: event.target.value})
   },
 
+  resetQuery: function(event){
+    this.setState({query: "*"})
+  },
+
   render: function() {
     var show = this.state.showRecipe ? 'false' : 'true';
     return (
@@ -128,7 +132,8 @@ Recipes = React.createClass({
                       heart={this.state.heart}
                       query={this.state.query}
                       updateQuery={this.updateQuery}
-                      triggerSearch={this.resetRecipes}/>
+                      triggerSearch={this.resetRecipes}
+                      resetSearch={this.resetQuery}/>
       </div>
       <div className="masonry-container bottom-section">
         <Masonry recipes={this.state.recipes}

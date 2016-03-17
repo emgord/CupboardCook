@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
     if search_options[:heart]
       recipe_id_array = heart_array
     else
-      recipe_id_array = recipe_hash.keys.slice(0,100)
+      recipe_id_array = recipe_hash.keys
     end
     user_recipes = Recipe.search_recipes(recipe_id_array, search_options[:query])
     results = user_recipes.as_json(:except => [:create_at, :updated_at],

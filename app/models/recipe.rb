@@ -25,11 +25,11 @@ class Recipe < ActiveRecord::Base
     Recipe.search(query,
                   where: {id: recipe_id_array},
                   operator: "or",
-                  limit:100,
-                  boost_where: {has_image: true},
-                  boost_where: {has_description: true, factor: 100},
+                  boost_where: {has_image: true, factor:10},
                   include: :ingredients,
-                  load: { Recipe =>{ :include => :ingredients}})
+                  load: { Recipe =>{ :include => :ingredients},
+                  limit:100
+                  })
   end
 
   def self.create_from_scrapy_seed(recipe_hash)

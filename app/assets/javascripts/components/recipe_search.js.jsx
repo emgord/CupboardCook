@@ -29,7 +29,8 @@ var RecipeSearch = React.createClass({
           {sortOptions}
 					<RecipeSearchBox updateQuery={this.props.updateQuery}
 													 triggerSearch={this.props.triggerSearch}
-						 							 query={this.props.query}/>
+						 							 query={this.props.query}
+													 resetSearch={this.props.resetSearch}/>
         </div>
 
 			);
