@@ -5,13 +5,12 @@ var RecipeSearch = React.createClass({
       var sortOptions =
 			<div className="row">
 				<div className="col-xs-12 col-sm-8 col-sm-push-2 col-md-6 col-md-push-3">
-					<span>Search within:</span>
+					<span className="form-text">Search within:</span>
 		      <div className="btn-group">
 		        <a onClick={this.props.showHeart} className="btn btn-primary disabled"><i className="fa fa-heart"></i></a>
 		        <a onClick={this.props.showAll} className="btn btn-default">All</a>
 		      </div>
 				</div>
-				<br/>
 			</div>;
     } else {
       var sortOptions =
@@ -36,7 +35,6 @@ var RecipeSearch = React.createClass({
 						    </div>
 							</div>
 						</div>
-					<br/>
 				</div>
 
       ;
@@ -48,6 +46,7 @@ var RecipeSearch = React.createClass({
 				<div className="row">
 					 <div>
 			          {sortOptions}
+								<br/>
 								<RecipeSearchBox updateQuery={this.props.updateQuery}
 																 triggerSearch={this.props.triggerSearch}
 									 							 query={this.props.query}
