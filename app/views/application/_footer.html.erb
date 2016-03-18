@@ -20,6 +20,8 @@
                       <li>
                         <%= link_to "Log out", logout_path %>
                       </li>
+                      <li class="footer-menu-divider">&sdot;</li>
+                      <a href="//github.com/emgord/CupboardCook">Github</a>
                     <% else %>
                       <li>
                           <a href="#">Home</a>
@@ -36,9 +38,13 @@
                       <li>
                           <a href="#login">Log in</a>
                       </li>
+                      <li class="footer-menu-divider">&sdot;</li>
+                      <a href="//github.com/emgord/CupboardCook"> Github</a>
                     <% end %>
                 </ul>
-                <p class="copyright small">Copyright &copy; Emily Gordon <%= Time.now.year %>.</p>
+                <p class="copyright small footer">Copyright &copy; Emily Gordon <%= Time.now.year %></p>
+                <p class="small footer">Recipes &copy; <a href="http://cooking.nytimes.com">NYTimes Cooking</a></p>
+
             </div>
         </div>
     </div>
