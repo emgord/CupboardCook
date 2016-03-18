@@ -55,16 +55,27 @@ h2 {
   padding: 10px;
 }
 
-.top-section {
-  padding: 50px;
-  background-color: $deep-blue;
-  h2, h1 {
-    color: $deep-yellow;
+.search-box{
+  // background-color:$deep-blue;
+  // border-radius: 4px;
+  // padding: 10px;
+  // h2{
+  //   color:$deep-yellow;
+  // }
+  .btn-group{
+    margin:10px;
   }
 }
 
-.bottom-section {
+.top-section {
   padding: 50px;
+  background-color: $light-grey;
+}
+
+.bottom-section {
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 50px;
   background-color: $light-grey;
   h2 {
     color:$deep-blue;
@@ -73,6 +84,10 @@ h2 {
 
 .uk-form input {
   border-radius: 5px !important;
+}
+
+.form-pad {
+
 }
 
 .heading {
