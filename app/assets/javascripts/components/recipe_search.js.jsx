@@ -25,13 +25,17 @@ var RecipeSearch = React.createClass({
 
 
 		return (
-        <div className = "recipe-search-box">
-          {sortOptions}
-					<RecipeSearchBox updateQuery={this.props.updateQuery}
-													 triggerSearch={this.props.triggerSearch}
-						 							 query={this.props.query}
-													 resetSearch={this.props.resetSearch}/>
-        </div>
+			<div className="container">
+				<div className="row">
+					 <div className="col-xs-12 col-sm-8 col-sm-push-2 col-md-6 col-md-push-3">
+			          {sortOptions}
+								<RecipeSearchBox updateQuery={this.props.updateQuery}
+																 triggerSearch={this.props.triggerSearch}
+									 							 query={this.props.query}
+																 resetSearch={this.props.resetSearch}/>
+						</div>
+					</div>
+				</div>
 
 			);
 	}
