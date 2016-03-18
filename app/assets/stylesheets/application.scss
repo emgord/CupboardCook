@@ -233,7 +233,7 @@ button.add:hover{
   bottom: 5px;
   right: 7px;
   &:hover{
-    color: $trans-grey;
+    color: rgba(153, 0, 0,.5);
   }
 }
 
