@@ -75,7 +75,7 @@ Recipes = React.createClass({
 
   incrementMissing: function(){
     var missing = this.state.missing
-    if (missing < 39) {
+    if (missing < 10) {
       missing++
       this.setState({missing: missing }, this.resetRecipes)
     }

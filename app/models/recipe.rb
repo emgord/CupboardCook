@@ -25,11 +25,11 @@ class Recipe < ActiveRecord::Base
     Recipe.search(query,
                   where: {id: recipe_id_array},
                   operator: "or",
+                  limit:50,
                   boost_where: {has_image: true, factor:10},
                   fields: [:ingredients, :title, :description],
                   include: :ingredients,
                   load: { Recipe =>{ :include => :ingredients},
-                  limit:100
                   })
   end
 
