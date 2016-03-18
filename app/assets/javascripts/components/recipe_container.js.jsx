@@ -102,7 +102,11 @@ Recipes = React.createClass({
   },
 
   updateQuery: function(event){
-    this.setState({query: event.target.value})
+    var query = event.target.value;
+    if (query == "") {
+      query = "*"
+    }
+    this.setState({query: query})
   },
 
   resetQuery: function(event){
