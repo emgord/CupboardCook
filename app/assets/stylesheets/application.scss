@@ -114,11 +114,15 @@ body {
   }
 }
 
-.ingredient-tile {
+.ingredient-tile, .edit-pantry {
   padding: 10px;
   text-align: center;
   margin: 5px;
   display: inline-block;
+}
+
+.edit-pantry {
+  margin-left: 15px;
 }
 
 .ingredient{
