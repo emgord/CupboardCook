@@ -38,7 +38,7 @@ var Pantry = React.createClass({
                         userIngredients={this.state.user_ingredients} />
 
         <div className="bottom-section">
-          <div class="container">
+          <div className="container">
             <div className="row">
               <div className="col-xs-12 col-sm-10 col-sm-push-1">
               <h2>Ingredients:</h2>
