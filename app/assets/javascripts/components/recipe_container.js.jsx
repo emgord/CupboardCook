@@ -2,7 +2,7 @@ Recipes = React.createClass({
   getInitialState: function(){
   return { recipes: this.props.recipes,
            user_ingredients: this.props.user_ingredients,
-           recipeDetail: this.props.recipes[0],
+           recipeDetail: this.props.recipes,
            showRecipe: false,
            missing: 0,
            heart: false,

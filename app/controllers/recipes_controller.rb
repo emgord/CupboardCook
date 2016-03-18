@@ -2,7 +2,11 @@ class RecipesController < ApplicationController
   before_action :require_user
 
   def index
-    @recipes = current_user.find_recipes_as_json
+    if current_user.find_recipes_as_json.length != 0
+      @recipes = current_user.find_recipes_as_json
+    else
+      @recipes = current_user.find_recipes_as_json({missing:10, heart:false, query:"*"})
+    end
     @user_ingredients = current_user.pantry_items_as_json
   end
 
