@@ -38,13 +38,19 @@ var Pantry = React.createClass({
                         userIngredients={this.state.user_ingredients} />
 
         <div className="bottom-section">
-          <h2>My Ingredients:</h2>
-          <a className="btn btn-primary" onClick={this.toggleAllIngredientsEdit}>Edit Pantry <i className="fa fa-pencil-square-o"></i></a>
-          <UserIngredients user_ingredients={this.state.user_ingredients}
-                           edit={this.state.userIngredientEdit}
-                           removeUserIngredient={this.removeUserIngredient}/>
+          <div className="container">
+            <div className="row">
+              <div className="col-xs-12 col-sm-10 col-sm-push-1">
+              <h2>Ingredients:</h2>
+              <a className="btn btn-primary edit-pantry" onClick={this.toggleAllIngredientsEdit}>Edit Pantry <i className="fa fa-pencil-square-o"></i></a>
+              <UserIngredients user_ingredients={this.state.user_ingredients}
+                               edit={this.state.userIngredientEdit}
+                               removeUserIngredient={this.removeUserIngredient}/>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
     );
   }
 
