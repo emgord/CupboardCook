@@ -29,18 +29,21 @@ var IngredientSearch = React.createClass({
 
 	render() {
 		return (
-			<div className="top-section">
+		<div className="top-section">
         <h1>Pantry</h1>
-        <h2>Add Ingredients:</h2>
 				<IngredientSearchBox searchPath={this.props.searchPath}
                              submitPath={this.searchIngredients}
                              query={this.state.query}/>
+      <div className="row">
+        <div className="col-xs-12 col-sm-8 col-sm-push-2 col-md-6 col-md-push-3">
         <Ingredients ingredients={this.state.ingredients}
                      addUserIngredient={this.props.addUserIngredient}
                      removeUserIngredient={this.props.removeUserIngredient}
                      resetSearch={this.resetSearch}
                      userIngredients={this.props.userIngredients} />
-			</div>
+        </div>
+     </div>
+		</div>
 			);
 
 	}
