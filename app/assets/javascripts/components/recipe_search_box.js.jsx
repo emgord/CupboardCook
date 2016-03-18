@@ -1,5 +1,4 @@
 var RecipeSearchBox = React.createClass({
-
 	render () {
 		return (
 			<div className="col-xs-12 col-sm-8 col-sm-push-2 col-md-6 col-md-push-3">
