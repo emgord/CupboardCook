@@ -75,7 +75,7 @@ Recipes = React.createClass({
 
   incrementMissing: function(){
     var missing = this.state.missing
-    if (missing < 39) {
+    if (missing < 10) {
       missing++
       this.setState({missing: missing }, this.resetRecipes)
     }
@@ -102,7 +102,11 @@ Recipes = React.createClass({
   },
 
   updateQuery: function(event){
-    this.setState({query: event.target.value})
+    var query = event.target.value;
+    if (query == "") {
+      query = "*"
+    }
+    this.setState({query: query})
   },
 
   resetQuery: function(event){
