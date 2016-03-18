@@ -123,10 +123,9 @@ body {
 
 .ingredient{
   &.need{
-    background-color: $green;
-    border: 1px solid $green;
-    color: $yellow;
-
+    background-color: $light-grey;
+    border: 1px solid $navy;
+    color: $navy;
   }
   &.have{
     background-color: $dark-grey;
@@ -135,9 +134,9 @@ body {
   }
 }
 .add{
-  background-color: $yellow;
-  border: 1px solid $green;
-  color: $green;
+  background-color: $purple;
+  border: 1px solid $navy;
+  color: $light-grey;
 }
 .delete{
   background-color: $light-grey;
@@ -149,8 +148,8 @@ button.delete:hover{
 }
 
 button.add:hover{
-  background-color:$deep-yellow;
-  color:$green;
+  background-color:$yellow;
+  color:$navy;
 }
 
 .no-scroll {
