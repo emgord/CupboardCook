@@ -37,6 +37,7 @@ Recipes = React.createClass({
     if (this.state.heart) {
       recipes.splice(recipe_index,1);
       this.triggerTileShift();
+      this.setState({ showRecipe: false });
     } else {
       recipes[recipe_index].heart = !recipes[recipe_index].heart;
     }
