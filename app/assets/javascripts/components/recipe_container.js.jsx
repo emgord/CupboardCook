@@ -2,7 +2,6 @@ Recipes = React.createClass({
   getInitialState: function(){
   return { recipes: this.props.recipes,
            user_ingredients: this.props.user_ingredients,
-           recipeDetail: this.props.recipes[0],
            showRecipe: false,
            missing: 0,
            heart: false,
@@ -116,36 +115,46 @@ Recipes = React.createClass({
 
   render: function() {
     var show = this.state.showRecipe ? 'false' : 'true';
-    return (
-    	<div className ='recipes'>
-      <div className ='recipe-box' aria-hidden={show}>
-        <RecipeDetail key={this.state.recipeDetail.id}
-                      recipe={this.state.recipeDetail}
-                      user_ingredients={this.state.user_ingredients}
-                      removeUserIngredient={this.resetOnChange}
-                      hide={this.hideRecipeDetail}
-                      toggleHeartRecipe={this.toggleHeartRecipe}
-                       />
-      </div>
-      <div className="top-section">
-        <h1>Recipes</h1>
-        <RecipeSearch showAll={this.showAll}
-                      showHeart={this.showHeart}
-                      decrementMissing={this.decrementMissing}
-                      incrementMissing={this.incrementMissing}
-                      missing={this.state.missing}
-                      heart={this.state.heart}
-                      query={this.state.query}
-                      updateQuery={this.updateQuery}
-                      triggerSearch={this.resetRecipes}
-                      resetSearch={this.resetQuery}/>
-      </div>
-      <div className="masonry-container bottom-section">
-        <Masonry recipes={this.state.recipes}
+    if (this.state.recipeDetail == null) {
+      recipeDetail = <div className ='recipe-box' aria-hidden={show}></div>;
+      } else {
+      recipeDetail = <div className ='recipe-box' aria-hidden={show}>
+          <RecipeDetail key={this.state.recipeDetail.id}
+                        recipe={this.state.recipeDetail}
+                        user_ingredients={this.state.user_ingredients}
+                        removeUserIngredient={this.resetOnChange}
+                        hide={this.hideRecipeDetail}
+                        toggleHeartRecipe={this.toggleHeartRecipe}
+                         />
+                     </div>;
+      }
+      if (this.state.recipes.length <= 1) {
+        recipeTiles = <p>No Recipes Yet</p>;
+      } else {
+        recipeTiles = <Masonry recipes={this.state.recipes}
                  user_ingredients={this.state.user_ingredients}
                  changeRecipeDetail={this.changeRecipeDetail}
                  toggleHeartRecipe={this.toggleHeartRecipe}/>
-      </div>
+      }
+    return (
+    	<div className ='recipes'>
+        {recipeDetail}
+        <div className="top-section">
+          <h1>Recipes</h1>
+          <RecipeSearch showAll={this.showAll}
+                        showHeart={this.showHeart}
+                        decrementMissing={this.decrementMissing}
+                        incrementMissing={this.incrementMissing}
+                        missing={this.state.missing}
+                        heart={this.state.heart}
+                        query={this.state.query}
+                        updateQuery={this.updateQuery}
+                        triggerSearch={this.resetRecipes}
+                        resetSearch={this.resetQuery}/>
+        </div>
+        <div className="masonry-container bottom-section">
+          {recipeTiles}
+        </div>
       </div>
     );
   }

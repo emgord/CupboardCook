@@ -1,13 +1,4 @@
-  <% if @recipes.length == 0 %>
-    <p>
-      You don't have any recipes yet.
-      <%= link_to "Add ingredients to your pantry", user_ingredients_path %>
-      to find recipes.
-    </p>
-    <% else %>
-    <div data-uk-scrollspy="{cls:'uk-animation-scale-up', target:'.recipe-tile', repeat: true}">
-       <%= react_component 'Recipes', { recipes: @recipes,
-                                        user_ingredients: @user_ingredients} %>
-     </div>
-
-    <% end %>
+<div data-uk-scrollspy="{cls:'uk-animation-scale-up', target:'.recipe-tile', repeat: true}">
+   <%= react_component 'Recipes', { recipes: @recipes,
+                                    user_ingredients: @user_ingredients} %>
+</div>
