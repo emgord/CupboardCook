@@ -71,6 +71,7 @@ h2 {
 
 .bottom-section {
   padding: 50px;
+  min-height: 250px;
   background-color: $light-grey;
   h2 {
     color:$deep-blue;
@@ -325,4 +326,8 @@ button.add:hover{
 
 .hide {
   display: hidden;
+}
+
+.footer {
+  font-size: .55em;
 }
