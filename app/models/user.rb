@@ -31,19 +31,26 @@ class User < ActiveRecord::Base
     return pantry_names
   end
 
-  #returns a hash with the recipe id key mapping to the number of ingredients you have for the recipe
+  # returns a hash with the recipe id key mapping to the number of ingredients you
+  # have for the recipe
   def find_recipe_hash(missing)
-    pantry_names = self.pantry_names
-    recipe_hash = Recipe.select("recipes.id").joins(:ingredients).where(ingredients: {name: pantry_names}).group("recipes.id").having('COUNT(*) >= recipes.ingredient_count - ?', missing).count
+    if self.user_ingredients.length == 0
+      recipe_hash = {}
+      Recipe.where("ingredient_count <= ?", missing).pluck(:id).each do |id|
+        recipe_hash[id] = 0
+      end
+    else
+      pantry_names = self.pantry_names
+      recipe_hash = Recipe.select("recipes.id").joins(:ingredients).where(ingredients: {name: pantry_names}).group("recipes.id").having('COUNT(*) >= recipes.ingredient_count - ?', missing).count
+    end
     return recipe_hash
   end
 
-  # def find_recipes(missing = 0)
-  #   recipe_hash = self.find_recipe_hash(missing)
-  #   # recipe_id_array = recipe_hash.keys
-  #   user_recipes = Recipe.where(id: recipe_hash.keys)
-  #   return user_recipes
-  # end
+  def find_recipes(missing = 0)
+    recipe_hash = self.find_recipe_hash(missing)
+    user_recipes = Recipe.where(id: recipe_hash.keys)
+    return user_recipes
+  end
 
   def pantry_items_as_json
     self.user_ingredients.eager_load(:ingredient).as_json(:except => [:create_at, :updated_at],
