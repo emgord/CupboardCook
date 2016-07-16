@@ -6,11 +6,11 @@
 
 ## Concept
 
-Do you have tons of stuff in your pantry but still don't know what to make? Tired of cooking the same old thing and looking for inspiration? Did you impulse buy purple cornmeal but are not sure what to do with it? [Cupboard Cook](https://www.cupboard-cook.com/) is a pantry tracking tool that generates recipes you can make right now using ingredients that you already have. Cupboard Cook also prevents food waste by helping people use up ingredients that might otherwise go to waste.
+Do you have tons of stuff in your pantry but still don't know what to make? Tired of cooking the same thing and looking for inspiration? Did you impulse buy purple cornmeal but are not sure what to do with it? [Cupboard Cook](https://www.cupboard-cook.com/) is a pantry tracking tool that generates recipes you can make right now using ingredients that you already have. Cupboard Cook also prevents food waste by helping people use up ingredients that might otherwise go to waste.
 
 View it live at www.cupboard-cook.com.
 
-## Technology
+### Technologies
 
 *  Ruby on Rails backend
 *  React frontend
@@ -18,20 +18,20 @@ View it live at www.cupboard-cook.com.
 *  OAuth login with Google
 *  Travis CI for integrated testing
 *  Deployed with AWS Elasticbeanstalk
-*  Webcrawler built with Scrapy framework in Python: github.com/emgord/NYTimesCookingCrawler
+*  Webcrawler built with Scrapy framework in Python: https://github.com/emgord/NYTimesCookingCrawler
 *  Elasticsearch
 
 ### About
-- This project was created by [Emily Gordon](https://github.com/emgord) as a Capstone Project for [Ada Developers Academy](www.adadevelopersacademy.org) in March 2016.
+* This project was created by [Emily Gordon](https://github.com/emgord) as a Capstone Project for [Ada Developers Academy](http://adadevelopersacademy.org/) in March 2016.
 
 ### Installation
-- Clone the repository: `git clone git@github.com:emgord/CupboardCook.git`  
-- In the terminal navigate into the directory and run `bundle install` to install project gems
-- Run `rake db:migrate` to create the project database.  
-- Install [Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html). With Homebrew use `brew install elasticsearch`. Start the Elasticsearch server: `elasticsearch`  
+* Clone the repository: `git clone git@github.com:emgord/CupboardCook.git`  
+* In the terminal navigate into the directory and run `bundle install` to install project gems
+* Run `rake db:migrate` to create the project database.  
+* Install [Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html) (With Homebrew use `brew install elasticsearch`). Start the Elasticsearch server: `elasticsearch`  
 
 ### Ruby version
-- 2.2.3
+* 2.2.3
 
 ### Rails version
-- 4.2.5
+* 4.2.5
