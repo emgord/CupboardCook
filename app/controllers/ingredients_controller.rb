@@ -6,7 +6,7 @@ class IngredientsController < ApplicationController
     if request.xhr?
       render :json => @ingredients.to_json
     else
-       redirect_to root_path
+      redirect_to root_path
     end
   end
 end
