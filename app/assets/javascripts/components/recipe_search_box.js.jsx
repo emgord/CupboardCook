@@ -1,9 +1,9 @@
 var RecipeSearchBox = React.createClass({
 
-	handleEnterSearch: function(e){
+	handleEnterAdd: function(e){
 		if (e.key === 'Enter') {
-			e.preventDefault()
-			this.props.triggerSearch()
+			e.preventDefault();
+			this.props.triggerSearch();
     }
 	},
 
@@ -19,7 +19,7 @@ var RecipeSearchBox = React.createClass({
 										  type="text"
 										  onChange={ this.props.updateQuery }
 										  placeholder="Find Recipes"
-											onKeyPress = {this.handleEnterSearch}
+											onKeyPress = {this.handleEnterAdd}
 										/>
 						<span className="input-group-btn">
 				 			<button onClick={ this.props.triggerSearch } type="button" className="btn btn-primary"><i className="fa fa-search"></i></button>

@@ -28,7 +28,7 @@ class UserIngredientsController < ApplicationController
   private
 
   def user_ingredient_params
-    params.require(:user_ingredients).permit(:amount,:unit,:ingredient_id)
+    params.permit(:ingredient_id)
   end
 
 end

@@ -1,5 +1,12 @@
 var IngredientSearchBox = React.createClass({
 
+	handleEnterSearch: function(e){
+		if (e.key === 'Enter') {
+			e.preventDefault();
+			this.props.addIngredient(this.props.ingredient.id);
+		}
+	},
+
 	render () {
 		return (
 			<div className="row">
@@ -12,6 +19,7 @@ var IngredientSearchBox = React.createClass({
 												name="query"
 												placeholder="Add ingredients to your pantry...."
 												onChange={ this.props.submitPath }
+												onKeyPress = {this.handleEnterSearch}
 												/></p>
 					</form>
 				</div>
