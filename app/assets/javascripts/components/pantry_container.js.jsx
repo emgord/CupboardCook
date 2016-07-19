@@ -45,6 +45,11 @@ var Pantry = React.createClass({
   },
 
   render: function () {
+    if (this.state.user_ingredients.length == 0) {
+      text = <div><h2>Welcome to Cupboard Cook</h2><p>Your pantry is currently empty. Search for ingredients and add them to your pantry or <a onClick={this.populatePantry}> fill your pantry </a>with common staple ingredients to get started.</p></div>;
+    } else {
+      text = <h2>Ingredients:</h2>
+    }
 
     return(
       <div className ='pantry-list'>
@@ -57,10 +62,10 @@ var Pantry = React.createClass({
           <div className="container">
             <div className="row">
               <div className="col-xs-12 col-sm-10 col-sm-push-1">
-              <h2>Ingredients:</h2>
               <a className="btn btn-primary edit-pantry" onClick={this.toggleAllIngredientsEdit}>Edit Pantry <i className="fa fa-pencil-square-o"></i></a>
               <a className="btn btn-primary edit-pantry" onClick={this.populatePantry}>Fill Pantry <i className="fa fa-shopping-basket"></i></a>
               <a className="btn btn-primary edit-pantry" onClick={this.clearPantry}>Clear Pantry <i className="fa fa-trash"></i></a>
+              {text}
               <UserIngredients user_ingredients={this.state.user_ingredients}
                                edit={this.state.userIngredientEdit}
                                removeUserIngredient={this.removeUserIngredient}/>
