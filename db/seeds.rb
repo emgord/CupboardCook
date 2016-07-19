@@ -54,6 +54,4 @@ end
 Ingredient.reindex
 Recipe.reindex
 
-Ingredient.order(:recipes_count).reverse.slice!(0,50).each do |i|
-  User.first.ingredients << i
-end
+User.first.populate_pantry

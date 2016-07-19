@@ -24,6 +24,20 @@ class User < ActiveRecord::Base
     end
   end
 
+  def populate_pantry
+    Ingredient.order(:recipes_count).reverse.slice!(0,50).each do |i|
+      if !self.ingredients.exists?(i.id)
+        self.ingredients << i
+      end
+    end
+  end
+
+  def clear_pantry
+    self.user_ingredients.each do |i|
+      i.destroy
+    end
+  end
+
   def pantry_names
     pantry_names = self.ingredients.map do |i|
       i = i.name
