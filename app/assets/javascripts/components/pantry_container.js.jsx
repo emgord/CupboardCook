@@ -29,24 +29,24 @@ var Pantry = React.createClass({
   },
 
   populatePantry: function(){
-      $.get('/populate_pantry',
-        function(data) {
-          this.setState({user_ingredients:data});
-        }.bind(this),
-        'JSON')
+    $.get('/populate_pantry',
+      function(data) {
+        this.setState({user_ingredients:data});
+      }.bind(this),
+      'JSON')
   },
 
   clearPantry: function(){
-      $.get('/clear_pantry',
-        function(data) {
-          this.setState({user_ingredients:data});
-        }.bind(this),
-        'JSON')
+    $.get('/clear_pantry',
+      function(data) {
+        this.setState({user_ingredients:data});
+      }.bind(this),
+      'JSON')
   },
 
   render: function () {
     if (this.state.user_ingredients.length == 0) {
-      text = <div><h2>Welcome to Cupboard Cook</h2><p>Your pantry is currently empty. Search for ingredients and add them to your pantry or <a onClick={this.populatePantry}> fill your pantry </a>with common staple ingredients to get started.</p></div>;
+      text = <div className="welcome-text"><h2>Welcome to Cupboard Cook</h2><p>Your pantry is currently empty.</p><p>Search for ingredients and add them to your pantry or <a onClick={this.populatePantry}> fill your pantry </a>with common staple ingredients to get started.</p></div>;
     } else {
       text = <h2>Ingredients:</h2>
     }

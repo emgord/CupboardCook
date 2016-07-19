@@ -113,6 +113,14 @@ Recipes = React.createClass({
     this.setState({query: "*"})
   },
 
+  populatePantry: function(){
+    $.get('/populate_pantry',
+      function(data) {
+        this.resetRecipes();
+      }.bind(this),
+      'JSON')
+  },
+
   render: function() {
     var show = this.state.showRecipe ? 'false' : 'true';
     if (this.state.recipeDetail == null) {
@@ -129,7 +137,7 @@ Recipes = React.createClass({
                      </div>;
       }
       if (this.state.recipes.length <= 1) {
-        recipeTiles = <p> No recipes were found using your pantry items and search terms.  <a href="/user_ingredients">Add ingredients to your pantry</a> or adjust your search to find more recipes.</p>;
+        recipeTiles = <div className="welcome-text"><p> No recipes were found using your pantry items and search terms.</p><p><a href="/user_ingredients">Add ingredients to your pantry</a> or adjust your search to find more recipes.</p><p>You can also <a onClick={this.populatePantry}>fill your pantry</a> with common staple ingredients to get started.</p></div>;
       } else {
         recipeTiles = <Masonry recipes={this.state.recipes}
                  user_ingredients={this.state.user_ingredients}
