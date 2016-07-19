@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post '/recipes/find_recipes' => 'recipes#find_recipes'
   get '/health', to: 'users#health'
   get "/.well-known/acme-challenge/#{ENV['LE_AUTH_REQUEST']}", to: 'users#letsencrypt'
+  get 'populate_pantry', to: 'users#populate_pantry'
+  get 'clear_pantry', to: 'users#clear_pantry'
   resources :user_ingredients, only: [:index, :create, :destroy]
   resources :user_recipes, only: [:create, :destroy]
 end
