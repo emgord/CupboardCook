@@ -27,19 +27,33 @@ var IngredientSearch = React.createClass({
 		}
 	},
 
+  addIngredient: function(ingredient_id) {
+    $.post('/user_ingredients',
+      { ingredient_id: ingredient_id },
+      function(data) {
+        this.props.addUserIngredient(data);
+        this.resetSearch();
+      }.bind(this),
+      'JSON'
+    ).fail(function(){
+      this.resetSearch();
+    }.bind(this));
+  },
+
 	render() {
 		return (
 		<div className="top-section">
         <h1>Pantry</h1>
 				<IngredientSearchBox searchPath={this.props.searchPath}
                              submitPath={this.searchIngredients}
-                             query={this.state.query}/>
+                             query={this.state.query}
+                             ingredient={this.state.ingredients[0]}
+                             addIngredient={this.addIngredient}/>
       <div className="row">
         <div className="col-xs-12 col-sm-8 col-sm-push-2 col-md-6 col-md-push-3">
         <Ingredients ingredients={this.state.ingredients}
-                     addUserIngredient={this.props.addUserIngredient}
+                     addIngredient={this.addIngredient}
                      removeUserIngredient={this.props.removeUserIngredient}
-                     resetSearch={this.resetSearch}
                      userIngredients={this.props.userIngredients} />
         </div>
      </div>

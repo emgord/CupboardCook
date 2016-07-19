@@ -2,7 +2,7 @@ var Ingredients = React.createClass({
 
 	render: function () {
 		var userIngredients = this.props.userIngredients;
-		var addUserIngredient = this.props.addUserIngredient;
+		var addIngredient = this.props.addIngredient;
 		var resetSearch = this.props.resetSearch;
 		var removeUserIngredient = this.props.removeUserIngredient;
 		var editUserIngredient = this.props.editUserIngredient;
@@ -20,7 +20,7 @@ var Ingredients = React.createClass({
 				finalIngredient = ( <Ingredient name={ingredient.name}
 										id={ingredient.id}
 										key={ingredient.id}
-										addUserIngredient={addUserIngredient}
+										addIngredient={addIngredient}
 										resetSearch={resetSearch}/>
 								 );
 			}

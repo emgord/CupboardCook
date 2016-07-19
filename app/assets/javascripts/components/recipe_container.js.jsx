@@ -129,7 +129,7 @@ Recipes = React.createClass({
                      </div>;
       }
       if (this.state.recipes.length <= 1) {
-        recipeTiles = <p> You don't have any recipes yet.  <a href="/user_ingredients">Add ingredients to your pantry</a> to find recipes.</p>;
+        recipeTiles = <p> No recipes were found using your pantry items and search terms.  <a href="/user_ingredients">Add ingredients to your pantry</a> or adjust your search to find more recipes.</p>;
       } else {
         recipeTiles = <Masonry recipes={this.state.recipes}
                  user_ingredients={this.state.user_ingredients}

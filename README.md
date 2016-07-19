@@ -4,7 +4,7 @@
 
 # Cupboard Cook
 
-## Concept
+### Concept
 
 Do you have tons of stuff in your pantry but still don't know what to make? Tired of cooking the same thing and looking for inspiration? Did you impulse buy purple cornmeal but are not sure what to do with it? [Cupboard Cook](https://www.cupboard-cook.com/) is a pantry tracking tool that generates recipes you can make right now using ingredients that you already have. Cupboard Cook also prevents food waste by helping people use up ingredients that might otherwise go to waste.
 

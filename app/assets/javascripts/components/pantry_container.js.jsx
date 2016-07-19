@@ -17,7 +17,7 @@ var Pantry = React.createClass({
 
   addUserIngredient: function(user_ingredient){
     var user_ingredients = this.state.user_ingredients.slice();
-    user_ingredients.push(user_ingredient);
+    user_ingredients.unshift(user_ingredient);
     this.setState({ user_ingredients: user_ingredients });
   },
 
