@@ -10,15 +10,11 @@ RSpec.describe UserIngredientsController, type: :controller do
   end
 
   let (:good_params) do
-    {
-      user_ingredients:{ ingredient_id: 4 }
-    }
+      { ingredient_id: 4 }
   end
 
   let (:bad_params) do
-    {
-      user_ingredients: { ingredient_id: user_ingredient.ingredient_id }
-    }
+    {ingredient_id: user_ingredient.ingredient_id }
   end
 
   context "user is logged out" do
